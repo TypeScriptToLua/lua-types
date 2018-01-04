@@ -1,6 +1,6 @@
 # Lua Types
 
-[![Travis](https://img.shields.io/npm/v/lua-types.svg)](https://npmjs.com/package/lua-types)
+[![npm](https://img.shields.io/npm/v/lua-types.svg)](https://npmjs.com/package/lua-types)
 [![Travis](https://img.shields.io/travis/ark120202/lua-types.svg)](https://travis-ci.org/ark120202/lua-types)
 
 TypeScript definitions for Lua 5.3 standard library.
