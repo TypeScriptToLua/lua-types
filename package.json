@@ -1,6 +1,6 @@
 {
   "name": "lua-types",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript definitions for Lua 5.3 standard library.",
   "repository": "https://github.com/ark120202/lua-types.git",
   "author": "ark120202",
