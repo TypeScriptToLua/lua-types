@@ -10,6 +10,9 @@
   "devDependencies": {
     "prettier": "^1.9.2"
   },
+  "files": [
+    "types"
+  ],
   "prettier": {
     "singleQuote": true,
     "trailingComma": "all",
