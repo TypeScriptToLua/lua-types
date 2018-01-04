@@ -1,7 +1,7 @@
-# Lua Types
+# Types Lua
 
-[![npm](https://img.shields.io/npm/v/lua-types.svg)](https://npmjs.com/package/lua-types)
-[![Travis](https://img.shields.io/travis/ark120202/lua-types.svg)](https://travis-ci.org/ark120202/lua-types)
+[![npm](https://img.shields.io/npm/v/types-lua.svg)](https://npmjs.com/package/types-lua)
+[![Travis](https://img.shields.io/travis/ark120202/types-lua.svg)](https://travis-ci.org/ark120202/types-lua)
 
 TypeScript definitions for Lua 5.3 standard library.
 
@@ -10,9 +10,9 @@ TypeScript definitions for Lua 5.3 standard library.
 1. Get Lua Types from npm
 
 ```bash
-yarn add -D lua-types
+yarn add -D types-lua
 # or
-npm install -D lua-types
+npm install -D types-lua
 ```
 
 2. Modify your `tsconfig.json`
@@ -20,7 +20,7 @@ npm install -D lua-types
 ```json
 {
   "compilerOptions": {
-    "typeRoots": ["@types", "node_modules/lua-types/types"]
+    "typeRoots": ["@types", "node_modules/types-lua/types"]
   },
   "include": ["src/**/*.ts"]
 }
