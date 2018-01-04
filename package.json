@@ -1,0 +1,18 @@
+{
+  "name": "lua-types",
+  "version": "1.0.0",
+  "description": "TypeScript definitions for Lua 5.3 standard library.",
+  "author": "ark120202",
+  "license": "MIT",
+  "scripts": {
+    "lint": "prettier types/**/*.ts -l"
+  },
+  "devDependencies": {
+    "prettier": "^1.9.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100
+  }
+}
