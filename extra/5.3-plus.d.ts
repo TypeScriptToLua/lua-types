@@ -5,6 +5,18 @@
  */
 declare function collectgarbage(opt: 'count'): number;
 
+declare namespace math {
+  /**
+   * An integer with the minimum value for an integer.
+   */
+  const mininteger: number;
+
+  /**
+   * An integer with the maximum value for an integer.
+   */
+  const maxinteger: number;
+}
+
 declare namespace table {
   /**
    * Moves elements from table a1 to table a2, performing the equivalent to the following multiple assignment: a2[t],··· = a1[f],···,a1[e]. The default for a2 is a1. The destination range can overlap with the source range. The number of elements to be moved must fit in a Lua integer.

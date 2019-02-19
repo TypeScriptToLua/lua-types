@@ -71,19 +71,9 @@ declare namespace math {
   function max(x: number, ...numbers: number[]): number;
 
   /**
-   * An integer with the maximum value for an integer.
-   */
-  const maxinteger: number;
-
-  /**
    * Returns the argument with the minimum value, according to the Lua operator <. (integer/float)
    */
   function min(x: number, ...numbers: number[]): number;
-
-  /**
-   * An integer with the minimum value for an integer.
-   */
-  const mininteger: number;
 
   /**
    * Returns the integral part of x and the fractional part of x. Its second result is always a float.
