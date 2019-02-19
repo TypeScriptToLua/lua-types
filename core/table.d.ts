@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#6.6
+// Based on https://www.lua.org/manual/5.3/manual.html#6.6
 
 /**
  * This library provides generic functions for table manipulation. It provides all its functions inside the table table.
@@ -16,13 +16,6 @@ declare namespace table {
    */
   function insert<T>(list: T[], value: T): void;
   function insert<T>(list: T[], pos: number, value: T): void;
-
-  /**
-   * Moves elements from table a1 to table a2, performing the equivalent to the following multiple assignment: a2[t],··· = a1[f],···,a1[e]. The default for a2 is a1. The destination range can overlap with the source range. The number of elements to be moved must fit in a Lua integer.
-   *
-   * Returns the destination table a2.
-   */
-  function move<T extends table>(a1: table, f: TableKey, e: TableKey, t: TableKey, a2?: T): T;
 
   /**
    * Returns a new table with all parameters stored into keys 1, 2, etc. and with a field "n" with the total number of parameters. Note that the resulting table may not be a sequence.
@@ -44,14 +37,4 @@ declare namespace table {
    * The sort algorithm is not stable: elements considered equal by the given order may have their relative positions changed by the sort.
    */
   function sort(list: any[], comp?: (a: any, b: any) => boolean): any[];
-
-  /**
-   * Returns the elements from the given list. This function is equivalent to
-   *
-   * `return list[i], list[i+1], ···, list[j]`
-   *
-   * By default, i is 1 and j is #list.
-   * @TupleReturn
-   */
-  function unpack(list: any[], i?: number, j?: number): any[];
 }

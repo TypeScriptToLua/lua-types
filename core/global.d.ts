@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#6.1
+// Based on https://www.lua.org/manual/5.3/manual.html#6.1
 
 // /// <reference no-default-lib="true"/>
 type unknown = any;
@@ -39,20 +39,6 @@ declare function collectgarbage(opt: 'restart'): void;
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
  *
- * Returns the total memory in use by Lua in Kbytes. The value has a fractional part, so that it multiplied by 1024 gives the exact number of bytes in use by Lua (except for overflows).
- */
-declare function collectgarbage(opt: 'count'): number;
-
-/**
- * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
- *
- * Performs a garbage-collection step. The step "size" is controlled by arg. With a zero value, the collector will perform one basic (indivisible) step. For non-zero values, the collector will perform as if that amount of memory (in KBytes) had been allocated by Lua. Returns true if the step finished a collection cycle.
- */
-declare function collectgarbage(opt: 'step', arg: number): boolean;
-
-/**
- * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
- *
  * Sets arg as the new value for the pause of the collector (see §2.5). Returns the previous value for pause.
  */
 declare function collectgarbage(opt: 'setpause', arg: number): number;
@@ -67,9 +53,9 @@ declare function collectgarbage(opt: 'setstepmul', arg: number): number;
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
  *
- * Returns a boolean that tells whether the collector is running (i.e., not stopped).
+ * Performs a garbage-collection step. The step "size" is controlled by arg. With a zero value, the collector will perform one basic (indivisible) step. For non-zero values, the collector will perform as if that amount of memory (in KBytes) had been allocated by Lua. Returns true if the step finished a collection cycle.
  */
-declare function collectgarbage(opt: 'isrunning'): boolean;
+declare function collectgarbage(opt: 'step', arg: number): boolean;
 
 /**
  * Opens the named file and executes its contents as a Lua chunk. When called without arguments, dofile executes the contents of the standard input (stdin). Returns all values returned by the chunk. In case of errors, dofile propagates the error to its caller (that is, dofile does not run in protected mode).
@@ -99,42 +85,9 @@ declare function getmetatable(object: table): Metatable | null;
  * `for i,v in ipairs(t) do body end`
  *
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the first nil value.
- * @TupleReturn
+ * @tupleReturn
  */
 declare function ipairs<T = table>(t: T): [(t: T, index?: number) => [number, any], T, 0];
-
-/**
- * Loads a chunk.
- *
- * If chunk is a string, the chunk is this string. If chunk is a function, load calls it repeatedly to get the chunk pieces. Each call to chunk must return a string that concatenates with previous results. A return of an empty string, nil, or no value signals the end of the chunk.
- *
- * If there are no syntactic errors, returns the compiled chunk as a function; otherwise, returns nil plus the error message.
- *
- * If the resulting function has upvalues, the first upvalue is set to the value of env, if that parameter is given, or to the value of the global environment. Other upvalues are initialized with nil. (When you load a main chunk, the resulting function will always have exactly one upvalue, the _ENV variable (see §2.2). However, when you load a binary chunk created from a function (see string.dump), the resulting function can have an arbitrary number of upvalues.) All upvalues are fresh, that is, they are not shared with any other function.
- *
- * chunkname is used as the name of the chunk for error messages and debug information (see §4.9). When absent, it defaults to chunk, if chunk is a string, or to "=(load)" otherwise.
- *
- * The string mode controls whether the chunk can be text or binary (that is, a precompiled chunk). It may be the string "b" (only binary chunks), "t" (only text chunks), or "bt" (both binary and text). The default is "bt".
- *
- * Lua does not check the consistency of binary chunks. Maliciously crafted binary chunks can crash the interpreter.
- * @TupleReturn
- */
-declare function load(
-  chunk: string | (() => string | null | undefined),
-  chunkname?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: unknown,
-): () => () => any | [null, string];
-
-/**
- * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
- * @TupleReturn
- */
-declare function loadfile(
-  filename?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: unknown,
-): () => any | [null, string];
 
 /**
  * Allows a program to traverse all fields of a table. Its first argument is a table and its second argument is an index in this table. next returns the next index of the table and its associated value. When called with nil as its second argument, next returns an initial index and its associated value. When called with the last index, or with nil in an empty table, next returns nil. If the second argument is absent, then it is interpreted as nil. In particular, you can use next(t) to check whether a table is empty.
@@ -142,7 +95,7 @@ declare function loadfile(
  * The order in which the indices are enumerated is not specified, even for numeric indices. (To traverse a table in numerical order, use a numerical for.)
  *
  * The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may however modify existing fields. In particular, you may clear existing fields.
- * @TupleReturn
+ * @tupleReturn
  */
 declare function next(table: table, index?: TableKey): [TableKey, any] | null;
 
@@ -155,13 +108,13 @@ declare function next(table: table, index?: TableKey): [TableKey, any] | null;
  * will iterate over all key–value pairs of table t.
  *
  * See function next for the caveats of modifying the table during its traversal.
- * @TupleReturn
+ * @tupleReturn
  */
 declare function pairs<T>(t: T): [(t: T, index?: TableKey) => [TableKey, any], T, null];
 
 /**
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.
- * @TupleReturn
+ * @tupleReturn
  */
 declare function pcall(f: () => any, ...args: any[]): true | [false, string];
 
@@ -194,13 +147,12 @@ declare function rawset<T>(table: T, index: TableKey, value: any): T;
 
 /**
  * If index is a number, returns all arguments after argument number index; a negative number indexes from the end (-1 is the last argument). Otherwise, index must be the string "#", and select returns the total number of extra arguments it received.
- * @TupleReturn
+ * @tupleReturn
  */
 declare function select<T>(index: number, ...args: T[]): T[];
 
 /**
  * If index is a number, returns all arguments after argument number index; a negative number indexes from the end (-1 is the last argument). Otherwise, index must be the string "#", and select returns the total number of extra arguments it received.
- * @TupleReturn
  */
 declare function select<T>(index: '#', ...args: T[]): number;
 
@@ -233,13 +185,3 @@ declare function tostring(v): string;
 declare function type(
   v: any,
 ): 'nil' | 'number' | 'string' | 'boolean' | 'table' | 'function' | 'thread' | 'userdata';
-
-/**
- * A global variable (not a function) that holds a string containing the running Lua version. The current value of this variable is "Lua 5.3".
- */
-declare const _VERSION: 'Lua 5.3';
-
-/**
- * This function is similar to pcall, except that it sets a new message handler msgh.
- */
-declare function xpcall(f: () => any, msgh: () => any, ...args: any[]): true | [false, string];

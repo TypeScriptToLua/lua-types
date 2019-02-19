@@ -1,0 +1,9 @@
+import './coroutine';
+import './debug';
+import './global';
+import './io';
+import './math';
+import './metatable';
+import './modules';
+import './os';
+import './table';

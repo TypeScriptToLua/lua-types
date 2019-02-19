@@ -1,3 +1,52 @@
+/**
+ * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
+ *
+ * Returns the total memory in use by Lua in Kbytes. The value has a fractional part, so that it multiplied by 1024 gives the exact number of bytes in use by Lua (except for overflows).
+ */
+declare function collectgarbage(opt: 'count'): number;
+
+declare namespace table {
+  /**
+   * Moves elements from table a1 to table a2, performing the equivalent to the following multiple assignment: a2[t],··· = a1[f],···,a1[e]. The default for a2 is a1. The destination range can overlap with the source range. The number of elements to be moved must fit in a Lua integer.
+   *
+   * Returns the destination table a2.
+   */
+  function move<T extends table>(a1: table, f: TableKey, e: TableKey, t: TableKey, a2?: T): T;
+}
+
+declare namespace string {
+  /**
+   * Returns a string containing a binary representation (a binary chunk) of the given function, so that a later load on this string returns a copy of the function (but with new upvalues). If strip is a true value, the binary representation may not include all debug information about the function, to save space.
+   *
+   * Functions with upvalues have only their number of upvalues saved. When (re)loaded, those upvalues receive fresh instances containing nil. (You can use the debug library to serialize and reload the upvalues of a function in a way adequate to your needs.)
+   */
+  function dump(func: Function, strip?: boolean): string;
+
+  /**
+   * Returns a binary string containing the values v1, v2, etc. packed (that is, serialized in binary form) according to the format string fmt (see §6.4.2).
+   */
+  function pack(fmt: string, ...values: any[]): string;
+
+  /**
+   * Returns the values packed in string s (see string.pack) according to the format string fmt (see §6.4.2). An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
+   */
+  function unpack(fmt: string, s: string, pos?: number): any[];
+
+  /**
+   * Returns the size of a string resulting from string.pack with the given format. The format string cannot have the variable-length options 's' or 'z' (see §6.4.2).
+   */
+  function packsize(fmt: string): number;
+}
+
+declare namespace coroutine {
+  /**
+   * Returns true when the running coroutine can yield.
+   *
+   * A running coroutine is yieldable if it is not the main thread and it is not inside a non-yieldable C function.
+   */
+  function isyieldable(): boolean;
+}
+
 // https://www.lua.org/manual/5.3/manual.html#6.5
 
 /**

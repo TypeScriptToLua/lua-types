@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#6.4
+// Based on https://www.lua.org/manual/5.3/manual.html#6.4
 
 /**
  * This library provides generic functions for string manipulation, such as finding and extracting substrings, and pattern matching. When indexing a string in Lua, the first character is at position 1 (not at 0, as in C). Indices are allowed to be negative and are interpreted as indexing backwards, from the end of the string. Thus, the last character is at position -1, and so on.
@@ -23,17 +23,15 @@ declare namespace string {
   function char(...args: number[]): string;
 
   /**
-   * Returns a string containing a binary representation (a binary chunk) of the given function, so that a later load on this string returns a copy of the function (but with new upvalues). If strip is a true value, the binary representation may not include all debug information about the function, to save space.
-   *
-   * Functions with upvalues have only their number of upvalues saved. When (re)loaded, those upvalues receive fresh instances containing nil. (You can use the debug library to serialize and reload the upvalues of a function in a way adequate to your needs.)
+   * Returns a string containing a binary representation of the given function, so that a later load on this string returns a copy of the function (but with new upvalues).
    */
-  function dump(func: Function, strip?: boolean): string;
+  function dump(func: Function): string;
 
   /**
    * Looks for the first match of pattern (see §6.4.1) in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numeric argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in pattern being considered magic. Note that if plain is given, then init must be given as well.
    *
    * If the pattern has captures, then in a successful match the captured values are also returned, after the two indices.
-   * @TupleReturn
+   * @tupleReturn
    */
   function find(
     s: string,
@@ -116,16 +114,6 @@ declare namespace string {
   function match(s: string, pattern: string, init?: unknown): string | null;
 
   /**
-   * Returns a binary string containing the values v1, v2, etc. packed (that is, serialized in binary form) according to the format string fmt (see §6.4.2).
-   */
-  function pack(fmt: string, ...values: any[]): string;
-
-  /**
-   * Returns the size of a string resulting from string.pack with the given format. The format string cannot have the variable-length options 's' or 'z' (see §6.4.2).
-   */
-  function packsize(fmt: string): number;
-
-  /**
    * Returns a string that is the concatenation of n copies of the string s separated by the string sep. The default value for sep is the empty string (that is, no separator). Returns the empty string if n is not positive.
    *
    * (Note that it is very easy to exhaust the memory of your machine with a single call to this function.)
@@ -143,10 +131,6 @@ declare namespace string {
    * If, after the translation of negative indices, i is less than 1, it is corrected to 1. If j is greater than the string length, it is corrected to that length. If, after these corrections, i is greater than j, the function returns the empty string.
    */
   function sub(s: string, i: number, j?: number): string;
-  /**
-   * Returns the values packed in string s (see string.pack) according to the format string fmt (see §6.4.2). An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
-   */
-  function unpack(fmt: string, s: string, pos?: number): any[];
   /**
    * Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged. The definition of what a lowercase letter is depends on the current locale.
    */

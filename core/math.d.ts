@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#6.7
+// Based on https://www.lua.org/manual/5.3/manual.html#6.7
 
 /**
  * This library provides basic mathematical functions. It provides all its functions and constants inside the table math. Functions with the annotation "integer/float" give integer results for integer arguments and float results for float (or mixed) arguments. Rounding functions (math.ceil, math.floor, and math.modf) return an integer when the result fits in the range of an integer, or a float otherwise.
@@ -99,18 +99,6 @@ declare namespace math {
    * Converts the angle x from degrees to radians.
    */
   function rad(x: number): number;
-
-  /**
-   * When called without arguments, returns a pseudo-random float with uniform distribution in the range [0,1). When called with two integers m and n, math.random returns a pseudo-random integer with uniform distribution in the range [m, n]. (The value n-m cannot be negative and must fit in a Lua integer.) The call math.random(n) is equivalent to math.random(1,n).
-   *
-   * This function is an interface to the underling pseudo-random generator function provided by C.
-   */
-  function random(m?: number, n?: number): number;
-
-  /**
-   * Sets x as the "seed" for the pseudo-random generator: equal seeds produce equal sequences of numbers.
-   */
-  function randomseed(x: number): number;
 
   /**
    * Returns the sine of x (assumed to be in radians).

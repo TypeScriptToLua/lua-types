@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#6.9
+// Based on https://www.lua.org/manual/5.3/manual.html#6.9
 
 type DateInfoResult = {
   year: number;
@@ -67,45 +67,18 @@ declare namespace os {
   function difftime(t1: number, t2: number): number;
 
   /**
-   * This function is equivalent to the ISO C function system. It passes command to be executed by an operating system shell. Its first result is true if the command terminated successfully, or nil otherwise. After this first result the function returns a string plus a number, as follows:
-   * * "exit": the command terminated normally; the following number is the exit status of the command.
-   * * "signal": the command was terminated by a signal; the following number is the signal that terminated the command.
-   *
-   * When called without a command, os.execute returns a boolean that is true if a shell is available.
-   */
-  function execute(): boolean;
-
-  /**
-   * This function is equivalent to the ISO C function system. It passes command to be executed by an operating system shell. Its first result is true if the command terminated successfully, or nil otherwise. After this first result the function returns a string plus a number, as follows:
-   * * "exit": the command terminated normally; the following number is the exit status of the command.
-   * * "signal": the command was terminated by a signal; the following number is the signal that terminated the command.
-   *
-   * When called without a command, os.execute returns a boolean that is true if a shell is available.
-   * @TupleReturn
-   */
-  function execute(command: string): [true | null, 'exit' | 'signal', number];
-
-  /**
-   * Calls the ISO C function exit to terminate the host program. If code is true, the returned status is EXIT_SUCCESS; if code is false, the returned status is EXIT_FAILURE; if code is a number, the returned status is this number. The default value for code is true.
-   *
-   * If the optional second argument close is true, closes the Lua state before exiting.
-   */
-  function exit(code?: boolean | number, close?: boolean): never;
-
-  /**
    * Returns the value of the process environment variable varname, or nil if the variable is not defined.
    */
   function getenv(varname: string): string | null;
 
   /**
    * Deletes the file (or empty directory, on POSIX systems) with the given name. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
-   * @TupleReturn
+   * @tupleReturn
    */
   function remove(filename: string): true | [null, string];
 
   /**
    * Renames the file or directory named oldname to newname. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
-   * @TupleReturn
    */
   function rename(oldname: string, newname: string): true | [null, string];
 

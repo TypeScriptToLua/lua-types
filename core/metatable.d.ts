@@ -1,4 +1,4 @@
-// https://www.lua.org/manual/5.3/manual.html#2.4
+// Based on https://www.lua.org/manual/5.3/manual.html#2.4
 
 interface Metatable {
   /**
