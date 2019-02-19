@@ -81,7 +81,7 @@ declare namespace string {
    *
    * For this function, a caret '^' at the start of a pattern does not work as an anchor, as this would prevent the iteration.
    */
-  function gmatch(s: string, pattern: string): unknown;
+  function gmatch(s: string, pattern: string): __LUA_TODO__;
 
   /**
    * Returns a copy of s in which all (or the first n, if given) occurrences of the pattern (see §6.4.1) have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. The name gsub comes from Global SUBstitution.
@@ -111,7 +111,7 @@ declare namespace string {
   /**
    * Looks for the first match of pattern (see §6.4.1) in the string s. If it finds one, then match returns the captures from the pattern; otherwise it returns nil. If pattern specifies no captures, then the whole match is returned. A third, optional numeric argument init specifies where to start the search; its default value is 1 and can be negative.
    */
-  function match(s: string, pattern: string, init?: unknown): string | null;
+  function match(s: string, pattern: string, init?: __LUA_TODO__): string | null;
 
   /**
    * Returns a string that is the concatenation of n copies of the string s separated by the string sep. The default value for sep is the empty string (that is, no separator). Returns the empty string if n is not positive.
@@ -131,6 +131,7 @@ declare namespace string {
    * If, after the translation of negative indices, i is less than 1, it is corrected to 1. If j is greater than the string length, it is corrected to that length. If, after these corrections, i is greater than j, the function returns the empty string.
    */
   function sub(s: string, i: number, j?: number): string;
+
   /**
    * Receives a string and returns a copy of this string with all lowercase letters changed to uppercase. All other characters are left unchanged. The definition of what a lowercase letter is depends on the current locale.
    */

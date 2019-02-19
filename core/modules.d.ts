@@ -50,7 +50,7 @@ declare namespace package {
    *
    * This function is not supported by Standard C. As such, it is only available on some platforms (Windows, Linux, Mac OS X, Solaris, BSD, plus other Unix systems that support the dlfcn standard).
    */
-  function loadlib(libname: string, funcname: string): unknown;
+  function loadlib(libname: string, funcname: string): __LUA_TODO__;
 
   /**
    * The path used by require to search for a Lua loader.

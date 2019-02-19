@@ -17,7 +17,7 @@ declare namespace debug {
    * Returns the current hook settings of the thread, as three values: the current hook function, the current hook mask, and the current hook count (as set by the debug.sethook function).
    * @tupleReturn
    */
-  function gethook(thread?: thread): [null, 0] | [Function, number, string | null];
+  function gethook(thread?: LuaThread): [null, 0] | [Function, number, string | null];
 
   /**
    * Returns a table with information about a function. You can give the function directly or you can give a number as the value of f, which means the function running at level f of the call stack of the given thread: level 0 is the current function (getinfo itself); level 1 is the function that called getinfo (except for tail calls, which do not count on the stack); and so on. If f is a number larger than the number of active functions, then getinfo returns nil.
@@ -26,8 +26,8 @@ declare namespace debug {
    *
    * For instance, the expression debug.getinfo(1,"n").name returns a name for the current function, if a reasonable name can be found, and the expression debug.getinfo(print) returns a table with all available information about the print function.
    */
-  function getinfo(f: Function | number, what?: unknown): table;
-  function getinfo(thread: thread, f: Function | number, what?: unknown): table;
+  function getinfo(f: Function | number, what?: __LUA_TODO__): table;
+  function getinfo(thread: LuaThread, f: Function | number, what?: __LUA_TODO__): table;
 
   /**
    * This function returns the name and the value of the local variable with index local of the function at level f of the stack. This function accesses not only explicit local variables, but also parameters, temporaries, etc.
@@ -40,7 +40,7 @@ declare namespace debug {
    * @tupleReturn
    */
   function getlocal(f: Function | number, local: number): [string, any];
-  function getlocal(thread: thread, f: Function | number, local: number): [string, any];
+  function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
 
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.
@@ -50,7 +50,7 @@ declare namespace debug {
   /**
    * Returns the registry table (see §4.5).
    */
-  function getregistry(): unknown;
+  function getregistry(): __LUA_TODO__;
 
   /**
    * This function returns the name and the value of the upvalue with index up of the function f. The function returns nil if there is no upvalue with the given index.
@@ -63,7 +63,7 @@ declare namespace debug {
   /**
    * Returns the Lua value associated to u. If u is not a full userdata, returns nil.
    */
-  function getuservalue(u: userdata): any;
+  function getuservalue(u: LuaUserdata): any;
 
   /**
    * Sets the given function as a hook. The string mask and the number count describe when the hook will be called. The string mask may have any combination of the following characters, with the given meaning:
@@ -85,7 +85,7 @@ declare namespace debug {
     count?: number,
   ): void;
   function sethook(
-    thread: thread,
+    thread: LuaThread,
     hook: (event: 'call' | 'return' | 'line' | 'count', line?: number) => any,
     mask: string,
     count?: number,
@@ -97,7 +97,7 @@ declare namespace debug {
    * See debug.getlocal for more information about variable indices and names.
    */
   function setlocal(level: number, local: number, value: any): string | null;
-  function setlocal(thread: thread, level: number, local: number, value: any): string | null;
+  function setlocal(thread: LuaThread, level: number, local: number, value: any): string | null;
 
   /**
    * Sets the metatable for the given value to the given table (which can be nil). Returns value.
@@ -114,23 +114,23 @@ declare namespace debug {
    *
    * Returns udata.
    */
-  function setuservalue<T extends userdata>(udata: T, value: any): T;
+  function setuservalue(udata: LuaUserdata, value: any): LuaUserdata;
 
   /**
    * If message is present but is neither a string nor nil, this function returns message without further processing. Otherwise, it returns a string with a traceback of the call stack. The optional message string is appended at the beginning of the traceback. An optional level number tells at which level to start the traceback (default is 1, the function calling traceback).
    */
-  function traceback(thread?: thread, message?: string | null, level?: number): string;
-  function traceback<T>(thread?: thread, message?: T, level?: number): T;
+  function traceback(thread?: LuaThread, message?: string | null, level?: number): string;
+  function traceback<T>(thread?: LuaThread, message?: T, level?: number): T;
 
   /**
    * Returns a unique identifier (as a light userdata) for the upvalue numbered n from the given function.
    *
    * These unique identifiers allow a program to check whether different closures share upvalues. Lua closures that share an upvalue (that is, that access a same external local variable) will return identical ids for those upvalue indices.
    */
-  function upvalueid(f: Function, n: number): unknown;
+  function upvalueid(f: Function, n: number): __LUA_TODO__;
 
   /**
    * Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of the Lua closure f2.
    */
-  function upvaluejoin(f1: unknown, n1: number, f2: unknown, n2: number): unknown;
+  function upvaluejoin(f1: __LUA_TODO__, n1: number, f2: __LUA_TODO__, n2: number): __LUA_TODO__;
 }

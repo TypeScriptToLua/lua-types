@@ -34,7 +34,7 @@ declare namespace io {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  function lines(...filename: string[]): () => unknown;
+  function lines(...filename: string[]): () => __LUA_TODO__;
 
   /**
    * This function opens a file, in the mode specified in the string mode. In case of success, it returns a new file handle.
@@ -68,7 +68,7 @@ declare namespace io {
   /**
    * Equivalent to io.input():read(···).
    */
-  function read(...formats: FileReadFormat[]): unknown;
+  function read(...formats: FileReadFormat[]): __LUA_TODO__;
 
   /**
    * In case of success, returns a handle for a temporary file. This file is opened in update mode and it is automatically removed when the program ends.
@@ -112,7 +112,7 @@ interface file {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  lines(...formats: FileReadFormat[]): () => unknown;
+  lines(...formats: FileReadFormat[]): () => __LUA_TODO__;
 
   /**
    * Reads the file file, according to the given formats, which specify what to read. For each format, the function returns a string or a number with the characters read, or nil if it cannot read data with the specified format. (In this latter case, the function does not read subsequent formats.) When called without formats, it uses a default format that reads the next line (see below).
@@ -127,7 +127,7 @@ interface file {
    *
    * The formats "l" and "L" should be used only for text files.
    */
-  read(...formats: FileReadFormat[]): unknown;
+  read(...formats: FileReadFormat[]): __LUA_TODO__;
 
   /**
    * Sets and geionts the file position, measured from the beginning of the file, to the posit given by offset plus a base specified by the string whence, as follows:

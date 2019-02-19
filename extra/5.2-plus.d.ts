@@ -27,7 +27,7 @@ declare function load(
   chunk: string | (() => string | null | undefined),
   chunkname?: string,
   mode?: 'b' | 't' | 'bt',
-  env?: unknown,
+  env?: __LUA_TODO__,
 ): () => any | [null, string];
 
 /**
@@ -37,7 +37,7 @@ declare function load(
 declare function loadfile(
   filename?: string,
   mode?: 'b' | 't' | 'bt',
-  env?: unknown,
+  env?: __LUA_TODO__,
 ): () => any | [null, string];
 
 /**

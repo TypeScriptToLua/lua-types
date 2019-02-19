@@ -11,7 +11,7 @@ declare namespace table {
    *
    * Returns the destination table a2.
    */
-  function move<T extends table>(a1: table, f: TableKey, e: TableKey, t: TableKey, a2?: T): T;
+  function move<T extends table>(a1: table, f: keyof any, e: keyof any, t: keyof any, a2?: T): T;
 }
 
 declare namespace string {
@@ -72,7 +72,7 @@ declare namespace utf8 {
    *
    * will iterate over all characters in string s, with p being the position (in bytes) and c the code point of each character. It raises an error if it meets any invalid byte sequence.
    */
-  function codes(s: string): unknown;
+  function codes(s: string): __LUA_TODO__;
 
   /**
    * Returns the codepoints (as integers) from all characters in s that start between byte position i and j (both included). The default for i is 1 and for j is i. It raises an error if it meets any invalid byte sequence.
