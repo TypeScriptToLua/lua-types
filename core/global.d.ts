@@ -114,7 +114,10 @@ declare function pairs<T>(t: T): [(t: T, index?: keyof any) => [keyof any, any],
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.
  * @tupleReturn
  */
-declare function pcall(f: () => any, ...args: any[]): true | [false, string];
+declare function pcall<Args extends any[], R>(
+  f: (...args: Args) => R,
+  ...args: Args
+): [true, R] | [false, string];
 
 /**
  * Receives any number of arguments and prints their values to stdout, using the tostring function to convert each argument to a string. print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use string.format and io.write.

@@ -43,7 +43,11 @@ declare function loadfile(
 /**
  * This function is similar to pcall, except that it sets a new message handler msgh.
  */
-declare function xpcall(f: () => any, msgh: () => any, ...args: any[]): true | [false, string];
+declare function xpcall<Args extends any[], R, E>(
+  f: (...args: Args) => R,
+  msgh: (err: any) => E,
+  ...args: Args
+): [true, R] | [false, E];
 
 /**
  * Creates a module. If there is a table in package.loaded[name], this table is the module. Otherwise, if there is a global table t with the given name, this table is the module. Otherwise creates a new table t and sets it as the value of the global name and the value of package.loaded[name]. This function also initializes t._NAME with the given name, t._M with the module (t itself), and t._PACKAGE with the package name (the full module name minus last component; see below). Finally, module sets t as the new environment of the current function and the new value of package.loaded[name], so that require returns t.

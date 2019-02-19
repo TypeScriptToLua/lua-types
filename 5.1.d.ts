@@ -58,7 +58,10 @@ declare function unpack(list: any[], i?: number, j?: number): any[];
  *
  * xpcall calls function f in protected mode, using err as the error handler. Any error inside f is not propagated; instead, xpcall catches the error, calls the err function with the original error object, and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In this case, xpcall also returns all results from the call, after this first result. In case of any error, xpcall returns false plus the result from err.
  */
-declare function xpcall(f: () => any, err: () => any): true | [false, string];
+declare function xpcall<R, E>(
+  f: (...args: any[]) => R,
+  err: (err: any) => E,
+): [true, R] | [false, E];
 
 /**
  * Returns the current environment in use by the function. f can be a Lua function or a number that specifies the function at that stack level: Level 1 is the function calling getfenv. If the given function is not a Lua function, or if f is 0, getfenv returns the global environment. The default for f is 1.
