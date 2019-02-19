@@ -1,24 +1,30 @@
 {
   "name": "types-lua",
   "version": "1.0.1",
-  "description": "TypeScript definitions for Lua standard library.",
-  "repository": "https://github.com/ark120202/types-lua.git",
-  "author": "ark120202",
+  "description": "TypeScript definitions for Lua standard library",
+  "keywords": [
+    "lua",
+    "typescript",
+    "tstl"
+  ],
+  "repository": "https://github.com/ark120202/types-lua",
   "license": "MIT",
-  "scripts": {
-    "lint": "prettier **/*.d.ts -l"
-  },
-  "devDependencies": {
-    "prettier": "^1.9.2"
-  },
+  "author": "ark120202",
   "files": [
     "core",
     "extra",
     "*.d.ts"
   ],
+  "scripts": {
+    "lint": "prettier --check **/.*.yml **/*.{ts,yml,md}"
+  },
   "prettier": {
+    "printWidth": 100,
+    "proseWrap": "always",
     "singleQuote": true,
-    "trailingComma": "all",
-    "printWidth": 100
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
   }
 }
