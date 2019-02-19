@@ -81,6 +81,7 @@ declare namespace os {
    * * "signal": the command was terminated by a signal; the following number is the signal that terminated the command.
    *
    * When called without a command, os.execute returns a boolean that is true if a shell is available.
+   * @TupleReturn
    */
   function execute(command: string): [true | null, 'exit' | 'signal', number];
 
@@ -98,11 +99,13 @@ declare namespace os {
 
   /**
    * Deletes the file (or empty directory, on POSIX systems) with the given name. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
+   * @TupleReturn
    */
   function remove(filename: string): true | [null, string];
 
   /**
    * Renames the file or directory named oldname to newname. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
+   * @TupleReturn
    */
   function rename(oldname: string, newname: string): true | [null, string];
 
