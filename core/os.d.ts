@@ -1,27 +1,5 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.9
 
-type DateInfoResult = {
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  min: number;
-  sec: number;
-  isdst: boolean;
-  yday: number;
-  wday: number;
-};
-
-type DateInfo = {
-  year: number;
-  month: number;
-  day: number;
-  hour?: number;
-  min?: number;
-  sec?: number;
-  isdst?: boolean;
-};
-
 /**
  * Operating System Facilities
  */
@@ -45,6 +23,18 @@ declare namespace os {
    * On non-POSIX systems, this function may be not thread safe because of its reliance on C function gmtime and C function localtime.
    */
   function date(format?: string, time?: number): string;
+
+  interface DateInfoResult {
+    year: number;
+    month: number;
+    day: number;
+    hour: number;
+    min: number;
+    sec: number;
+    isdst: boolean;
+    yday: number;
+    wday: number;
+  }
 
   /**
    * Returns a string or a table containing date and time, formatted according to the given string format.
@@ -104,6 +94,16 @@ declare namespace os {
    * The returned value is a number, whose meaning depends on your system. In POSIX, Windows, and some other systems, this number counts the number of seconds since some given start time (the "epoch"). In other systems, the meaning is not specified, and the number returned by time can be used only as an argument to os.date and os.difftime.
    */
   function time(): number;
+
+  interface DateInfo {
+    year: number;
+    month: number;
+    day: number;
+    hour?: number;
+    min?: number;
+    sec?: number;
+    isdst?: boolean;
+  }
 
   /**
    * Returns the current time when called without arguments, or a time representing the local date and time specified by the given table. This table must have fields year, month, and day, and may have fields hour (default is 12), min (default is 0), sec (default is 0), and isdst (default is nil). Other fields are ignored. For a description of these fields, see the os.date function.
