@@ -15,6 +15,7 @@ declare namespace debug {
 
   /**
    * Returns the current hook settings of the thread, as three values: the current hook function, the current hook mask, and the current hook count (as set by the debug.sethook function).
+   * @TupleReturn
    */
   function gethook(thread?: thread): [null, 0] | [Function, number, string | null];
 
@@ -36,6 +37,7 @@ declare namespace debug {
    * Variable names starting with '(' (open parenthesis) represent variables with no known names (internal variables such as loop control variables, and variables from chunks saved without debug information).
    *
    * The parameter f may also be a function. In that case, getlocal returns only the name of function parameters.
+   * @TupleReturn
    */
   function getlocal(f: Function | number, local: number): [string, any];
   function getlocal(thread: thread, f: Function | number, local: number): [string, any];
@@ -54,6 +56,7 @@ declare namespace debug {
    * This function returns the name and the value of the upvalue with index up of the function f. The function returns nil if there is no upvalue with the given index.
    *
    * Variable names starting with '(' (open parenthesis) represent variables with no known names (variables from chunks saved without debug information).
+   * @TupleReturn
    */
   function getupvalue(f: Function, up: number): [string, any] | null;
 

@@ -51,6 +51,7 @@ declare namespace table {
    * `return list[i], list[i+1], ···, list[j]`
    *
    * By default, i is 1 and j is #list.
+   * @TupleReturn
    */
   function unpack(list: any[], i?: number, j?: number): any[];
 }

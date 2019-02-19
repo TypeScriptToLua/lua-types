@@ -99,6 +99,7 @@ declare function getmetatable(object: table): Metatable | null;
  * `for i,v in ipairs(t) do body end`
  *
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the first nil value.
+ * @TupleReturn
  */
 declare function ipairs<T = table>(t: T): [(t: T, index?: number) => [number, any], T, 0];
 
@@ -116,6 +117,7 @@ declare function ipairs<T = table>(t: T): [(t: T, index?: number) => [number, an
  * The string mode controls whether the chunk can be text or binary (that is, a precompiled chunk). It may be the string "b" (only binary chunks), "t" (only text chunks), or "bt" (both binary and text). The default is "bt".
  *
  * Lua does not check the consistency of binary chunks. Maliciously crafted binary chunks can crash the interpreter.
+ * @TupleReturn
  */
 declare function load(
   chunk: string | (() => string | null | undefined),
@@ -126,6 +128,7 @@ declare function load(
 
 /**
  * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
+ * @TupleReturn
  */
 declare function loadfile(
   filename?: string,
@@ -139,6 +142,7 @@ declare function loadfile(
  * The order in which the indices are enumerated is not specified, even for numeric indices. (To traverse a table in numerical order, use a numerical for.)
  *
  * The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may however modify existing fields. In particular, you may clear existing fields.
+ * @TupleReturn
  */
 declare function next(table: table, index?: TableKey): [TableKey, any] | null;
 
@@ -151,11 +155,13 @@ declare function next(table: table, index?: TableKey): [TableKey, any] | null;
  * will iterate over all key–value pairs of table t.
  *
  * See function next for the caveats of modifying the table during its traversal.
+ * @TupleReturn
  */
 declare function pairs<T>(t: T): [(t: T, index?: TableKey) => [TableKey, any], T, null];
 
 /**
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.
+ * @TupleReturn
  */
 declare function pcall(f: () => any, ...args: any[]): true | [false, string];
 
@@ -188,11 +194,13 @@ declare function rawset<T>(table: T, index: TableKey, value: any): T;
 
 /**
  * If index is a number, returns all arguments after argument number index; a negative number indexes from the end (-1 is the last argument). Otherwise, index must be the string "#", and select returns the total number of extra arguments it received.
+ * @TupleReturn
  */
 declare function select<T>(index: number, ...args: T[]): T[];
 
 /**
  * If index is a number, returns all arguments after argument number index; a negative number indexes from the end (-1 is the last argument). Otherwise, index must be the string "#", and select returns the total number of extra arguments it received.
+ * @TupleReturn
  */
 declare function select<T>(index: '#', ...args: T[]): number;
 

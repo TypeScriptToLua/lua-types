@@ -20,11 +20,13 @@ declare namespace coroutine {
    * Starts or continues the execution of coroutine co. The first time you resume a coroutine, it starts running its body. The values val1, ... are passed as the arguments to the body function. If the coroutine has yielded, resume restarts it; the values val1, ... are passed as the results from the yield.
    *
    * If the coroutine runs without any errors, resume returns true plus any values passed to yield (when the coroutine yields) or any values returned by the body function (when the coroutine terminates). If there is any error, resume returns false plus the error message.
+   * @TupleReturn
    */
   function resume(co: thread, ...val: any[]): any[] | [boolean, string];
 
   /**
    * Returns the running coroutine plus a boolean, true when the running coroutine is the main one.
+   * @TupleReturn
    */
   function running(): [thread, boolean];
 
@@ -40,6 +42,7 @@ declare namespace coroutine {
 
   /**
    * Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume.
+   * @TupleReturn
    */
   function yield(...args: any[]): any[];
 }

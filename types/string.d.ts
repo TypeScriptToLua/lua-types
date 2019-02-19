@@ -33,6 +33,7 @@ declare namespace string {
    * Looks for the first match of pattern (see §6.4.1) in the string s. If it finds a match, then find returns the indices of s where this occurrence starts and ends; otherwise, it returns nil. A third, optional numeric argument init specifies where to start the search; its default value is 1 and can be negative. A value of true as a fourth, optional argument plain turns off the pattern matching facilities, so the function does a plain "find substring" operation, with no characters in pattern being considered magic. Note that if plain is given, then init must be given as well.
    *
    * If the pattern has captures, then in a successful match the captured values are also returned, after the two indices.
+   * @TupleReturn
    */
   function find(
     s: string,
