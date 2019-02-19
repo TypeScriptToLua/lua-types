@@ -75,7 +75,7 @@ declare const _G: { [key: string]: any };
 /**
  * If object does not have a metatable, returns nil. Otherwise, if the object's metatable has a __metatable field, returns the associated value. Otherwise, returns the metatable of the given object.
  */
-declare function getmetatable(object: table): Metatable | null;
+declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | null;
 
 /**
  * Returns three values (an iterator function, the table t, and 0) so that the construction
@@ -159,7 +159,7 @@ declare function select<T>(index: '#', ...args: T[]): number;
  *
  * This function returns table.
  */
-declare function setmetatable<T extends table>(table: T, metatable?: Metatable): T;
+declare function setmetatable<T extends object>(table: T, metatable?: LuaMetatable<T>): T;
 
 /**
  * When called with no base, tonumber tries to convert its argument to a number. If the argument is already a number or a string convertible to a number, then tonumber returns this number; otherwise, it returns nil.

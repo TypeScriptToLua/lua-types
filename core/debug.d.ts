@@ -45,7 +45,7 @@ declare namespace debug {
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.
    */
-  function getmetatable(value: any): Metatable | null;
+  function getmetatable<T extends any>(value: T): LuaMetatable<T> | null;
 
   /**
    * Returns the registry table (see §4.5).
@@ -102,7 +102,7 @@ declare namespace debug {
   /**
    * Sets the metatable for the given value to the given table (which can be nil). Returns value.
    */
-  function setmetatable<T>(value: T, table: Metatable | null): T;
+  function setmetatable<T>(value: T, table: LuaMetatable<T> | null): T;
 
   /**
    * This function assigns the value value to the upvalue with index up of the function f. The function returns nil if there is no upvalue with the given index. Otherwise, it returns the name of the upvalue.
