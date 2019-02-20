@@ -51,7 +51,7 @@ declare namespace io {
    * The mode string can also have a 'b' at the end, which is needed in some systems to open the file in binary mode.
    * @tupleReturn
    */
-  function open(filename: string, mode?: string): file | [null, string, number];
+  function open(filename: string, mode?: string): [file] | [undefined, string, number];
 
   /**
    * Similar to io.input, but operates over the default output file.
@@ -77,15 +77,14 @@ declare namespace io {
 
   /**
    * Checks whether obj is a valid file handle. Returns the string "file" if obj is an open file handle, "closed file" if obj is a closed file handle, or nil if obj is not a file handle.
-   * @tupleReturn
    */
-  function type(obj: any): 'file' | 'closed file' | null;
+  function type(obj: any): 'file' | 'closed file' | undefined;
 
   /**
    * Equivalent to io.output():write(···).
    * @tupleReturn
    */
-  function write(...args: (string | number)[]): file | [null, string];
+  function write(...args: (string | number)[]): [file] | [undefined, string];
 }
 
 type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;
@@ -141,7 +140,7 @@ interface file {
    * The default value for whence is "cur", and for offset is 0. Therefore, the call file:seek() returns the current file position, without changing it; the call file:seek("set") sets the position to the beginning of the file (and returns 0); and the call file:seek("end") sets the position to the end of the file, and returns its size.
    * @tupleReturn
    */
-  seek(whence?: 'set' | 'cur' | 'end', offset?: number): number | [null, string];
+  seek(whence?: 'set' | 'cur' | 'end', offset?: number): [number] | [null, string];
 
   /**
    * Sets the buffering mode for an output file. There are three available modes:
@@ -159,5 +158,5 @@ interface file {
    * In case of success, this function returns file. Otherwise it returns nil plus a string describing the error.
    * @tupleReturn
    */
-  write(...args: (string | number)[]): file | [null, string];
+  write(...args: (string | number)[]): [file] | [null, string];
 }

@@ -15,7 +15,7 @@ declare namespace coroutine {
    * If the coroutine runs without any errors, resume returns true plus any values passed to yield (when the coroutine yields) or any values returned by the body function (when the coroutine terminates). If there is any error, resume returns false plus the error message.
    * @tupleReturn
    */
-  function resume(co: LuaThread, ...val: any[]): any[] | [boolean, string];
+  function resume(co: LuaThread, ...val: any[]): [true, ...any[]] | [false, string];
 
   /**
    * Returns the running coroutine plus a boolean, true when the running coroutine is the main one.

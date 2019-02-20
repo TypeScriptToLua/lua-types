@@ -91,7 +91,7 @@ declare function ipairs<T extends object>(t: T): [(t: T, index?: number) => [num
  * The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may however modify existing fields. In particular, you may clear existing fields.
  * @tupleReturn
  */
-declare function next(table: object, index?: keyof any): [keyof any, any] | null;
+declare function next(table: object, index?: keyof any): [keyof any, any] | [];
 
 /**
  * If t has a metamethod __pairs, calls it with t as argument and returns the first three results from the call.
@@ -104,7 +104,7 @@ declare function next(table: object, index?: keyof any): [keyof any, any] | null
  * See function next for the caveats of modifying the table during its traversal.
  * @tupleReturn
  */
-declare function pairs<T>(t: T): [(t: T, index?: keyof any) => [keyof any, any], T, null];
+declare function pairs<T>(t: T): [(t: T, index?: keyof any) => [keyof any, any], T];
 
 /**
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.

@@ -65,12 +65,13 @@ declare namespace os {
    * Deletes the file (or empty directory, on POSIX systems) with the given name. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
    * @tupleReturn
    */
-  function remove(filename: string): true | [null, string];
+  function remove(filename: string): [true] | [undefined, string];
 
   /**
    * Renames the file or directory named oldname to newname. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
+   * @tupleReturn
    */
-  function rename(oldname: string, newname: string): true | [null, string];
+  function rename(oldname: string, newname: string): [true] | [undefined, string];
 
   /**
    * Sets the current locale of the program. locale is a system-dependent string specifying a locale; category is an optional string describing which category to change: "all", "collate", "ctype", "monetary", "numeric", or "time"; the default category is "all". The function returns the name of the new locale, or nil if the request cannot be honored.

@@ -23,13 +23,13 @@ declare function collectgarbage(opt: 'count'): number;
 declare function load(
   func: () => string | null | undefined,
   chunkname?: string,
-): () => any | [null, string];
+): [() => any] | [undefined, string];
 
 /**
  * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
  * @tupleReturn
  */
-declare function loadfile(filename?: string): () => any | [null, string];
+declare function loadfile(filename?: string): [() => any] | [undefined, string];
 
 /**
  * Similar to load, but gets the chunk from the given string.
@@ -41,7 +41,7 @@ declare function loadfile(filename?: string): () => any | [null, string];
  * When absent, chunkname defaults to the given string.
  * @tupleReturn
  */
-declare function loadstring(string: string, chunkname?: string): () => any | [null, string];
+declare function loadstring(string: string, chunkname?: string): [() => any] | [undefined, string];
 
 /**
  * Returns the elements from the given list. This function is equivalent to
@@ -51,7 +51,8 @@ declare function loadstring(string: string, chunkname?: string): () => any | [nu
  * except that the above code can be written only for a fixed number of elements. By default, i is 1 and j is the length of the list, as defined by the length operator (see §2.5.5).
  * @tupleReturn
  */
-declare function unpack(list: any[], i?: number, j?: number): any[];
+declare function unpack<T extends any[]>(list: T): T;
+declare function unpack<T>(list: T[], i: number, j?: number): T[];
 
 /**
  * This function is similar to pcall, except that it sets a new message handler msgh.
@@ -109,9 +110,12 @@ declare namespace package {
    *
    * The fourth searcher tries an all-in-one loader. It searches the C path for a library for the root name of the given module. For instance, when requiring a.b.c, it will search for a C library for a. If found, it looks into it for an open function for the submodule; in our example, that would be luaopen_a_b_c. With this facility, a package can pack several C submodules into one single library, with each submodule keeping its original open function.
    */
-  var loaders: (/** @tupleReturn */ <T>(
-    modname: string,
-  ) => [(modname: string, extra: T) => T, T] | string | undefined)[];
+  var loaders: (
+    | (/** @tupleReturn */ (modname: string) => [(modname: string) => void])
+    | (/** @tupleReturn */ <T>(modname: string) => [(modname: string, extra: T) => T, T])
+    | string
+    | undefined
+    | null)[];
 }
 
 declare namespace os {
@@ -122,9 +126,8 @@ declare namespace os {
 
   /**
    * This function is equivalent to the C function system. It passes command to be executed by an operating system shell. It returns a status code, which is system-dependent. If command is absent, then it returns nonzero if a shell is available and zero otherwise.
-   * @tupleReturn
    */
-  function execute(): number;
+  function execute(command?: string): number;
 }
 
 declare namespace math {

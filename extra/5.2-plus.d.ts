@@ -28,7 +28,7 @@ declare function load(
   chunkname?: string,
   mode?: 'b' | 't' | 'bt',
   env?: __LUA_TODO__,
-): () => any | [null, string];
+): [() => any] | [undefined, string];
 
 /**
  * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
@@ -38,7 +38,7 @@ declare function loadfile(
   filename?: string,
   mode?: 'b' | 't' | 'bt',
   env?: __LUA_TODO__,
-): () => any | [null, string];
+): [() => any] | [undefined, string];
 
 /**
  * This function is similar to pcall, except that it sets a new message handler msgh.
@@ -80,9 +80,11 @@ declare namespace package {
    *
    * All searchers except the first one (preload) return as the extra value the file name where the module was found, as returned by package.searchpath. The first searcher returns no extra value.
    */
-  var searchers: (/** @tupleReturn */ <T>(
-    modname: string,
-  ) => [(modname: string, extra: T) => T, T] | string | undefined)[];
+  var searchers: (
+    | (/** @tupleReturn */ (modname: string) => [(modname: string) => void])
+    | (/** @tupleReturn */ <T>(modname: string) => [(modname: string, extra: T) => T, T])
+    | string
+    | undefined)[];
 }
 
 declare namespace table {
@@ -94,7 +96,8 @@ declare namespace table {
    * By default, i is 1 and j is #list.
    * @tupleReturn
    */
-  function unpack(list: any[], i?: number, j?: number): any[];
+  function unpack<T extends any[]>(list: T): T;
+  function unpack<T>(list: T[], i: number, j?: number): T[];
 }
 
 declare namespace os {
@@ -111,7 +114,6 @@ declare namespace os {
    * * "signal": the command was terminated by a signal; the following number is the signal that terminated the command.
    *
    * When called without a command, os.execute returns a boolean that is true if a shell is available.
-   * @tupleReturn
    */
   function execute(): boolean;
 
@@ -123,7 +125,7 @@ declare namespace os {
    * When called without a command, os.execute returns a boolean that is true if a shell is available.
    * @tupleReturn
    */
-  function execute(command: string): [true | null, 'exit' | 'signal', number];
+  function execute(command: string): [true | undefined, 'exit' | 'signal', number];
 }
 
 declare namespace debug {

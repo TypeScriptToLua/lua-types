@@ -33,12 +33,7 @@ declare namespace string {
    * If the pattern has captures, then in a successful match the captured values are also returned, after the two indices.
    * @tupleReturn
    */
-  function find(
-    s: string,
-    pattern: string,
-    init?: number,
-    plain?: boolean,
-  ): null | [number, number];
+  function find(s: string, pattern: string, init?: number, plain?: boolean): [number, number] | [];
 
   /**
    * Returns a formatted version of its variable number of arguments following the description given in its first argument (which must be a string). The format string follows the same rules as the ISO C function sprintf. The only differences are that the options/modifiers *, h, L, l, n, and p are not supported and that there is an extra option, q.
