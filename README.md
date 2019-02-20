@@ -36,3 +36,28 @@ Currently supported values of `VERSION` are:
 - `5.3`
 - `5.4`
 - `jit`
+
+## Loading only a subset of features
+
+Some Lua environments are sandboxed and don't have some globals declared, like `io`, `os` and
+`debug`. To avoid registering these globals you should look at the version-specific file at the root
+of this package and loaded each of it's dependencies separately. For example
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "types-lua/core/coroutine",
+      "types-lua/core/debug",
+      "types-lua/core/global",
+      "types-lua/core/math",
+      "types-lua/core/metatable",
+      "types-lua/core/modules",
+      "types-lua/core/string",
+      "types-lua/core/table",
+      "types-lua/special/5.1-only",
+      "types-lua/special/jit-only"
+    ]
+  }
+}
+```
