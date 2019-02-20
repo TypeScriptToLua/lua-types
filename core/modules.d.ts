@@ -39,7 +39,7 @@ declare namespace package {
    *
    * This variable is only a reference to the real table; assignments to this variable do not change the table used by require.
    */
-  var loaded: table;
+  const loaded: Record<string, any>;
 
   /**
    * Dynamically links the host program with the C library libname.
@@ -64,7 +64,7 @@ declare namespace package {
    *
    * This variable is only a reference to the real table; assignments to this variable do not change the table used by require.
    */
-  var preload: table;
+  const preload: Record<string, (modname: string, fileName?: string) => any>;
 
   /**
    * Searches for the given name in the given path.

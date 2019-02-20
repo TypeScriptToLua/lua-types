@@ -1,4 +1,4 @@
-declare var _ENV: table;
+declare var _ENV: any;
 
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
@@ -80,7 +80,9 @@ declare namespace package {
    *
    * All searchers except the first one (preload) return as the extra value the file name where the module was found, as returned by package.searchpath. The first searcher returns no extra value.
    */
-  var searchers: table;
+  var searchers: (/** @tupleReturn */ <T>(
+    modname: string,
+  ) => [(modname: string, extra: T) => T, T] | string | undefined)[];
 }
 
 declare namespace table {
@@ -122,4 +124,10 @@ declare namespace os {
    * @tupleReturn
    */
   function execute(command: string): [true | null, 'exit' | 'signal', number];
+}
+
+declare namespace debug {
+  interface FunctionInfo<T extends Function> {
+    istailcall: boolean;
+  }
 }

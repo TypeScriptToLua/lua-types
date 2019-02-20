@@ -66,27 +66,27 @@ declare function xpcall<R, E>(
 /**
  * Returns the current environment in use by the function. f can be a Lua function or a number that specifies the function at that stack level: Level 1 is the function calling getfenv. If the given function is not a Lua function, or if f is 0, getfenv returns the global environment. The default for f is 1.
  */
-declare function getfenv(f?: Function | number): typeof _G | table;
+declare function getfenv(f?: Function | number): any;
 
 /**
  * Sets the environment to be used by the given function. f can be a Lua function or a number that specifies the function at that stack level: Level 1 is the function calling setfenv. setfenv returns the given function.
  *
  * As a special case, when f is 0 setfenv changes the environment of the running thread. In this case, setfenv returns no values.
  */
-declare function setfenv<T extends Function>(f: T, table: table): T;
-declare function setfenv(f: 0, table: table): Function;
-declare function setfenv(f: number, table: table): void;
+declare function setfenv<T extends Function>(f: T, table: object): T;
+declare function setfenv(f: 0, table: object): Function;
+declare function setfenv(f: number, table: object): void;
 
 declare namespace debug {
   /**
    * Returns the environment of object o.
    */
-  function getfenv(o: object): table;
+  function getfenv(o: object): any;
 
   /**
    * Sets the environment of the given object to the given table. Returns object.
    */
-  function setfenv<T extends object>(o: T, table: table): T;
+  function setfenv<T extends object>(o: T, table: object): T;
 }
 
 declare namespace package {
@@ -109,7 +109,9 @@ declare namespace package {
    *
    * The fourth searcher tries an all-in-one loader. It searches the C path for a library for the root name of the given module. For instance, when requiring a.b.c, it will search for a C library for a. If found, it looks into it for an open function for the submodule; in our example, that would be luaopen_a_b_c. With this facility, a package can pack several C submodules into one single library, with each submodule keeping its original open function.
    */
-  var loaders: table;
+  var loaders: (/** @tupleReturn */ <T>(
+    modname: string,
+  ) => [(modname: string, extra: T) => T, T] | string | undefined)[];
 }
 
 declare namespace os {
@@ -136,5 +138,5 @@ declare namespace table {
   /**
    * Returns the largest positive numerical index of the given table, or zero if the table has no positive numerical indices. (To do its job this function does a linear traversal of the whole table.)
    */
-  function maxn(table: table): number;
+  function maxn(table: object): number;
 }

@@ -1,10 +1,6 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.1
 
 type __LUA_TODO__ = any;
-type table = {
-  [key: number]: any;
-  [key: string]: any;
-};
 type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
 
@@ -85,7 +81,7 @@ declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | nu
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the first nil value.
  * @tupleReturn
  */
-declare function ipairs<T = table>(t: T): [(t: T, index?: number) => [number, any], T, 0];
+declare function ipairs<T extends object>(t: T): [(t: T, index?: number) => [number, any], T, 0];
 
 /**
  * Allows a program to traverse all fields of a table. Its first argument is a table and its second argument is an index in this table. next returns the next index of the table and its associated value. When called with nil as its second argument, next returns an initial index and its associated value. When called with the last index, or with nil in an empty table, next returns nil. If the second argument is absent, then it is interpreted as nil. In particular, you can use next(t) to check whether a table is empty.
@@ -95,7 +91,7 @@ declare function ipairs<T = table>(t: T): [(t: T, index?: number) => [number, an
  * The behavior of next is undefined if, during the traversal, you assign any value to a non-existent field in the table. You may however modify existing fields. In particular, you may clear existing fields.
  * @tupleReturn
  */
-declare function next(table: table, index?: keyof any): [keyof any, any] | null;
+declare function next(table: object, index?: keyof any): [keyof any, any] | null;
 
 /**
  * If t has a metamethod __pairs, calls it with t as argument and returns the first three results from the call.
@@ -137,7 +133,7 @@ declare function rawget<T extends object, K extends keyof T>(table: T, index: K)
 /**
  * Returns the length of the object v, which must be a table or a string, without invoking the __len metamethod. Returns an integer.
  */
-declare function rawlen(v: table | string): number;
+declare function rawlen(v: object | string): number;
 
 /**
  * Sets the real value of table[index] to value, without invoking the __newindex metamethod. table must be a table, index any value different from nil and NaN, and value any Lua value.

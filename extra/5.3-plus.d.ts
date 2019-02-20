@@ -23,7 +23,7 @@ declare namespace table {
    *
    * Returns the destination table a2.
    */
-  function move<T extends table>(a1: table, f: keyof any, e: keyof any, t: keyof any, a2?: T): T;
+  function move<T1, T2 = T1>(a1: T1[], f: number, e: number, t: number, a2?: T2[]): (T2 | T1)[];
 }
 
 declare namespace string {

@@ -19,6 +19,43 @@ declare namespace debug {
    */
   function gethook(thread?: LuaThread): [null, 0] | [Function, number, string | null];
 
+  interface FunctionInfo<T extends Function> {
+    /**
+     * The function itself.
+     */
+    func: T;
+
+    /**
+     * A reasonable name for the function.
+     */
+    name?: string;
+    /**
+     * What the `name` field means. The empty string means that Lua did not find a name for the function.
+     */
+    namewhat: 'global' | 'local' | 'method' | 'field' | '';
+
+    source: string;
+    /**
+     * A short version of source (up to 60 characters), useful for error messages.
+     */
+    short_src: string;
+    linedefined: number;
+    lastlinedefined: number;
+    /**
+     * What this function is.
+     */
+    what: 'Lua' | 'C' | 'main';
+
+    currentline: number;
+
+    /**
+     * Number of upvalues of that function.
+     */
+    nups: number;
+    nparams: 0;
+    isvararg: true;
+  }
+
   /**
    * Returns a table with information about a function. You can give the function directly or you can give a number as the value of f, which means the function running at level f of the call stack of the given thread: level 0 is the current function (getinfo itself); level 1 is the function that called getinfo (except for tail calls, which do not count on the stack); and so on. If f is a number larger than the number of active functions, then getinfo returns nil.
    *
@@ -26,8 +63,18 @@ declare namespace debug {
    *
    * For instance, the expression debug.getinfo(1,"n").name returns a name for the current function, if a reasonable name can be found, and the expression debug.getinfo(print) returns a table with all available information about the print function.
    */
-  function getinfo(f: Function | number, what?: __LUA_TODO__): table;
-  function getinfo(thread: LuaThread, f: Function | number, what?: __LUA_TODO__): table;
+  function getinfo<T extends Function>(f: T): FunctionInfo<T>;
+  function getinfo<T extends Function>(f: T, what: string): Partial<FunctionInfo<T>>;
+  function getinfo<T extends Function>(thread: LuaThread, f: T): FunctionInfo<T>;
+  function getinfo<T extends Function>(
+    thread: LuaThread,
+    f: T,
+    what: string,
+  ): Partial<FunctionInfo<T>>;
+  function getinfo(f: number): FunctionInfo<Function>;
+  function getinfo(f: number, what: string): Partial<FunctionInfo<Function>>;
+  function getinfo(thread: LuaThread, f: number): FunctionInfo<Function>;
+  function getinfo(thread: LuaThread, f: number, what: string): Partial<FunctionInfo<Function>>;
 
   /**
    * This function returns the name and the value of the local variable with index local of the function at level f of the stack. This function accesses not only explicit local variables, but also parameters, temporaries, etc.
