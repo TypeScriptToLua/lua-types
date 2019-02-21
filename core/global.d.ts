@@ -5,9 +5,14 @@ type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
 
 /**
+ * A global variable (not a function) that holds the global environment (see §2.2). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
+ */
+declare const _G: any;
+
+/**
  * Calls error if the value of its argument v is false (i.e., nil or false); otherwise, returns all its arguments. In case of error, message is the error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert(v: boolean, message?: string): void;
+declare function assert<T>(v: T, message?: string): Exclude<T, false | null | undefined>;
 
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
@@ -61,12 +66,7 @@ declare function dofile(filename?: string): any;
  *
  * Usually, error adds some information about the error position at the beginning of the message, if the message is a string. The level argument specifies how to get the error position. With level 1 (the default), the error position is where the error function was called. Level 2 points the error to where the function that called error was called; and so on. Passing a level 0 avoids the addition of error position information to the message.
  */
-declare function error(message: string, level?: 0 | 1 | 2): never;
-
-/**
- * A global variable (not a function) that holds the global environment (see §2.2). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
- */
-declare const _G: { [key: string]: any };
+declare function error(message: string, level?: number): never;
 
 /**
  * If object does not have a metatable, returns nil. Otherwise, if the object's metatable has a __metatable field, returns the associated value. Otherwise, returns the metatable of the given object.
@@ -174,10 +174,10 @@ declare function tonumber(e: any, base?: number): number | null;
  *
  * If the metatable of v has a __tostring field, then tostring calls the corresponding value with v as argument, and uses the result of the call as its result.
  */
-declare function tostring(v): string;
+declare function tostring(v: any): string;
 
 /**
- * Returns the type of its only argument, coded as a string. The possible results of this function are "nil" (a string, not the value nil), "number", "string", "boolean", "table", "function", "thread", and "userdata".
+ * Returns the type of its only argument, coded as a string.
  */
 declare function type(
   v: any,
