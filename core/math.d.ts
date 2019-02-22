@@ -1,6 +1,5 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.7
 
-
 /**
  * This library provides basic mathematical functions. It provides all its functions and constants inside the table math. Functions with the annotation "integer/float" give integer results for integer arguments and float results for float (or mixed) arguments. Rounding functions (math.ceil, math.floor, and math.modf) return an integer when the result fits in the range of an integer, or a float otherwise.
  */
