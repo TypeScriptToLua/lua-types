@@ -6,4 +6,5 @@ import './math';
 import './metatable';
 import './modules';
 import './os';
+import './string';
 import './table';
