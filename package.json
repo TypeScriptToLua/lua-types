@@ -11,9 +11,7 @@
   "license": "MIT",
   "author": "ark120202",
   "files": [
-    "core",
-    "extra",
-    "*.d.ts"
+    "**/*.d.ts"
   ],
   "scripts": {
     "lint": "prettier --check **/.*.yml **/*.{ts,yml,md}"
