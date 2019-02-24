@@ -10,6 +10,17 @@ declare namespace os {
   function clock(): number;
 
   /**
+   * Calls the ISO C function exit to terminate the host program. If code is true,
+   * the returned status is EXIT_SUCCESS; if code is false, the returned status is
+   * EXIT_FAILURE; if code is a number, the returned status is this number. The
+   * default value for code is true.
+   *
+   * If the optional second argument close is true, closes the Lua state before
+   * exiting.
+   */
+  export function exit(code?: boolean | number, close?: boolean): never;
+
+  /**
    * Returns a string or a table containing date and time, formatted according to the given string format.
    *
    * If the time argument is present, this is the time to be formatted (see the os.time function for a description of this value). Otherwise, date formats the current time.
