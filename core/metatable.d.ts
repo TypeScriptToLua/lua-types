@@ -37,41 +37,6 @@ interface LuaMetatable<T> {
   __unm?(this: T, operand: any): any;
 
   /**
-   * the floor division (//) operation. Behavior similar to the addition operation.
-   */
-  __idiv?(this: T, operand: any): any;
-
-  /**
-   * the bitwise AND (&) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither an integer nor a value coercible to an integer (see §3.4.3).
-   */
-  __band?(this: T, operand: any): any;
-
-  /**
-   * the bitwise OR (|) operation. Behavior similar to the bitwise AND operation.
-   */
-  __bor?(this: T, operand: any): any;
-
-  /**
-   * the bitwise exclusive OR (binary ~) operation. Behavior similar to the bitwise AND operation.
-   */
-  __bxor?(this: T, operand: any): any;
-
-  /**
-   * the bitwise NOT (unary ~) operation. Behavior similar to the bitwise AND operation.
-   */
-  __bnot?(this: T, operand: any): any;
-
-  /**
-   * the bitwise left shift (<<) operation. Behavior similar to the bitwise AND operation.
-   */
-  __shl?(this: T, operand: any): any;
-
-  /**
-   * the bitwise right shift (>>) operation. Behavior similar to the bitwise AND operation.
-   */
-  __shr?(this: T, operand: any): any;
-
-  /**
    * the concatenation (..) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither a string nor a number (which is always coercible to a string).
    */
   __concat?(this: T, operand: any): any;
@@ -101,7 +66,7 @@ interface LuaMetatable<T> {
    *
    * Despite the name, the metamethod for this event can be either a function or a table. If it is a function, it is called with table and key as arguments, and the result of the call (adjusted to one value) is the result of the operation. If it is a table, the final result is the result of indexing this table with key. (This indexing is regular, not raw, and therefore can trigger another metamethod.)
    */
-  __index?: T | ((this: T, key: any, value: any) => any);
+  __index?: object | ((this: T, key: any, value: any) => any);
 
   /**
    * The indexing assignment table[key] = value. Like the index event, this event happens when table is not a table or when key is not present in table. The metamethod is looked up in table.
@@ -110,10 +75,25 @@ interface LuaMetatable<T> {
    *
    * Whenever there is a __newindex metamethod, Lua does not perform the primitive assignment. (If necessary, the metamethod itself can call rawset to do the assignment.)
    */
-  __newindex?: T | ((this: T, key: any, value: any) => void);
+  __newindex?: object | ((this: T, key: any, value: any) => void);
 
   /**
    * The call operation func(args). This event happens when Lua tries to call a non-function value (that is, func is not a function). The metamethod is looked up in func. If present, the metamethod is called with func as its first argument, followed by the arguments of the original call (args). All results of the call are the result of the operation. (This is the only metamethod that allows multiple results.)
    */
   __call?(this: T, ...args: any[]): any;
+
+  /**
+   * If the metatable of v has a __tostring field, then tostring calls the corresponding value with v as argument, and uses the result of the call as its result.
+   */
+  __tostring?(this: T): string;
+
+  /**
+   * If this field is a string containing the character 'k', the keys in the table are weak. If it contains 'v', the values in the table are weak.
+   */
+  __mode?: 'k' | 'v' | 'kv';
+
+  /**
+   * If the object's metatable has this field, `getmetatable` returns the associated value.
+   */
+  __metatable?: any;
 }

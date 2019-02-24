@@ -105,3 +105,40 @@ declare namespace utf8 {
    */
   function offset(s: string, n?: number, i?: number): number;
 }
+
+interface LuaMetatable<T> {
+  /**
+   * the floor division (//) operation. Behavior similar to the addition operation.
+   */
+  __idiv?(this: T, operand: any): any;
+
+  /**
+   * the bitwise AND (&) operation. Behavior similar to the addition operation, except that Lua will try a metamethod if any operand is neither an integer nor a value coercible to an integer (see §3.4.3).
+   */
+  __band?(this: T, operand: any): any;
+
+  /**
+   * the bitwise OR (|) operation. Behavior similar to the bitwise AND operation.
+   */
+  __bor?(this: T, operand: any): any;
+
+  /**
+   * the bitwise exclusive OR (binary ~) operation. Behavior similar to the bitwise AND operation.
+   */
+  __bxor?(this: T, operand: any): any;
+
+  /**
+   * the bitwise NOT (unary ~) operation. Behavior similar to the bitwise AND operation.
+   */
+  __bnot?(this: T, operand: any): any;
+
+  /**
+   * the bitwise left shift (<<) operation. Behavior similar to the bitwise AND operation.
+   */
+  __shl?(this: T, operand: any): any;
+
+  /**
+   * the bitwise right shift (>>) operation. Behavior similar to the bitwise AND operation.
+   */
+  __shr?(this: T, operand: any): any;
+}
