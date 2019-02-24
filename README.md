@@ -1,22 +1,22 @@
 # Lua Types
 
-[![npm](https://img.shields.io/npm/v/types-lua.svg)](https://npmjs.com/package/types-lua)
-[![Travis](https://img.shields.io/travis/ark120202/types-lua.svg)](https://travis-ci.org/ark120202/types-lua)
+[![npm](https://img.shields.io/npm/v/lua-types.svg)](https://npmjs.com/package/lua-types)
+[![Travis](https://img.shields.io/travis/ark120202/lua-types.svg)](https://travis-ci.org/ark120202/lua-types)
 
 > TypeScript definitions for Lua standard library
 
 ## Installation
 
 > NOTE: In most of cases your environment-specific types would already include this package. In that
-> case you don't need to do anything. If you're a developer of such types you should add `types-lua`
-> as a dependency and load it by adding `/// <reference types="types-lua/VERSION" />`
+> case you don't need to do anything. If you're a developer of such types you should add `lua-types`
+> as a dependency and load it by adding `/// <reference types="lua-types/VERSION" />`
 
 1. Get Lua Types from npm
 
 ```bash
-yarn add -D types-lua
+yarn add -D lua-types
 # or
-npm install -D types-lua
+npm install -D lua-types
 ```
 
 2. Modify your `tsconfig.json`
@@ -24,7 +24,7 @@ npm install -D types-lua
 ```json
 {
   "compilerOptions": {
-    "types": ["types-lua/VERSION"]
+    "types": ["lua-types/VERSION"]
   }
 }
 ```
@@ -46,14 +46,14 @@ Some Lua environments are sandboxed and don't have some globals declared, like `
 {
   "compilerOptions": {
     "types": [
-      "types-lua/core/coroutine",
-      "types-lua/core/global",
-      "types-lua/core/math",
-      "types-lua/core/metatable",
-      "types-lua/core/modules",
-      "types-lua/core/string",
-      "types-lua/core/table",
-      "types-lua/special/jit"
+      "lua-types/core/coroutine",
+      "lua-types/core/global",
+      "lua-types/core/math",
+      "lua-types/core/metatable",
+      "lua-types/core/modules",
+      "lua-types/core/string",
+      "lua-types/core/table",
+      "lua-types/special/jit"
     ]
   }
 }

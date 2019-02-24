@@ -1,5 +1,5 @@
 {
-  "name": "types-lua",
+  "name": "lua-types",
   "version": "1.0.1",
   "description": "TypeScript definitions for Lua standard library",
   "keywords": [
@@ -7,7 +7,7 @@
     "typescript",
     "tstl"
   ],
-  "repository": "https://github.com/ark120202/types-lua",
+  "repository": "https://github.com/ark120202/lua-types",
   "license": "MIT",
   "author": "ark120202",
   "files": [
