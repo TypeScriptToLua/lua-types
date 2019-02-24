@@ -84,7 +84,7 @@ declare namespace utf8 {
    *
    * will iterate over all characters in string s, with p being the position (in bytes) and c the code point of each character. It raises an error if it meets any invalid byte sequence.
    */
-  function codes(s: string): __LUA_TODO__;
+  function codes<S extends string>(s: S): [(s: S, index?: number) => [number, number], S, 0];
 
   /**
    * Returns the codepoints (as integers) from all characters in s that start between byte position i and j (both included). The default for i is 1 and for j is i. It raises an error if it meets any invalid byte sequence.

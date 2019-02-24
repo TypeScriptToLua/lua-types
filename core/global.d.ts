@@ -1,13 +1,12 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.1
 
-type __LUA_TODO__ = any;
 type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
 
 /**
  * A global variable (not a function) that holds the global environment (see §2.2). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
  */
-declare const _G: any;
+declare const _G: Record<string, any>;
 
 /**
  * Calls error if the value of its argument v is false (i.e., nil or false); otherwise, returns all its arguments. In case of error, message is the error object; when absent, it defaults to "assertion failed!"

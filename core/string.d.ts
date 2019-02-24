@@ -76,7 +76,7 @@ declare namespace string {
    *
    * For this function, a caret '^' at the start of a pattern does not work as an anchor, as this would prevent the iteration.
    */
-  function gmatch(s: string, pattern: string): __LUA_TODO__;
+  function gmatch(s: string, pattern: string): /** @tupleReturn */ () => string[];
 
   /**
    * Returns a copy of s in which all (or the first n, if given) occurrences of the pattern (see §6.4.1) have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. The name gsub comes from Global SUBstitution.
@@ -106,7 +106,7 @@ declare namespace string {
   /**
    * Looks for the first match of pattern (see §6.4.1) in the string s. If it finds one, then match returns the captures from the pattern; otherwise it returns nil. If pattern specifies no captures, then the whole match is returned. A third, optional numeric argument init specifies where to start the search; its default value is 1 and can be negative.
    */
-  function match(s: string, pattern: string, init?: __LUA_TODO__): string | null;
+  function match(s: string, pattern: string, init?: number): string | null;
 
   /**
    * Returns a string that is the concatenation of n copies of the string s separated by the string sep. The default value for sep is the empty string (that is, no separator). Returns the empty string if n is not positive.

@@ -97,7 +97,7 @@ declare namespace debug {
   /**
    * Returns the registry table (see §4.5).
    */
-  function getregistry(): __LUA_TODO__;
+  function getregistry(): Record<string, any>;
 
   /**
    * This function returns the name and the value of the upvalue with index up of the function f. The function returns nil if there is no upvalue with the given index.
@@ -174,10 +174,10 @@ declare namespace debug {
    *
    * These unique identifiers allow a program to check whether different closures share upvalues. Lua closures that share an upvalue (that is, that access a same external local variable) will return identical ids for those upvalue indices.
    */
-  function upvalueid(f: Function, n: number): __LUA_TODO__;
+  function upvalueid(f: Function, n: number): LuaUserdata;
 
   /**
    * Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of the Lua closure f2.
    */
-  function upvaluejoin(f1: __LUA_TODO__, n1: number, f2: __LUA_TODO__, n2: number): __LUA_TODO__;
+  function upvaluejoin(f1: Function, n1: number, f2: Function, n2: number): void;
 }

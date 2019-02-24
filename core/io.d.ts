@@ -34,7 +34,11 @@ declare namespace io {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  function lines(...filename: string[]): () => __LUA_TODO__;
+  function lines(): () => string;
+  function lines<T extends FileReadFormat[]>(
+    filename: string,
+    ...formats: T
+  ): /** @tupleReturn */ () => { [P in keyof T]?: T[P] extends 'n' ? number : string };
 
   /**
    * This function opens a file, in the mode specified in the string mode. In case of success, it returns a new file handle.
@@ -67,8 +71,9 @@ declare namespace io {
 
   /**
    * Equivalent to io.input():read(···).
+   * @tupleReturn
    */
-  function read(...formats: FileReadFormat[]): __LUA_TODO__;
+  const read: file['read'];
 
   /**
    * In case of success, returns a handle for a temporary file. This file is opened in update mode and it is automatically removed when the program ends.
@@ -111,7 +116,9 @@ interface file {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  lines(...formats: FileReadFormat[]): () => __LUA_TODO__;
+  lines<T extends FileReadFormat[]>(
+    ...formats: T
+  ): /** @tupleReturn */ () => { [P in keyof T]?: T[P] extends 'n' ? number : string };
 
   /**
    * Reads the file file, according to the given formats, which specify what to read. For each format, the function returns a string or a number with the characters read, or nil if it cannot read data with the specified format. (In this latter case, the function does not read subsequent formats.) When called without formats, it uses a default format that reads the next line (see below).
@@ -125,8 +132,11 @@ interface file {
    * * number: reads a string with up to this number of bytes, returning nil on end of file. If number is zero, it reads nothing and returns an empty string, or nil on end of file.
    *
    * The formats "l" and "L" should be used only for text files.
+   * @tupleReturn
    */
-  read(...formats: FileReadFormat[]): __LUA_TODO__;
+  read<T extends FileReadFormat[]>(
+    ...formats: T
+  ): { [P in keyof T]?: T[P] extends 'n' ? number : string };
 
   /**
    * Sets and geionts the file position, measured from the beginning of the file, to the posit given by offset plus a base specified by the string whence, as follows:
@@ -158,5 +168,5 @@ interface file {
    * In case of success, this function returns file. Otherwise it returns nil plus a string describing the error.
    * @tupleReturn
    */
-  write(...args: (string | number)[]): [file] | [null, string];
+  write(...args: (string | number)[]): [file] | [undefined, string];
 }

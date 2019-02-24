@@ -1,4 +1,4 @@
-declare var _ENV: any;
+declare let _ENV: Record<string, any>;
 
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
@@ -27,7 +27,7 @@ declare function load(
   chunk: string | (() => string | null | undefined),
   chunkname?: string,
   mode?: 'b' | 't' | 'bt',
-  env?: __LUA_TODO__,
+  env?: object,
 ): [() => any] | [undefined, string];
 
 /**
@@ -37,7 +37,7 @@ declare function load(
 declare function loadfile(
   filename?: string,
   mode?: 'b' | 't' | 'bt',
-  env?: __LUA_TODO__,
+  env?: object,
 ): [() => any] | [undefined, string];
 
 /**
