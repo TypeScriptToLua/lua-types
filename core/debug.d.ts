@@ -52,8 +52,6 @@ declare namespace debug {
      * Number of upvalues of that function.
      */
     nups: number;
-    nparams: 0;
-    isvararg: true;
   }
 
   /**
@@ -75,19 +73,6 @@ declare namespace debug {
   function getinfo(f: number, what: string): Partial<FunctionInfo<Function>>;
   function getinfo(thread: LuaThread, f: number): FunctionInfo<Function>;
   function getinfo(thread: LuaThread, f: number, what: string): Partial<FunctionInfo<Function>>;
-
-  /**
-   * This function returns the name and the value of the local variable with index local of the function at level f of the stack. This function accesses not only explicit local variables, but also parameters, temporaries, etc.
-   *
-   * The first parameter or local variable has index 1, and so on, following the order that they are declared in the code, counting only the variables that are active in the current scope of the function. Negative indices refer to vararg parameters; -1 is the first vararg parameter. The function returns nil if there is no variable with the given index, and raises an error when called with a level out of range. (You can call debug.getinfo to check whether the level is valid.)
-   *
-   * Variable names starting with '(' (open parenthesis) represent variables with no known names (internal variables such as loop control variables, and variables from chunks saved without debug information).
-   *
-   * The parameter f may also be a function. In that case, getlocal returns only the name of function parameters.
-   * @tupleReturn
-   */
-  function getlocal(f: Function | number, local: number): [string, any];
-  function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
 
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.
@@ -168,16 +153,4 @@ declare namespace debug {
    */
   function traceback(thread?: LuaThread, message?: string | null, level?: number): string;
   function traceback<T>(thread?: LuaThread, message?: T, level?: number): T;
-
-  /**
-   * Returns a unique identifier (as a light userdata) for the upvalue numbered n from the given function.
-   *
-   * These unique identifiers allow a program to check whether different closures share upvalues. Lua closures that share an upvalue (that is, that access a same external local variable) will return identical ids for those upvalue indices.
-   */
-  function upvalueid(f: Function, n: number): LuaUserdata;
-
-  /**
-   * Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of the Lua closure f2.
-   */
-  function upvaluejoin(f1: Function, n1: number, f2: Function, n2: number): void;
 }

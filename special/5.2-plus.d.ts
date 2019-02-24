@@ -8,48 +8,6 @@ declare let _ENV: Record<string, any>;
 declare function collectgarbage(opt: 'isrunning'): boolean;
 
 /**
- * Loads a chunk.
- *
- * If chunk is a string, the chunk is this string. If chunk is a function, load calls it repeatedly to get the chunk pieces. Each call to chunk must return a string that concatenates with previous results. A return of an empty string, nil, or no value signals the end of the chunk.
- *
- * If there are no syntactic errors, returns the compiled chunk as a function; otherwise, returns nil plus the error message.
- *
- * If the resulting function has upvalues, the first upvalue is set to the value of env, if that parameter is given, or to the value of the global environment. Other upvalues are initialized with nil. (When you load a main chunk, the resulting function will always have exactly one upvalue, the _ENV variable (see §2.2). However, when you load a binary chunk created from a function (see string.dump), the resulting function can have an arbitrary number of upvalues.) All upvalues are fresh, that is, they are not shared with any other function.
- *
- * chunkname is used as the name of the chunk for error messages and debug information (see §4.9). When absent, it defaults to chunk, if chunk is a string, or to "=(load)" otherwise.
- *
- * The string mode controls whether the chunk can be text or binary (that is, a precompiled chunk). It may be the string "b" (only binary chunks), "t" (only text chunks), or "bt" (both binary and text). The default is "bt".
- *
- * Lua does not check the consistency of binary chunks. Maliciously crafted binary chunks can crash the interpreter.
- * @tupleReturn
- */
-declare function load(
-  chunk: string | (() => string | null | undefined),
-  chunkname?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: object,
-): [() => any] | [undefined, string];
-
-/**
- * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
- * @tupleReturn
- */
-declare function loadfile(
-  filename?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: object,
-): [() => any] | [undefined, string];
-
-/**
- * This function is similar to pcall, except that it sets a new message handler msgh.
- */
-declare function xpcall<Args extends any[], R, E>(
-  f: (...args: Args) => R,
-  msgh: (err: any) => E,
-  ...args: Args
-): [true, R] | [false, E];
-
-/**
  * Creates a module. If there is a table in package.loaded[name], this table is the module. Otherwise, if there is a global table t with the given name, this table is the module. Otherwise creates a new table t and sets it as the value of the global name and the value of package.loaded[name]. This function also initializes t._NAME with the given name, t._M with the module (t itself), and t._PACKAGE with the package name (the full module name minus last component; see below). Finally, module sets t as the new environment of the current function and the new value of package.loaded[name], so that require returns t.
  *
  * If name is a compound name (that is, one with components separated by dots), module creates (or reuses, if they already exist) tables for each component. For instance, if name is a.b.c, then module stores the module table in field c of field b of global a.
@@ -101,13 +59,6 @@ declare namespace table {
 }
 
 declare namespace os {
-  /**
-   * Calls the ISO C function exit to terminate the host program. If code is true, the returned status is EXIT_SUCCESS; if code is false, the returned status is EXIT_FAILURE; if code is a number, the returned status is this number. The default value for code is true.
-   *
-   * If the optional second argument close is true, closes the Lua state before exiting.
-   */
-  function exit(code?: boolean | number, close?: boolean): never;
-
   /**
    * This function is equivalent to the ISO C function system. It passes command to be executed by an operating system shell. Its first result is true if the command terminated successfully, or nil otherwise. After this first result the function returns a string plus a number, as follows:
    * * "exit": the command terminated normally; the following number is the exit status of the command.

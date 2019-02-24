@@ -61,11 +61,6 @@ declare namespace math {
   const huge: number;
 
   /**
-   * Returns the logarithm of x in the given base. The default for base is e (so that the function returns the natural logarithm of x).
-   */
-  function log(x: number, base?: number): number;
-
-  /**
    * Returns the argument with the maximum value, according to the Lua operator <. (integer/float)
    */
   function max(x: number, ...numbers: number[]): number;
