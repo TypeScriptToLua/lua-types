@@ -13,7 +13,7 @@ declare namespace io {
   /**
    * Equivalent to file:close(). Without a file, closes the default output file.
    */
-  function close(file?: file): boolean;
+  function close(file?: LuaFile): boolean;
 
   /**
    * Equivalent to io.output():flush().
@@ -25,7 +25,7 @@ declare namespace io {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  function input(file?: string | file): file;
+  function input(file?: string | LuaFile): LuaFile;
 
   /**
    * Opens the given file name in read mode and returns an iterator function that works like file:lines(···) over the opened file. When the iterator function detects the end of file, it returns no values (to finish the loop) and automatically closes the file.
@@ -55,30 +55,30 @@ declare namespace io {
    * The mode string can also have a 'b' at the end, which is needed in some systems to open the file in binary mode.
    * @tupleReturn
    */
-  function open(filename: string, mode?: string): [file] | [undefined, string, number];
+  function open(filename: string, mode?: string): [LuaFile] | [undefined, string, number];
 
   /**
    * Similar to io.input, but operates over the default output file.
    */
-  function output(file?: string | file): file;
+  function output(file?: string | LuaFile): LuaFile;
 
   /**
    * This function is system dependent and is not available on all platforms.
    *
    * Starts program prog in a separated process and returns a file handle that you can use to read data from this program (if mode is "r", the default) or to write data to this program (if mode is "w").
    */
-  function popen(prog: string, mode?: 'r' | 'w'): file;
+  function popen(prog: string, mode?: 'r' | 'w'): LuaFile;
 
   /**
    * Equivalent to io.input():read(···).
    * @tupleReturn
    */
-  const read: file['read'];
+  const read: LuaFile['read'];
 
   /**
    * In case of success, returns a handle for a temporary file. This file is opened in update mode and it is automatically removed when the program ends.
    */
-  function tmpfile(): file;
+  function tmpfile(): LuaFile;
 
   /**
    * Checks whether obj is a valid file handle. Returns the string "file" if obj is an open file handle, "closed file" if obj is a closed file handle, or nil if obj is not a file handle.
@@ -89,12 +89,12 @@ declare namespace io {
    * Equivalent to io.output():write(···).
    * @tupleReturn
    */
-  function write(...args: (string | number)[]): [file] | [undefined, string];
+  function write(...args: (string | number)[]): [LuaFile] | [undefined, string];
 }
 
 type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;
 
-interface file {
+interface LuaFile {
   /**
    * Closes file. Note that files are automatically closed when their handles are garbage collected, but that takes an unpredictable amount of time to happen.
    *
@@ -168,5 +168,5 @@ interface file {
    * In case of success, this function returns file. Otherwise it returns nil plus a string describing the error.
    * @tupleReturn
    */
-  write(...args: (string | number)[]): [file] | [undefined, string];
+  write(...args: (string | number)[]): [LuaFile] | [undefined, string];
 }
