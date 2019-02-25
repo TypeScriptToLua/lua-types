@@ -18,16 +18,11 @@ declare namespace table {
   function insert<T>(list: T[], pos: number, value: T): void;
 
   /**
-   * Returns a new table with all parameters stored into keys 1, 2, etc. and with a field "n" with the total number of parameters. Note that the resulting table may not be a sequence.
-   */
-  function pack(...args: any[]): any[];
-
-  /**
    * Removes from list the element at position pos, returning the value of the removed element. When pos is an integer between 1 and #list, it shifts down the elements list[pos+1], list[pos+2], ···, list[#list] and erases element list[#list]; The index pos can also be 0 when #list is 0, or #list + 1; in those cases, the function erases the element list[pos].
    *
    * The default value for pos is #list, so that a call table.remove(l) removes the last element of list l.
    */
-  function remove(list: any[], pos?: number): any[];
+  function remove<T>(list: T[], pos?: number): T | undefined;
 
   /**
    * Sorts list elements in a given order, in-place, from list[1] to list[#list]. If comp is given, then it must be a function that receives two list elements and returns true when the first element must come before the second in the final order (so that, after the sort, i < j implies not comp(list[j],list[i])). If comp is not given, then the standard Lua operator < is used instead.
@@ -36,5 +31,5 @@ declare namespace table {
    *
    * The sort algorithm is not stable: elements considered equal by the given order may have their relative positions changed by the sort.
    */
-  function sort(list: any[], comp?: (a: any, b: any) => boolean): any[];
+  function sort<T>(list: T[], comp?: (a: T, b: T) => boolean): T[];
 }
