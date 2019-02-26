@@ -94,10 +94,10 @@ interface LuaMetatable<T> {
   /**
    * Handle iteration through table pairs when `for k,v in pairs(tbl) do ... end` is called.
    */
-  __pairs<T>(t: T): [(t: T, index?: any) => [any, any], T];
+  __pairs?<T>(t: T): [(t: T, index?: any) => [any, any], T];
 
   /**
    * Handle iteration through table pairs when `for k,v in ipairs(tbl) do ... end` is called.
    */
-  __ipairs<T extends object>(t: T): [(t: T, index?: number) => [number, any], T, 0];
+  __ipairs?<T extends object>(t: T): [(t: T, index?: number) => [number, any], T, 0];
 }
