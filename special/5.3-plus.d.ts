@@ -84,12 +84,15 @@ declare namespace utf8 {
    *
    * will iterate over all characters in string s, with p being the position (in bytes) and c the code point of each character. It raises an error if it meets any invalid byte sequence.
    */
-  function codes<S extends string>(s: S): [(s: S, index?: number) => [number, number], S, 0];
+  function codes<S extends string>(
+    s: S,
+  ): [/** @tupleReturn */ (s: S, index?: number) => [number, number], S, 0];
 
   /**
    * Returns the codepoints (as integers) from all characters in s that start between byte position i and j (both included). The default for i is 1 and for j is i. It raises an error if it meets any invalid byte sequence.
+   * @tupleReturn
    */
-  function codepoint(s: string, i?: number, j?: number);
+  function codepoint(s: string, i?: number, j?: number): number[];
 
   /**
    * Returns the number of UTF-8 characters in string s that start between positions i and j (both inclusive). The default for i is 1 and for j is -1. If it finds any invalid byte sequence, returns a false value plus the position of the first invalid byte.

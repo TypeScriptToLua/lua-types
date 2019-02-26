@@ -33,6 +33,7 @@ declare function loadfile(
 
 /**
  * This function is similar to pcall, except that it sets a new message handler msgh.
+ * @tupleReturn
  */
 declare function xpcall<Args extends any[], R, E>(
   f: (...args: Args) => R,
