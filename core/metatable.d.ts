@@ -96,4 +96,9 @@ interface LuaMetatable<T> {
    * If the object's metatable has this field, `getmetatable` returns the associated value.
    */
   __metatable?: any;
+
+  /**
+   * Userdata finalizer code. When userdata is set to be garbage collected, if the metatable has a __gc field pointing to a function, that function is first invoked, passing the userdata to it. The __gc metamethod is not called for tables.
+   */
+  __gc?(this: T): void;
 }
