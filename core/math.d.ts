@@ -26,7 +26,8 @@ declare namespace math {
    */
   function atan(y: number, x?: number): number;
 
-  /**   * Returns the smallest integral value larger than or equal to x.
+  /**
+   * Returns the smallest integral value larger than or equal to x.
    */
   function ceil(x: number): number;
 
