@@ -7,6 +7,13 @@ declare function collectgarbage(opt: 'count'): number;
 
 declare namespace math {
   /**
+   * Returns the arc tangent of y/x (in radians), but uses the signs of both parameters to find the quadrant of the result. (It also handles correctly the case of x being zero.)
+   *
+   * The default value for x is 1, so that the call math.atan(y) returns the arc tangent of y.
+   */
+  function atan(y: number, x?: number): number;
+
+  /**
    * An integer with the minimum value for an integer.
    */
   const mininteger: number;
@@ -15,6 +22,21 @@ declare namespace math {
    * An integer with the maximum value for an integer.
    */
   const maxinteger: number;
+
+  /**
+   * If the value x is convertible to an integer, returns that integer. Otherwise, returns nil.
+   */
+  function tointeger(x: number): number;
+
+  /**
+   * Returns "integer" if x is an integer, "float" if it is a float, or nil if x is not a number.
+   */
+  function type(x: number): 'integer' | 'float' | null;
+
+  /**
+   * Returns a boolean, true if and only if integer m is below integer n when they are compared as unsigned integers.
+   */
+  function ult(m: number, n: number): boolean;
 }
 
 declare namespace table {

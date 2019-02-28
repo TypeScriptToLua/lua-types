@@ -1,5 +1,10 @@
 declare namespace math {
   /**
+   * Returns the arc tangent of x (in radians).
+   */
+  function atan(x: number): number;
+
+  /**
    * Returns the arc tangent of y/x (in radians), but uses the signs of both parameters to find the quadrant of the result. (It also handles correctly the case of x being zero.)
    */
   function atan2(y: number, x: number): number;
@@ -20,7 +25,7 @@ declare namespace math {
   function ldexp(m: number, e: number): number;
 
   /**
-   * Returns x ^ y
+   * Returns xy. (You can also use the expression x^y to compute this value.)
    */
   function pow(x: number, y: number): number;
 
