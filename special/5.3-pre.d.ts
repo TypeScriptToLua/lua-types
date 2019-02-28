@@ -20,26 +20,9 @@ declare namespace math {
   function ldexp(m: number, e: number): number;
 
   /**
-   * Returns the base-10 logarithm of x.
-   */
-  function log10(x: number): number;
-
-  /**
    * Returns x ^ y
    */
   function pow(x: number, y: number): number;
-
-  /**
-   * This function is an interface to the simple pseudo-random generator function rand provided by ANSI C. (No guarantees can be given for its statistical properties.)
-   *
-   * When called without arguments, returns a uniform pseudo-random real number in the range [0,1). When called with an integer number m, math.random returns a uniform pseudo-random integer in the range [1, m]. When called with two integer numbers m and n, math.random returns a uniform pseudo-random integer in the range [m, n].
-   */
-  function random(m?: number, n?: number): number;
-
-  /**
-   * Sets x as the "seed" for the pseudo-random generator: equal seeds produce equal sequences of numbers.
-   */
-  function randomseed(x: number): number;
 
   /**
    * Returns the hyperbolic sine of x.
