@@ -70,9 +70,7 @@ declare namespace package {
   var loaders: (
     | (/** @tupleReturn */ (modname: string) => [(modname: string) => void])
     | (/** @tupleReturn */ <T>(modname: string) => [(modname: string, extra: T) => T, T])
-    | string
-    | undefined
-    | null)[];
+    | string)[];
 }
 
 declare namespace os {

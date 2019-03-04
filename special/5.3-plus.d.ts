@@ -31,7 +31,7 @@ declare namespace math {
   /**
    * Returns "integer" if x is an integer, "float" if it is a float, or nil if x is not a number.
    */
-  function type(x: number): 'integer' | 'float' | null;
+  function type(x: number): 'integer' | 'float' | undefined;
 
   /**
    * Returns a boolean, true if and only if integer m is below integer n when they are compared as unsigned integers.

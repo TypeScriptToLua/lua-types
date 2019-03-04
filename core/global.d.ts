@@ -70,7 +70,7 @@ declare function error(message: string, level?: number): never;
 /**
  * If object does not have a metatable, returns nil. Otherwise, if the object's metatable has a __metatable field, returns the associated value. Otherwise, returns the metatable of the given object.
  */
-declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | null;
+declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | undefined;
 
 /**
  * Returns three values (an iterator function, the table t, and 0) so that the construction
@@ -157,7 +157,10 @@ declare function select<T>(index: '#', ...args: T[]): number;
  *
  * This function returns table.
  */
-declare function setmetatable<T extends object>(table: T, metatable?: LuaMetatable<T>): T;
+declare function setmetatable<T extends object>(
+  table: T,
+  metatable: LuaMetatable<T> | null | undefined,
+): T;
 
 /**
  * When called with no base, tonumber tries to convert its argument to a number. If the argument is already a number or a string convertible to a number, then tonumber returns this number; otherwise, it returns nil.
@@ -166,7 +169,7 @@ declare function setmetatable<T extends object>(table: T, metatable?: LuaMetatab
  *
  * When called with base, then e must be a string to be interpreted as an integer numeral in that base. The base may be any integer between 2 and 36, inclusive. In bases above 10, the letter 'A' (in either upper or lower case) represents 10, 'B' represents 11, and so forth, with 'Z' representing 35. If the string e is not a valid numeral in the given base, the function returns nil.
  */
-declare function tonumber(e: any, base?: number): number | null;
+declare function tonumber(e: any, base?: number): number | undefined;
 
 /**
  * Receives a value of any type and converts it to a string in a human-readable format. (For complete control of how numbers are converted, use string.format.)

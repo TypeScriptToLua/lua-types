@@ -150,7 +150,7 @@ interface LuaFile {
    * The default value for whence is "cur", and for offset is 0. Therefore, the call file:seek() returns the current file position, without changing it; the call file:seek("set") sets the position to the beginning of the file (and returns 0); and the call file:seek("end") sets the position to the end of the file, and returns its size.
    * @tupleReturn
    */
-  seek(whence?: 'set' | 'cur' | 'end', offset?: number): [number] | [null, string];
+  seek(whence?: 'set' | 'cur' | 'end', offset?: number): [number] | [undefined, string];
 
   /**
    * Sets the buffering mode for an output file. There are three available modes:

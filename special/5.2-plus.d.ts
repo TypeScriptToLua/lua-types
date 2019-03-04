@@ -41,8 +41,7 @@ declare namespace package {
   var searchers: (
     | (/** @tupleReturn */ (modname: string) => [(modname: string) => void])
     | (/** @tupleReturn */ <T>(modname: string) => [(modname: string, extra: T) => T, T])
-    | string
-    | undefined)[];
+    | string)[];
 }
 
 declare namespace table {

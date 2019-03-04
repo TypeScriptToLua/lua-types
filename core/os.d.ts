@@ -69,7 +69,7 @@ declare namespace os {
   /**
    * Returns the value of the process environment variable varname, or nil if the variable is not defined.
    */
-  function getenv(varname: string): string | null;
+  function getenv(varname: string): string | undefined;
 
   /**
    * Deletes the file (or empty directory, on POSIX systems) with the given name. If this function fails, it returns nil, plus a string describing the error and the error code. Otherwise, it returns true.
@@ -95,7 +95,7 @@ declare namespace os {
   function setlocale(
     locale?: string,
     category?: 'all' | 'collate' | 'ctype' | 'monetary' | 'numeric' | 'time',
-  ): string | null;
+  ): string | undefined;
 
   /**
    * Returns the current time when called without arguments, or a time representing the local date and time specified by the given table. This table must have fields year, month, and day, and may have fields hour (default is 12), min (default is 0), sec (default is 0), and isdst (default is nil). Other fields are ignored. For a description of these fields, see the os.date function.

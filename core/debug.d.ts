@@ -81,7 +81,7 @@ declare namespace debug {
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.
    */
-  function getmetatable<T extends any>(value: T): LuaMetatable<T> | null;
+  function getmetatable<T extends any>(value: T): LuaMetatable<T> | undefined;
 
   /**
    * Returns the registry table (see §4.5).
@@ -132,18 +132,23 @@ declare namespace debug {
    *
    * See debug.getlocal for more information about variable indices and names.
    */
-  function setlocal(level: number, local: number, value: any): string | null;
-  function setlocal(thread: LuaThread, level: number, local: number, value: any): string | null;
+  function setlocal(level: number, local: number, value: any): string | undefined;
+  function setlocal(
+    thread: LuaThread,
+    level: number,
+    local: number,
+    value: any,
+  ): string | undefined;
 
   /**
    * Sets the metatable for the given value to the given table (which can be nil). Returns value.
    */
-  function setmetatable<T>(value: T, table: LuaMetatable<T> | null): T;
+  function setmetatable<T>(value: T, table: LuaMetatable<T> | null | undefined): T;
 
   /**
    * This function assigns the value value to the upvalue with index up of the function f. The function returns nil if there is no upvalue with the given index. Otherwise, it returns the name of the upvalue.
    */
-  function setupvalue(f: Function, up: number, value: any): string | null;
+  function setupvalue(f: Function, up: number, value: any): string | undefined;
 
   /**
    * Sets the given value as the Lua value associated to the given udata. udata must be a full userdata.
@@ -155,6 +160,8 @@ declare namespace debug {
   /**
    * If message is present but is neither a string nor nil, this function returns message without further processing. Otherwise, it returns a string with a traceback of the call stack. The optional message string is appended at the beginning of the traceback. An optional level number tells at which level to start the traceback (default is 1, the function calling traceback).
    */
-  function traceback(thread?: LuaThread, message?: string | null, level?: number): string;
-  function traceback<T>(thread?: LuaThread, message?: T, level?: number): T;
+  function traceback(message?: string | null, level?: number | null): string;
+  function traceback(thread?: LuaThread, message?: string | null, level?: number | null): string;
+  function traceback<T>(message: T): T;
+  function traceback<T>(thread: LuaThread, message: T): T;
 }
