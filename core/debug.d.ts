@@ -69,10 +69,14 @@ declare namespace debug {
     f: T,
     what: string,
   ): Partial<FunctionInfo<T>>;
-  function getinfo(f: number): FunctionInfo<Function>;
-  function getinfo(f: number, what: string): Partial<FunctionInfo<Function>>;
-  function getinfo(thread: LuaThread, f: number): FunctionInfo<Function>;
-  function getinfo(thread: LuaThread, f: number, what: string): Partial<FunctionInfo<Function>>;
+  function getinfo(f: number): FunctionInfo<Function> | undefined;
+  function getinfo(f: number, what: string): Partial<FunctionInfo<Function>> | undefined;
+  function getinfo(thread: LuaThread, f: number): FunctionInfo<Function> | undefined;
+  function getinfo(
+    thread: LuaThread,
+    f: number,
+    what: string,
+  ): Partial<FunctionInfo<Function>> | undefined;
 
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.
