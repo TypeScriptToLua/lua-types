@@ -1,11 +1,6 @@
 /** @noSelfInFile */
 
 /**
- * A global variable (not a function) that holds a string containing the running Lua version.
- */
-declare const _VERSION: 'Lua 5.1';
-
-/**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
  *
  * Returns the total memory in use by Lua in Kbytes. The value has a fractional part, so that it multiplied by 1024 gives the exact number of bytes in use by Lua (except for overflows).

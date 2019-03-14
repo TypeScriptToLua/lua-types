@@ -6,6 +6,11 @@ type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
 
 /**
+ * A global variable (not a function) that holds a string containing the running Lua version.
+ */
+declare const _VERSION: 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
+
+/**
  * A global variable (not a function) that holds the global environment (see §2.2). Lua itself does not use this variable; changing its value does not affect any environment, nor vice versa.
  */
 declare const _G: Record<string, any>;
