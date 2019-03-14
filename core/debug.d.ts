@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.10
 
+/** @noSelfInFile */
+
 /**
  * This library provides the functionality of the debug interface (§4.9) to Lua programs. You should exert care when using this library. Several of its functions violate basic assumptions about Lua code (e.g., that variables local to a function cannot be accessed from outside; that userdata metatables cannot be changed by Lua code; that Lua programs do not crash) and therefore can compromise otherwise secure code. Moreover, some functions in this library may be slow.
  *

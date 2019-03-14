@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 /**
  * Loads a chunk.
  *

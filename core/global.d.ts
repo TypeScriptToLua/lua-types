@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.1
 
+/** @noSelfInFile */
+
 type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
 

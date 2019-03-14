@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.8
 
+/** @noSelfInFile */
+
 /**
  * The I/O library provides two different styles for file manipulation. The first one uses implicit file handles; that is, there are operations to set a default input file and a default output file, and all input/output operations are over these default files. The second style uses explicit file handles.
  *

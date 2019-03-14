@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 declare namespace math {
   /**
    * Returns the arc tangent of x (in radians).

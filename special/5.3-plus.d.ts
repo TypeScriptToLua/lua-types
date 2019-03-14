@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 /**
  * This function is a generic interface to the garbage collector. It performs different functions according to its first argument, opt.
  *

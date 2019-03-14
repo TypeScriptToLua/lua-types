@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.6
 
+/** @noSelfInFile */
+
 /**
  * This library provides generic functions for table manipulation. It provides all its functions inside the table table.
  *

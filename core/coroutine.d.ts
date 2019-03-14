@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.2
 
+/** @noSelfInFile */
+
 /**
  * This library comprises the operations to manipulate coroutines, which come inside the table coroutine.
  */

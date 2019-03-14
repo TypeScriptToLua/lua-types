@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 /**
  * Loads a chunk using function func to get its pieces. Each call to func must return a string that concatenates with previous results. A return of an empty string, nil, or no value signals the end of the chunk.
  *

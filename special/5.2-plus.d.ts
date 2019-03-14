@@ -1,3 +1,5 @@
+/** @noSelfInFile */
+
 declare let _ENV: Record<string, any>;
 
 /**

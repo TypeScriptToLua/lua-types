@@ -1,5 +1,7 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.9
 
+/** @noSelfInFile */
+
 interface LuaDateInfo {
   year: number;
   month: number;
