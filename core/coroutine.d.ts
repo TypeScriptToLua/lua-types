@@ -9,7 +9,7 @@ declare namespace coroutine {
   /**
    * Creates a new coroutine, with body f. f must be a function. Returns this new coroutine, an object with type "thread".
    */
-  function create(f: () => any): LuaThread;
+  function create(f: (...args: any[]) => any): LuaThread;
 
   /**
    * Starts or continues the execution of coroutine co. The first time you resume a coroutine, it starts running its body. The values val1, ... are passed as the arguments to the body function. If the coroutine has yielded, resume restarts it; the values val1, ... are passed as the results from the yield.
@@ -33,7 +33,7 @@ declare namespace coroutine {
   /**
    * Creates a new coroutine, with body f. f must be a function. Returns a function that resumes the coroutine each time it is called. Any arguments passed to the function behave as the extra arguments to resume. Returns the same values returned by resume, except the first boolean. In case of error, propagates the error.
    */
-  function wrap(f: () => any): (...args: any[]) => any[] | string;
+  function wrap(f: (...args: any[]) => any): /** @tupleReturn */ (...args: any[]) => any[];
 
   /**
    * Suspends the execution of the calling coroutine. Any arguments to yield are passed as extra results to resume.
