@@ -16,7 +16,12 @@
  * Lua does not check the consistency of binary chunks. Maliciously crafted binary chunks can crash the interpreter.
  * @tupleReturn
  */
-declare const loadstring: typeof load;
+declare function loadstring(
+  chunk: string | (() => string | null | undefined),
+  chunkname?: string,
+  mode?: 'b' | 't' | 'bt',
+  env?: object,
+): [() => any] | [undefined, string];
 
 declare namespace bit {
   /**
