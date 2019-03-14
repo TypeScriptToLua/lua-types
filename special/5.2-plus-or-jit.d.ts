@@ -37,29 +37,17 @@ declare function loadfile(
  * This function is similar to pcall, except that it sets a new message handler msgh.
  * @tupleReturn
  */
-declare function xpcall<T extends (...args: any[]) => any, E>(
-  f: T,
+declare function xpcall<This, Args extends any[], R, E>(
+  f: (this: This, ...args: Args) => R,
   msgh: (err: any) => E,
-  ...args: T extends (this: infer This, ...args: infer Args) => any
-    ? void extends This
-      ? Args
-      : Args extends [infer T1]
-      ? [{} extends This ? any : This, T1]
-      : Args extends [infer T1, infer T2]
-      ? [{} extends This ? any : This, T1, T2]
-      : Args extends [infer T1, infer T2, infer T3]
-      ? [{} extends This ? any : This, T1, T2, T3]
-      : Args extends [infer T1, infer T2, infer T3, infer T4]
-      ? [{} extends This ? any : This, T1, T2, T3, T4]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5, infer T6]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5, T6]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5, infer T6, infer T7]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5, T6, T7]
-      : [{} extends This ? any : This, ...Args[number][]]
-    : never
-): [true, ReturnType<T>] | [false, E];
+  context: This,
+  ...args: Args
+): [true, R] | [false, E];
+declare function xpcall<A extends any[], R, E>(
+  f: (this: void, ...args: A) => R,
+  msgh: (err: any) => E,
+  ...args: A
+): [true, R] | [false, E];
 
 declare namespace debug {
   interface FunctionInfo<T extends Function> {

@@ -116,28 +116,15 @@ declare function pairs<T>(t: T): [(t: T, index?: any) => [any, any], T];
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.
  * @tupleReturn
  */
-declare function pcall<T extends (...args: any[]) => any>(
-  f: T,
-  ...args: T extends (this: infer This, ...args: infer Args) => any
-    ? void extends This
-      ? Args
-      : Args extends [infer T1]
-      ? [{} extends This ? any : This, T1]
-      : Args extends [infer T1, infer T2]
-      ? [{} extends This ? any : This, T1, T2]
-      : Args extends [infer T1, infer T2, infer T3]
-      ? [{} extends This ? any : This, T1, T2, T3]
-      : Args extends [infer T1, infer T2, infer T3, infer T4]
-      ? [{} extends This ? any : This, T1, T2, T3, T4]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5, infer T6]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5, T6]
-      : Args extends [infer T1, infer T2, infer T3, infer T4, infer T5, infer T6, infer T7]
-      ? [{} extends This ? any : This, T1, T2, T3, T4, T5, T6, T7]
-      : [{} extends This ? any : This, ...Args[number][]]
-    : never
-): [true, ReturnType<T>] | [false, string];
+declare function pcall<This, Args extends any[], R>(
+  f: (this: This, ...args: Args) => R,
+  context: This,
+  ...args: Args
+): [true, R] | [false, string];
+declare function pcall<A extends any[], R>(
+  f: (this: void, ...args: A) => R,
+  ...args: A
+): [true, R] | [false, string];
 
 /**
  * Receives any number of arguments and prints their values to stdout, using the tostring function to convert each argument to a string. print is not intended for formatted output, but only as a quick way to show a value, for instance for debugging. For complete control over the output, use string.format and io.write.
