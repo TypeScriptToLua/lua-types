@@ -21,7 +21,7 @@ declare namespace debug {
    */
   function gethook(thread?: LuaThread): [undefined, 0] | [Function, number, string?];
 
-  interface FunctionInfo<T extends Function> {
+  interface FunctionInfo<T extends Function = Function> {
     /**
      * The function itself.
      */
@@ -71,14 +71,10 @@ declare namespace debug {
     f: T,
     what: string,
   ): Partial<FunctionInfo<T>>;
-  function getinfo(f: number): FunctionInfo<Function> | undefined;
-  function getinfo(f: number, what: string): Partial<FunctionInfo<Function>> | undefined;
-  function getinfo(thread: LuaThread, f: number): FunctionInfo<Function> | undefined;
-  function getinfo(
-    thread: LuaThread,
-    f: number,
-    what: string,
-  ): Partial<FunctionInfo<Function>> | undefined;
+  function getinfo(f: number): FunctionInfo | undefined;
+  function getinfo(f: number, what: string): Partial<FunctionInfo> | undefined;
+  function getinfo(thread: LuaThread, f: number): FunctionInfo | undefined;
+  function getinfo(thread: LuaThread, f: number, what: string): Partial<FunctionInfo> | undefined;
 
   /**
    * Returns the metatable of the given value or nil if it does not have a metatable.

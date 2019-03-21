@@ -50,7 +50,7 @@ declare function xpcall<A extends any[], R, E>(
 ): [true, R] | [false, E];
 
 declare namespace debug {
-  interface FunctionInfo<T extends Function> {
+  interface FunctionInfo<T extends Function = Function> {
     nparams: number;
     isvararg: boolean;
   }
