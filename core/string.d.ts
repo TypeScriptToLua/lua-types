@@ -94,7 +94,12 @@ declare namespace string {
    * If the value returned by the table query or by the function call is a string or a number, then it is used as the replacement string; otherwise, if it is false or nil, then there is no replacement (that is, the original match is kept in the string).
    * @tupleReturn
    */
-  function gsub(s: string, pattern: string, repl: string, n?: number): [string, number];
+  function gsub(
+    s: string,
+    pattern: string,
+    repl: string | Record<string, string> | ((...matches: string[]) => string),
+    n?: number,
+  ): [string, number];
 
   /**
    * Receives a string and returns its length. The empty string "" has length 0. Embedded zeros are counted, so "a\000bc\000" has length 5.
