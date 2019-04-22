@@ -103,3 +103,11 @@ interface LuaMetatable<T> {
    */
   __ipairs?<T extends object>(t: T): [(t: T, index?: number) => [number, any], T, 0];
 }
+
+declare namespace coroutine {
+  /**
+   * Returns the running coroutine plus a boolean, true when the running coroutine is the main one.
+   * @tupleReturn
+   */
+  function running(): [LuaThread, boolean];
+}

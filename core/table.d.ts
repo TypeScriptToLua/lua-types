@@ -33,5 +33,5 @@ declare namespace table {
    *
    * The sort algorithm is not stable: elements considered equal by the given order may have their relative positions changed by the sort.
    */
-  function sort<T>(list: T[], comp?: (a: T, b: T) => boolean): T[];
+  function sort<T>(list: T[], comp?: (a: T, b: T) => boolean): void;
 }

@@ -39,16 +39,16 @@ declare function loadfile(
  */
 declare function xpcall<This, Args extends any[], R, E>(
   f: (this: This, ...args: Args) => R,
-  msgh: (err: any) => E,
+  msgh: (this: void, err: any) => E,
   context: This,
   ...args: Args
 ): [true, R] | [false, E];
 
 /** @tupleReturn */
-declare function xpcall<A extends any[], R, E>(
-  f: (this: void, ...args: A) => R,
+declare function xpcall<Args extends any[], R, E>(
+  f: (this: void, ...args: Args) => R,
   msgh: (err: any) => E,
-  ...args: A
+  ...args: Args
 ): [true, R] | [false, E];
 
 declare namespace debug {

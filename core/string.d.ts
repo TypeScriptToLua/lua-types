@@ -114,7 +114,7 @@ declare namespace string {
   /**
    * Looks for the first match of pattern (see §6.4.1) in the string s. If it finds one, then match returns the captures from the pattern; otherwise it returns nil. If pattern specifies no captures, then the whole match is returned. A third, optional numeric argument init specifies where to start the search; its default value is 1 and can be negative.
    */
-  function match(s: string, pattern: string, init?: number): string | null;
+  function match(s: string, pattern: string, init?: number): string[];
 
   /**
    * Returns a string that is the string s reversed.

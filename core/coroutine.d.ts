@@ -20,12 +20,6 @@ declare namespace coroutine {
   function resume(co: LuaThread, ...val: any[]): [true, ...any[]] | [false, string];
 
   /**
-   * Returns the running coroutine plus a boolean, true when the running coroutine is the main one.
-   * @tupleReturn
-   */
-  function running(): [LuaThread, boolean];
-
-  /**
    * Returns the status of coroutine co, as a string: "running", if the coroutine is running (that is, it called status); "suspended", if the coroutine is suspended in a call to yield, or if it has not started running yet; "normal" if the coroutine is active but not running (that is, it has resumed another coroutine); and "dead" if the coroutine has finished its body function, or if it has stopped with an error.
    */
   function status(co: LuaThread): 'running' | 'suspended' | 'normal' | 'dead';

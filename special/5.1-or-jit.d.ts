@@ -91,3 +91,10 @@ declare namespace table {
    */
   function maxn(table: object): number;
 }
+
+declare namespace coroutine {
+  /**
+   * Returns the running coroutine, or nil when called by the main thread.
+   */
+  function running(): LuaThread | undefined;
+}
