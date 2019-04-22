@@ -16,6 +16,7 @@ declare function collectgarbage(opt: 'count'): number;
  * @tupleReturn
  */
 declare function unpack<T extends any[]>(list: T): T;
+/** @tupleReturn */
 declare function unpack<T>(list: T[], i: number, j?: number): T[];
 
 /**

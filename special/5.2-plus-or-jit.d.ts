@@ -43,6 +43,8 @@ declare function xpcall<This, Args extends any[], R, E>(
   context: This,
   ...args: Args
 ): [true, R] | [false, E];
+
+/** @tupleReturn */
 declare function xpcall<A extends any[], R, E>(
   f: (this: void, ...args: A) => R,
   msgh: (err: any) => E,
@@ -66,6 +68,7 @@ declare namespace debug {
    * @tupleReturn
    */
   function getlocal(f: Function | number, local: number): [string, any];
+  /** @tupleReturn */
   function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
 
   /**

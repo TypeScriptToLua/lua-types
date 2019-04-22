@@ -17,6 +17,7 @@ declare const _G: Record<string, any>;
 
 /**
  * Calls error if the value of its argument v is false (i.e., nil or false); otherwise, returns all its arguments. In case of error, message is the error object; when absent, it defaults to "assertion failed!"
+ * @tupleReturn
  */
 declare function assert<T>(v: T, message?: string): Exclude<T, false | null | undefined>;
 
@@ -121,6 +122,8 @@ declare function pcall<This, Args extends any[], R>(
   context: This,
   ...args: Args
 ): [true, R] | [false, string];
+
+/** @tupleReturn */
 declare function pcall<A extends any[], R>(
   f: (this: void, ...args: A) => R,
   ...args: A

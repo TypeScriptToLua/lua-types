@@ -56,6 +56,7 @@ declare namespace table {
    * @tupleReturn
    */
   function unpack<T extends any[]>(list: T): T;
+  /** @tupleReturn */
   function unpack<T>(list: T[], i: number, j?: number): T[];
 
   /**

@@ -68,5 +68,6 @@ declare namespace debug {
    * @tupleReturn
    */
   function getlocal(level: number, local: number): [string, any];
+  /** @tupleReturn */
   function getlocal(thread: LuaThread, level: number, local: number): [string, any];
 }
