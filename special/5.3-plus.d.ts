@@ -65,6 +65,7 @@ declare namespace string {
 
   /**
    * Returns the values packed in string s (see string.pack) according to the format string fmt (see §6.4.2). An optional pos marks where to start reading in s (default is 1). After the read values, this function also returns the index of the first unread byte in s.
+   * @tupleReturn
    */
   function unpack(fmt: string, s: string, pos?: number): any[];
 
