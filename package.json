@@ -1,6 +1,6 @@
 {
   "name": "lua-types",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "TypeScript definitions for Lua standard library",
   "keywords": [
     "lua",
