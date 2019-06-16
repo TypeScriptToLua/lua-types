@@ -36,11 +36,12 @@ declare namespace io {
    *
    * In case of errors this function raises the error, instead of returning an error code.
    */
-  function lines(): () => string;
   function lines<T extends FileReadFormat[]>(
-    filename: string,
+    filename?: string,
     ...formats: T
-  ): LuaTupleIterable<{ [P in keyof T]?: T[P] extends 'n' ? number : string }>;
+  ): LuaTupleIterable<
+    [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+  >;
 
   /**
    * This function opens a file, in the mode specified in the string mode. In case of success, it returns a new file handle.
@@ -120,7 +121,9 @@ interface LuaFile {
    */
   lines<T extends FileReadFormat[]>(
     ...formats: T
-  ): LuaTupleIterable<{ [P in keyof T]?: T[P] extends 'n' ? number : string }>;
+  ): LuaTupleIterable<
+    [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+  >;
 
   /**
    * Reads the file file, according to the given formats, which specify what to read. For each format, the function returns a string or a number with the characters read, or nil if it cannot read data with the specified format. (In this latter case, the function does not read subsequent formats.) When called without formats, it uses a default format that reads the next line (see below).
