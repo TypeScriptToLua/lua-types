@@ -78,7 +78,7 @@ declare namespace string {
    *
    * For this function, a caret '^' at the start of a pattern does not work as an anchor, as this would prevent the iteration.
    */
-  function gmatch(s: string, pattern: string): /** @tupleReturn */ () => string[];
+  function gmatch(s: string, pattern: string): LuaTupleIterable<string[]>;
 
   /**
    * Returns a copy of s in which all (or the first n, if given) occurrences of the pattern (see §6.4.1) have been replaced by a replacement string specified by repl, which can be a string, a table, or a function. gsub also returns, as its second value, the total number of matches that occurred. The name gsub comes from Global SUBstitution.

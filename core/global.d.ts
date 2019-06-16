@@ -1,9 +1,15 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#6.1
 
+/// <reference lib="es2015.iterable" />
+
 /** @noSelfInFile */
 
 type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
+/** @luaIterator */
+type LuaIterable<T> = Iterable<T> & { readonly __internal__: unique symbol };
+/** @luaIterator @tupleReturn */
+type LuaTupleIterable<T extends any[]> = Iterable<T> & { readonly __internal__: unique symbol };
 
 /**
  * A global variable (not a function) that holds a string containing the running Lua version.
@@ -88,7 +94,7 @@ declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | un
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the first nil value.
  * @tupleReturn
  */
-declare function ipairs<T extends object>(t: T): [(t: T, index?: number) => [number, any], T, 0];
+declare function ipairs<T>(t: Record<number, T>): LuaTupleIterable<[number, T]>;
 
 /**
  * Allows a program to traverse all fields of a table. Its first argument is a table and its second argument is an index in this table. next returns the next index of the table and its associated value. When called with nil as its second argument, next returns an initial index and its associated value. When called with the last index, or with nil in an empty table, next returns nil. If the second argument is absent, then it is interpreted as nil. In particular, you can use next(t) to check whether a table is empty.
@@ -111,7 +117,7 @@ declare function next(table: object, index?: any): [any, any] | [];
  * See function next for the caveats of modifying the table during its traversal.
  * @tupleReturn
  */
-declare function pairs<T>(t: T): [(t: T, index?: any) => [any, any], T];
+declare function pairs<T>(t: T): LuaTupleIterable<[keyof T, T[keyof T]]>;
 
 /**
  * Calls function f with the given arguments in protected mode. This means that any error inside f is not propagated; instead, pcall catches the error and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In such case, pcall also returns all results from the call, after this first result. In case of any error, pcall returns false plus the error message.
