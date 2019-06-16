@@ -95,8 +95,6 @@ declare namespace io {
   function write(...args: (string | number)[]): [LuaFile] | [undefined, string];
 }
 
-type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;
-
 interface LuaFile {
   /**
    * Closes file. Note that files are automatically closed when their handles are garbage collected, but that takes an unpredictable amount of time to happen.

@@ -71,3 +71,5 @@ declare namespace debug {
   /** @tupleReturn */
   function getlocal(thread: LuaThread, level: number, local: number): [string, any];
 }
+
+type FileReadFormat = '*n' | '*a' | '*l' | number;

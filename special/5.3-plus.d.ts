@@ -170,3 +170,5 @@ interface LuaMetatable<T> {
    */
   __shr?(this: T, operand: any): any;
 }
+
+type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;
