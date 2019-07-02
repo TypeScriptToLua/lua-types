@@ -7,7 +7,9 @@ declare namespace math {
   function atan(x: number): number;
 
   /**
-   * Returns the arc tangent of y/x (in radians), but uses the signs of both parameters to find the quadrant of the result. (It also handles correctly the case of x being zero.)
+   * Returns the arc tangent of y/x (in radians), but uses the signs of both
+   * parameters to find the quadrant of the result. (It also handles correctly
+   * the case of x being zero.)
    */
   function atan2(y: number, x: number): number;
 
@@ -17,7 +19,8 @@ declare namespace math {
   function cosh(x: number): number;
 
   /**
-   * Returns m and e such that x = m2e, e is an integer and the absolute value of m is in the range [0.5, 1) (or zero when x is zero).
+   * Returns m and e such that x = m2e, e is an integer and the absolute value
+   * of m is in the range [0.5, 1) (or zero when x is zero).
    */
   function frexp(x: number): number;
 

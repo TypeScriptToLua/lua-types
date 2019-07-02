@@ -1,11 +1,16 @@
 /** @noSelfInFile */
 
 /**
- * Loads a chunk using function func to get its pieces. Each call to func must return a string that concatenates with previous results. A return of an empty string, nil, or no value signals the end of the chunk.
+ * Loads a chunk using function func to get its pieces. Each call to func must
+ * return a string that concatenates with previous results. A return of an empty
+ * string, nil, or no value signals the end of the chunk.
  *
- * If there are no errors, returns the compiled chunk as a function; otherwise, returns nil plus the error message. The environment of the returned function is the global environment.
+ * If there are no errors, returns the compiled chunk as a function; otherwise,
+ * returns nil plus the error message. The environment of the returned function
+ * is the global environment.
  *
- * chunkname is used as the chunk name for error messages and debug information. When absent, it defaults to "=(load)".
+ * chunkname is used as the chunk name for error messages and debug information.
+ * When absent, it defaults to "=(load)".
  * @tupleReturn
  */
 declare function load(
@@ -14,7 +19,8 @@ declare function load(
 ): [() => any] | [undefined, string];
 
 /**
- * Similar to load, but gets the chunk from file filename or from the standard input, if no file name is given.
+ * Similar to load, but gets the chunk from file filename or from the standard
+ * input, if no file name is given.
  * @tupleReturn
  */
 declare function loadfile(filename?: string): [() => any] | [undefined, string];
@@ -32,9 +38,16 @@ declare function loadfile(filename?: string): [() => any] | [undefined, string];
 declare function loadstring(string: string, chunkname?: string): [() => any] | [undefined, string];
 
 /**
- * This function is similar to pcall, except that it sets a new message handler msgh.
+ * This function is similar to pcall, except that it sets a new message handler
+ * msgh.
  *
- * xpcall calls function f in protected mode, using err as the error handler. Any error inside f is not propagated; instead, xpcall catches the error, calls the err function with the original error object, and returns a status code. Its first result is the status code (a boolean), which is true if the call succeeds without errors. In this case, xpcall also returns all results from the call, after this first result. In case of any error, xpcall returns false plus the result from err.
+ * xpcall calls function f in protected mode, using err as the error handler.
+ * Any error inside f is not propagated; instead, xpcall catches the error,
+ * calls the err function with the original error object, and returns a status
+ * code. Its first result is the status code (a boolean), which is true if the
+ * call succeeds without errors. In this case, xpcall also returns all results
+ * from the call, after this first result. In case of any error, xpcall returns
+ * false plus the result from err.
  * @tupleReturn
  */
 declare function xpcall<R, E>(f: () => R, err: (err: any) => E): [true, R] | [false, E];
@@ -55,16 +68,23 @@ declare namespace string {
 
 declare namespace os {
   /**
-   * Calls the C function exit, with an optional code, to terminate the host program. The default value for code is the success code.
+   * Calls the C function exit, with an optional code, to terminate the host
+   * program. The default value for code is the success code.
    */
   function exit(code?: number): never;
 }
 
 declare namespace debug {
   /**
-   * This function returns the name and the value of the local variable with index local of the function at level level of the stack. (The first parameter or local variable has index 1, and so on, until the last active local variable.) The function returns nil if there is no local variable with the given index, and raises an error when called with a level out of range. (You can call debug.getinfo to check whether the level is valid.)
+   * This function returns the name and the value of the local variable with
+   * index local of the function at level level of the stack. (The first
+   * parameter or local variable has index 1, and so on, until the last active
+   * local variable.) The function returns nil if there is no local variable
+   * with the given index, and raises an error when called with a level out of
+   * range. (You can call debug.getinfo to check whether the level is valid.)
    *
-   * Variable names starting with '(' (open parentheses) represent internal variables (loop control variables, temporaries, and C function locals).
+   * Variable names starting with '(' (open parentheses) represent internal
+   * variables (loop control variables, temporaries, and C function locals).
    * @tupleReturn
    */
   function getlocal(level: number, local: number): [string, any];
