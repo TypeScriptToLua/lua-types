@@ -116,7 +116,7 @@ declare function error(message: string, level?: number): never;
  * metatable has a __metatable field, returns the associated value. Otherwise,
  * returns the metatable of the given object.
  */
-declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | undefined;
+declare function getmetatable<T extends object>(object: T): LuaMetatable<T, object> | undefined;
 
 /**
  * Returns three values (an iterator function, the table t, and 0) so that the
@@ -247,7 +247,7 @@ declare function select<T>(index: '#', ...args: T[]): number;
  */
 declare function setmetatable<T extends object, M extends object>(
   table: T,
-  metatable: LuaMetatable<M> | null | undefined,
+  metatable: LuaMetatable<T & M, M> | null | undefined,
 ): T & M;
 
 /**
