@@ -4,7 +4,7 @@
  * @typeparam T The prototype object and the metatable.
  * @typeparam M This metatable.
  */
-interface LuaMetatable<T extends object, M extends object> {
+interface LuaMetatable<T extends object, M extends object = object> {
   /**
    * the addition (+) operation. If any operand for an addition is not a number
    * (nor a string coercible to a number), Lua will try to call a metamethod.
