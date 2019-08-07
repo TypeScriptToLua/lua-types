@@ -192,7 +192,10 @@ declare namespace debug {
    * Sets the metatable for the given value to the given table (which can be
    * nil). Returns value.
    */
-  function setmetatable<T>(value: T, table: LuaMetatable<T> | null | undefined): T;
+  function setmetatable<T, TIndex>(
+    value: T,
+    table: LuaMetatable<T & TIndex, TIndex> | null | undefined,
+  ): T & TIndex;
 
   /**
    * This function assigns the value value to the upvalue with index up of the

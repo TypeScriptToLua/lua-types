@@ -1,6 +1,6 @@
 // Based on https://www.lua.org/manual/5.3/manual.html#2.4
 
-interface LuaMetatable<T extends object, TIndex extends object = object> {
+interface LuaMetatable<T, TIndex = object> {
   /**
    * the addition (+) operation. If any operand for an addition is not a number
    * (nor a string coercible to a number), Lua will try to call a metamethod.
