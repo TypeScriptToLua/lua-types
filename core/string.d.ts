@@ -57,7 +57,12 @@ declare namespace string {
    * are also returned, after the two indices.
    * @tupleReturn
    */
-  function find(s: string, pattern: string, init?: number, plain?: boolean): [number, number] | [];
+  function find(
+    s: string,
+    pattern: string,
+    init?: number,
+    plain?: boolean,
+  ): [number, number, ...string[]] | [];
 
   /**
    * Returns a formatted version of its variable number of arguments following
