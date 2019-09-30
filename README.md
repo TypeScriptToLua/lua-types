@@ -9,9 +9,9 @@
 
 > NOTE: In most of cases your environment-specific types would already include this package. In that
 > case you don't need to do anything. If you're a developer of such types you should add `lua-types`
-> as a dependency and load it by adding `/// <reference types="lua-types/VERSION" />`
+> as a dependency and load it by adding `/// <reference types="lua-types/version" />`
 
-1. Get Lua Types from npm
+1. Get this package from npm
 
 ```bash
 yarn add -D lua-types
@@ -24,12 +24,12 @@ npm install -D lua-types
 ```json
 {
   "compilerOptions": {
-    "types": ["lua-types/VERSION"]
+    "types": ["lua-types/version"]
   }
 }
 ```
 
-Currently supported values of `VERSION` are:
+Currently supported versions are:
 
 - `5.1`
 - `5.2`
