@@ -37,24 +37,7 @@ Currently supported values of `VERSION` are:
 - `5.4`
 - `jit`
 
-## Loading only a subset of features
-
-Some Lua environments are sandboxed and don't have some globals declared, like `io`, `os` and
-`debug`. To avoid registering these globals, you can import core files separately. For example:
-
-```json
-{
-  "compilerOptions": {
-    "types": [
-      "lua-types/core/coroutine",
-      "lua-types/core/global",
-      "lua-types/core/math",
-      "lua-types/core/metatable",
-      "lua-types/core/modules",
-      "lua-types/core/string",
-      "lua-types/core/table",
-      "lua-types/special/jit"
-    ]
-  }
-}
-```
+> NOTE: All other files in this module shouldn't be considered public. Do not import them manually,
+> as they may change in non-major updates. If your environment doesn't provide all of standard Lua
+> features, consider banning them with a
+> [no-restricted-globals](https://eslint.org/docs/rules/no-restricted-globals) eslint rule.
