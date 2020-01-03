@@ -80,9 +80,10 @@ declare namespace package {
    * The first searcher returns no extra value.
    */
   var searchers: (
-    | (/** @tupleReturn */ (modname: string) => [(modname: string) => void])
-    | (/** @tupleReturn */ <T>(modname: string) => [(modname: string, extra: T) => T, T])
-    | string)[];
+    | /** @tupleReturn */ ((modname: string) => [(modname: string) => void])
+    | /** @tupleReturn */ (<T>(modname: string) => [(modname: string, extra: T) => T, T])
+    | string
+  )[];
 }
 
 declare namespace table {
