@@ -22,7 +22,7 @@ declare const _VERSION: 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
  * §2.2). Lua itself does not use this variable; changing its value does not
  * affect any environment, nor vice versa.
  */
-declare const _G: Record<string, any>;
+declare const _G: typeof globalThis;
 
 /**
  * Calls error if the value of its argument v is false (i.e., nil or false);
