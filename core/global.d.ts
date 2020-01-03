@@ -25,14 +25,11 @@ declare const _VERSION: 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
 declare const _G: typeof globalThis;
 
 /**
- * Calls error if the value of its argument v is false (i.e., nil or false);
- * otherwise, returns all its arguments. In case of error, message is the error
- * object; when absent, it defaults to "assertion failed!"
- * @tupleReturn
+ * Calls error if the value of its argument `v` is false (i.e., nil or false);
+ * otherwise, returns all its arguments. In case of error, `message` is the
+ * error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert<T extends any[]>(
-  ...args: T
-): { [P in keyof T]: P extends '0' ? Exclude<T[P], false | null | undefined> : T[P] };
+declare function assert(v: any, message?: string): asserts v;
 
 /**
  * This function is a generic interface to the garbage collector. It performs
