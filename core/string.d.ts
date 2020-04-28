@@ -25,7 +25,9 @@ declare namespace string {
    *
    * Numeric codes are not necessarily portable across platforms.
    */
-  function byte(s: string, i?: number, j?: number): number;
+  function byte(s: string, i?: number): number;
+  /** @tupleReturn */
+  function byte(s: string, i?: number, j?: number): number[];
 
   /**
    * Receives zero or more integers. Returns a string with length equal to the
