@@ -21,10 +21,11 @@ npm install -D lua-types
 
 2. Modify your `tsconfig.json`
 
-```json
+```diff
 {
   "compilerOptions": {
-    "types": ["lua-types/version"]
++    "moduleResolution": "node"
++    "types": ["lua-types/version"]
   }
 }
 ```
