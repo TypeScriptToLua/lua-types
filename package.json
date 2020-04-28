@@ -14,16 +14,16 @@
     "**/*.d.ts"
   ],
   "scripts": {
-    "lint": "prettier --check **/.*.yml **/*.{ts,yml,md}"
+    "lint": "prettier --check ."
   },
   "prettier": {
     "printWidth": 100,
-    "proseWrap": "always",
+    "proseWrap": "never",
     "singleQuote": true,
     "trailingComma": "all"
   },
   "devDependencies": {
-    "prettier": "^1.19.1",
-    "typescript-to-lua": "^0.30.1"
+    "prettier": "^2.0.5",
+    "typescript-to-lua": "^0.32.2"
   }
 }
