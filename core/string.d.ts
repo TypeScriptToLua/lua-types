@@ -179,6 +179,7 @@ declare namespace string {
    * returns nil. If pattern specifies no captures, then the whole match is
    * returned. A third, optional numeric argument init specifies where to start
    * the search; its default value is 1 and can be negative.
+   * @tupleReturn
    */
   function match(s: string, pattern: string, init?: number): string[];
 
