@@ -1,2 +1,2 @@
-import './core';
-import './special/jit';
+/// <reference path="./core/index.d.ts" />
+/// <reference path="./special/jit.d.ts" />

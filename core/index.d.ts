@@ -1,10 +1,10 @@
-import './coroutine';
-import './debug';
-import './global';
-import './io';
-import './math';
-import './metatable';
-import './modules';
-import './os';
-import './string';
-import './table';
+/// <reference path="./coroutine.d.ts" />
+/// <reference path="./debug.d.ts" />
+/// <reference path="./global.d.ts" />
+/// <reference path="./io.d.ts" />
+/// <reference path="./math.d.ts" />
+/// <reference path="./metatable.d.ts" />
+/// <reference path="./modules.d.ts" />
+/// <reference path="./os.d.ts" />
+/// <reference path="./string.d.ts" />
+/// <reference path="./table.d.ts" />

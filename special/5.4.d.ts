@@ -1,4 +1,4 @@
-import './5.2-plus';
-import './5.2-plus-or-jit';
-import './5.3-plus';
-import './5.4-only';
+/// <reference path="./5.2-plus.d.ts" />
+/// <reference path="./5.2-plus-or-jit.d.ts" />
+/// <reference path="./5.3-plus.d.ts" />
+/// <reference path="./5.4-only.d.ts" />

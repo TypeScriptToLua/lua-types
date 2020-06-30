@@ -21,7 +21,6 @@ npm install -D lua-types
 ```diff
 {
   "compilerOptions": {
-+    "moduleResolution": "node"
 +    "types": ["lua-types/version"]
   }
 }
