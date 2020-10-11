@@ -6,7 +6,7 @@
 
 ## Installation
 
-> NOTE: In most of cases your environment-specific types would already include this package. In that case you don't need to do anything. If you're a developer of such types you should add `lua-types` as a dependency and load it by adding `/// <reference types="lua-types/version" />`
+> NOTE: In most of cases your environment-specific types would already include this package. In that case you don't need to do anything. If you're a developer of such types you should add `lua-types` as a dependency and load it by adding `/// <reference types="lua-types/<version>" />`
 
 1. Get this package from npm
 
@@ -21,12 +21,12 @@ npm install -D lua-types
 ```diff
 {
   "compilerOptions": {
-+    "types": ["lua-types/version"]
++    "types": ["lua-types/<version>"]
   }
 }
 ```
 
-Currently supported versions are:
+Where `<version>` is one of:
 
 - `5.1`
 - `5.2`
