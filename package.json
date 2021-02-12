@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "prettier": "^2.0.5",
-    "typescript-to-lua": "^0.32.2"
+    "typescript-to-lua": "^0.38.0"
   }
 }
