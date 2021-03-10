@@ -30,44 +30,40 @@
  *
  * Lua does not check the consistency of binary chunks. Maliciously crafted
  * binary chunks can crash the interpreter.
- * @tupleReturn
  */
 declare function load(
   chunk: string | (() => string | null | undefined),
   chunkname?: string,
   mode?: 'b' | 't' | 'bt',
   env?: object,
-): [() => any] | [undefined, string];
+): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 /**
  * Similar to load, but gets the chunk from file filename or from the standard
  * input, if no file name is given.
- * @tupleReturn
  */
 declare function loadfile(
   filename?: string,
   mode?: 'b' | 't' | 'bt',
   env?: object,
-): [() => any] | [undefined, string];
+): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 /**
  * This function is similar to pcall, except that it sets a new message handler
  * msgh.
- * @tupleReturn
  */
 declare function xpcall<This, Args extends any[], R, E>(
   f: (this: This, ...args: Args) => R,
   msgh: (this: void, err: any) => E,
   context: This,
   ...args: Args
-): [true, R] | [false, E];
+): LuaMultiReturn<[true, R] | [false, E]>;
 
-/** @tupleReturn */
 declare function xpcall<Args extends any[], R, E>(
   f: (this: void, ...args: Args) => R,
   msgh: (err: any) => E,
   ...args: Args
-): [true, R] | [false, E];
+): LuaMultiReturn<[true, R] | [false, E]>;
 
 declare namespace debug {
   interface FunctionInfo<T extends Function = Function> {
@@ -94,11 +90,13 @@ declare namespace debug {
    *
    * The parameter f may also be a function. In that case, getlocal returns only
    * the name of function parameters.
-   * @tupleReturn
    */
-  function getlocal(f: Function | number, local: number): [string, any];
-  /** @tupleReturn */
-  function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
+  function getlocal(f: Function | number, local: number): LuaMultiReturn<[string, any]>;
+  function getlocal(
+    thread: LuaThread,
+    f: Function | number,
+    local: number,
+  ): LuaMultiReturn<[string, any]>;
 
   /**
    * Returns a unique identifier (as a light userdata) for the upvalue numbered

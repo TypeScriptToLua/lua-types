@@ -24,9 +24,8 @@ declare namespace coroutine {
    * values passed to yield (when the coroutine yields) or any values returned
    * by the body function (when the coroutine terminates). If there is any
    * error, resume returns false plus the error message.
-   * @tupleReturn
    */
-  function resume(co: LuaThread, ...val: any[]): [true, ...any[]] | [false, string];
+  function resume(co: LuaThread, ...val: any[]): LuaMultiReturn<[true, ...any[]] | [false, string]>;
 
   /**
    * Returns the status of coroutine co, as a string: "running", if the
@@ -45,12 +44,11 @@ declare namespace coroutine {
    * same values returned by resume, except the first boolean. In case of error,
    * propagates the error.
    */
-  function wrap(f: (...args: any[]) => any): /** @tupleReturn */ (...args: any[]) => any[];
+  function wrap(f: (...args: any[]) => any): (...args: any[]) => LuaMultiReturn<any[]>;
 
   /**
    * Suspends the execution of the calling coroutine. Any arguments to yield are
    * passed as extra results to resume.
-   * @tupleReturn
    */
-  function yield(...args: any[]): any[];
+  function yield(...args: any[]): LuaMultiReturn<any[]>;
 }

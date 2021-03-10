@@ -107,17 +107,15 @@ declare namespace os {
    * Deletes the file (or empty directory, on POSIX systems) with the given
    * name. If this function fails, it returns nil, plus a string describing the
    * error and the error code. Otherwise, it returns true.
-   * @tupleReturn
    */
-  function remove(filename: string): [true] | [undefined, string];
+  function remove(filename: string): LuaMultiReturn<[true] | [undefined, string]>;
 
   /**
    * Renames the file or directory named oldname to newname. If this function
    * fails, it returns nil, plus a string describing the error and the error
    * code. Otherwise, it returns true.
-   * @tupleReturn
    */
-  function rename(oldname: string, newname: string): [true] | [undefined, string];
+  function rename(oldname: string, newname: string): LuaMultiReturn<[true] | [undefined, string]>;
 
   /**
    * Sets the current locale of the program. locale is a system-dependent string

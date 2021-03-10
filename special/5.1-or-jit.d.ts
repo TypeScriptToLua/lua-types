@@ -18,11 +18,9 @@ declare function collectgarbage(opt: 'count'): number;
  * except that the above code can be written only for a fixed number of
  * elements. By default, i is 1 and j is the length of the list, as defined by
  * the length operator (see §2.5.5).
- * @tupleReturn
  */
-declare function unpack<T extends any[]>(list: T): T;
-/** @tupleReturn */
-declare function unpack<T>(list: T[], i: number, j?: number): T[];
+declare function unpack<T extends any[]>(list: T): LuaMultiReturn<T[]>;
+declare function unpack<T>(list: T[], i: number, j?: number): LuaMultiReturn<T[]>;
 
 /**
  * Returns the current environment in use by the function. f can be a Lua
@@ -101,8 +99,8 @@ declare namespace package {
    * original open function.
    */
   var loaders: (
-    | /** @tupleReturn */ ((modname: string) => [(modname: string) => void])
-    | /** @tupleReturn */ (<T>(modname: string) => [(modname: string, extra: T) => T, T])
+    | ((modname: string) => LuaMultiReturn<[(modname: string) => void]>)
+    | (<T>(modname: string) => LuaMultiReturn<[(modname: string, extra: T) => T, T]>)
     | string
   )[];
 }

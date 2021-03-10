@@ -6,10 +6,6 @@
 
 type LuaThread = { readonly __internal__: unique symbol };
 type LuaUserdata = { readonly __internal__: unique symbol };
-/** @luaIterator */
-type LuaIterable<T> = Iterable<T> & { readonly __internal__: unique symbol };
-/** @luaIterator @tupleReturn */
-type LuaTupleIterable<T extends any[]> = Iterable<T> & { readonly __internal__: unique symbol };
 
 /**
  * A global variable (not a function) that holds a string containing the running
@@ -124,7 +120,7 @@ declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | un
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the
  * first nil value.
  */
-declare function ipairs<T>(t: Record<number, T>): LuaTupleIterable<[number, T]>;
+declare function ipairs<T>(t: Record<number, T>): LuaIterable<LuaMultiReturn<[number, T]>>;
 
 /**
  * Allows a program to traverse all fields of a table. Its first argument is a
@@ -142,9 +138,8 @@ declare function ipairs<T>(t: Record<number, T>): LuaTupleIterable<[number, T]>;
  * The behavior of next is undefined if, during the traversal, you assign any
  * value to a non-existent field in the table. You may however modify existing
  * fields. In particular, you may clear existing fields.
- * @tupleReturn
  */
-declare function next(table: object, index?: any): [any, any] | [];
+declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | []>;
 
 /**
  * If t has a metamethod __pairs, calls it with t as argument and returns the
@@ -158,7 +153,7 @@ declare function next(table: object, index?: any): [any, any] | [];
  * See function next for the caveats of modifying the table during its
  * traversal.
  */
-declare function pairs<T>(t: T): LuaTupleIterable<[keyof T, T[keyof T]]>;
+declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, T[keyof T]]>>;
 
 /**
  * Calls function f with the given arguments in protected mode. This means that
@@ -167,19 +162,17 @@ declare function pairs<T>(t: T): LuaTupleIterable<[keyof T, T[keyof T]]>;
  * is true if the call succeeds without errors. In such case, pcall also returns
  * all results from the call, after this first result. In case of any error,
  * pcall returns false plus the error message.
- * @tupleReturn
  */
 declare function pcall<This, Args extends any[], R>(
   f: (this: This, ...args: Args) => R,
   context: This,
   ...args: Args
-): [true, R] | [false, string];
+): LuaMultiReturn<[true, R] | [false, string]>;
 
-/** @tupleReturn */
 declare function pcall<A extends any[], R>(
   f: (this: void, ...args: A) => R,
   ...args: A
-): [true, R] | [false, string];
+): LuaMultiReturn<[true, R] | [false, string]>;
 
 /**
  * Receives any number of arguments and prints their values to stdout, using the
@@ -222,9 +215,8 @@ declare function rawset<T extends object, K extends keyof T>(table: T, index: K,
  * negative number indexes from the end (-1 is the last argument). Otherwise,
  * index must be the string "#", and select returns the total number of extra
  * arguments it received.
- * @tupleReturn
  */
-declare function select<T>(index: number, ...args: T[]): T[];
+declare function select<T>(index: number, ...args: T[]): LuaMultiReturn<T[]>;
 
 /**
  * If index is a number, returns all arguments after argument number index; a

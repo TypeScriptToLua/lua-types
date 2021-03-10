@@ -32,9 +32,10 @@ declare namespace debug {
    * Returns the current hook settings of the thread, as three values: the
    * current hook function, the current hook mask, and the current hook count
    * (as set by the debug.sethook function).
-   * @tupleReturn
    */
-  function gethook(thread?: LuaThread): [undefined, 0] | [Function, number, string?];
+  function gethook(
+    thread?: LuaThread,
+  ): LuaMultiReturn<[undefined, 0] | [Function, number, string?]>;
 
   interface FunctionInfo<T extends Function = Function> {
     /**
@@ -126,9 +127,8 @@ declare namespace debug {
    * Variable names starting with '(' (open parenthesis) represent variables
    * with no known names (variables from chunks saved without debug
    * information).
-   * @tupleReturn
    */
-  function getupvalue(f: Function, up: number): [string, any] | [];
+  function getupvalue(f: Function, up: number): LuaMultiReturn<[string, any] | []>;
 
   /**
    * Returns the Lua value associated to u. If u is not a full userdata, returns

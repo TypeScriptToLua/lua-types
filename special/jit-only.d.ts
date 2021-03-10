@@ -30,14 +30,13 @@
  *
  * Lua does not check the consistency of binary chunks. Maliciously crafted
  * binary chunks can crash the interpreter.
- * @tupleReturn
  */
 declare function loadstring(
   chunk: string | (() => string | null | undefined),
   chunkname?: string,
   mode?: 'b' | 't' | 'bt',
   env?: object,
-): [() => any] | [undefined, string];
+): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 declare namespace bit {
   /**
@@ -279,9 +278,8 @@ declare namespace jit {
    * Returns the current status of the JIT compiler. The first result is either
    * true or false if the JIT compiler is turned on or off. The remaining
    * results are strings for CPU-specific features and enabled optimizations.
-   * @tupleReturn
    */
-  function status(): [boolean, ...string[]];
+  function status(): LuaMultiReturn<[boolean, ...string[]]>;
 
   /**
    * Contains the LuaJIT version string.

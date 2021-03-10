@@ -77,9 +77,8 @@ declare namespace math {
   /**
    * Returns the integral part of x and the fractional part of x. Its second
    * result is always a float.
-   * @tupleReturn
    */
-  function modf(x: number): [number, number];
+  function modf(x: number): LuaMultiReturn<[number, number]>;
 
   /**
    * The value of π.

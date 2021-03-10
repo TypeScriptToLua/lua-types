@@ -1,0 +1,5 @@
+{
+  "compilerOptions": {
+    "types": ["typescript-to-lua/language-extensions"]
+  }
+}

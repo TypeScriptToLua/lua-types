@@ -88,9 +88,8 @@ declare namespace string {
    * format string fmt (see §6.4.2). An optional pos marks where to start
    * reading in s (default is 1). After the read values, this function also
    * returns the index of the first unread byte in s.
-   * @tupleReturn
    */
-  function unpack(fmt: string, s: string, pos?: number): any[];
+  function unpack(fmt: string, s: string, pos?: number): LuaMultiReturn<any[]>;
 
   /**
    * Returns the size of a string resulting from string.pack with the given
@@ -150,15 +149,14 @@ declare namespace utf8 {
    */
   function codes<S extends string>(
     s: S,
-  ): [/** @tupleReturn */ (s: S, index?: number) => [number, number], S, 0];
+  ): [(s: S, index?: number) => LuaMultiReturn<[number, number]>, S, 0];
 
   /**
    * Returns the codepoints (as integers) from all characters in s that start
    * between byte position i and j (both included). The default for i is 1 and
    * for j is i. It raises an error if it meets any invalid byte sequence.
-   * @tupleReturn
    */
-  function codepoint(s: string, i?: number, j?: number): number[];
+  function codepoint(s: string, i?: number, j?: number): LuaMultiReturn<number[]>;
 
   /**
    * Returns the number of UTF-8 characters in string s that start between
@@ -229,4 +227,5 @@ interface LuaMetatable<T> {
   __shr?(this: T, operand: any): any;
 }
 
+//@ts-expect-error Every Lua version has its own FileReadFormat defined, causing a name conflict that we can ignore since the user will only use one Lua version
 type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;

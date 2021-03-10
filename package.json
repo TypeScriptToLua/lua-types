@@ -14,6 +14,7 @@
     "**/*.d.ts"
   ],
   "scripts": {
+    "build": "tstl",
     "lint": "prettier --check ."
   },
   "prettier": {
@@ -23,7 +24,9 @@
     "trailingComma": "all"
   },
   "devDependencies": {
-    "prettier": "^2.0.5",
-    "typescript-to-lua": "^0.32.2"
+    "prettier": "^2.0.5"
+  },
+  "dependencies": {
+    "typescript-to-lua": "^0.39.0"
   }
 }
