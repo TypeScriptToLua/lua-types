@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lua version 5.1 / table table.concat 1`] = `
+"myTable = {1, 2, 3}
+table.concat(myTable, \\",\\", 0, #myTable)"
+`;
+
+exports[`Lua version 5.1 / table table.insert 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 4)"
+`;
+
+exports[`Lua version 5.1 / table table.insert at position 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 1, 4)"
+`;
+
+exports[`Lua version 5.1 / table table.remove 1`] = `
+"myTable = {1, 2, 3}
+table.remove(myTable, 2)"
+`;
+
+exports[`Lua version 5.1 / table table.sort 1`] = `
+"myTable = {1, 2, 3}
+table.sort(
+    myTable,
+    function(a, b) return a - b end
+)"
+`;
+
+exports[`Lua version 5.2 / table table.concat 1`] = `
+"myTable = {1, 2, 3}
+table.concat(myTable, \\",\\", 0, #myTable)"
+`;
+
+exports[`Lua version 5.2 / table table.insert 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 4)"
+`;
+
+exports[`Lua version 5.2 / table table.insert at position 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 1, 4)"
+`;
+
+exports[`Lua version 5.2 / table table.remove 1`] = `
+"myTable = {1, 2, 3}
+table.remove(myTable, 2)"
+`;
+
+exports[`Lua version 5.2 / table table.sort 1`] = `
+"myTable = {1, 2, 3}
+table.sort(
+    myTable,
+    function(a, b) return a - b end
+)"
+`;
+
+exports[`Lua version 5.3 / table table.concat 1`] = `
+"myTable = {1, 2, 3}
+table.concat(myTable, \\",\\", 0, #myTable)"
+`;
+
+exports[`Lua version 5.3 / table table.insert 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 4)"
+`;
+
+exports[`Lua version 5.3 / table table.insert at position 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 1, 4)"
+`;
+
+exports[`Lua version 5.3 / table table.remove 1`] = `
+"myTable = {1, 2, 3}
+table.remove(myTable, 2)"
+`;
+
+exports[`Lua version 5.3 / table table.sort 1`] = `
+"myTable = {1, 2, 3}
+table.sort(
+    myTable,
+    function(a, b) return a - b end
+)"
+`;
+
+exports[`Lua version jit / table table.concat 1`] = `
+"myTable = {1, 2, 3}
+table.concat(myTable, \\",\\", 0, #myTable)"
+`;
+
+exports[`Lua version jit / table table.insert 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 4)"
+`;
+
+exports[`Lua version jit / table table.insert at position 1`] = `
+"myTable = {1, 2, 3}
+table.insert(myTable, 1, 4)"
+`;
+
+exports[`Lua version jit / table table.remove 1`] = `
+"myTable = {1, 2, 3}
+table.remove(myTable, 2)"
+`;
+
+exports[`Lua version jit / table table.sort 1`] = `
+"myTable = {1, 2, 3}
+table.sort(
+    myTable,
+    function(a, b) return a - b end
+)"
+`;

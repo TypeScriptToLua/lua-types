@@ -14,7 +14,8 @@
     "**/*.d.ts"
   ],
   "scripts": {
-    "lint": "prettier --check ."
+    "lint": "prettier --check .",
+    "test": "jest"
   },
   "prettier": {
     "printWidth": 100,
@@ -23,7 +24,11 @@
     "trailingComma": "all"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.34",
+    "jest-circus": "^26.6.3",
     "prettier": "^2.0.5",
+    "ts-jest": "^26.5.3",
     "typescript-to-lua": "^0.32.2"
   }
 }
