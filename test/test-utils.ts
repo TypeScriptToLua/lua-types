@@ -4,7 +4,13 @@ import * as ts from 'typescript';
 
 import { LuaTarget, Transpiler } from 'typescript-to-lua';
 
-const targets = [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.Lua53, LuaTarget.Lua54, LuaTarget.LuaJIT];
+const targets = [
+    LuaTarget.Lua51,
+    LuaTarget.Lua52,
+    LuaTarget.Lua53,
+    LuaTarget.Lua54,
+    LuaTarget.LuaJIT,
+];
 
 export function describeForEachLuaTarget(name: string, action: (luaTarget: LuaTarget) => void) {
     for (const target of targets)
@@ -26,7 +32,7 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
     const options = {
         luaTarget,
         skipLibCheck: true,
-        lib: ["lib.esnext.d.ts"],
+        lib: ['lib.esnext.d.ts'],
         noHeader: true,
         target: ts.ScriptTarget.ESNext,
         types: [languageExtensionsPath],
@@ -36,7 +42,7 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
     const program = ts.createProgram(rootNames, options, compilerHost);
 
     // Run TypeScriptToLua
-    const outFiles: Array<{ fileName: string, fileContent: string }> = [];
+    const outFiles: Array<{ fileName: string; fileContent: string }> = [];
     const { diagnostics: transpileDiagnostics } = new Transpiler().emit({
         program,
         writeFile: (fileName, fileContent) => outFiles.push({ fileName, fileContent }),
@@ -52,7 +58,7 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
     expect(diagnosticMessages).toEqual([]);
 
     // Get the result from our input
-    const outFile = outFiles.find(f => f.fileName.endsWith("input.lua"));
+    const outFile = outFiles.find((f) => f.fileName.endsWith('input.lua'));
     expect(outFile).toBeDefined();
 
     return outFile.fileContent.trim();
