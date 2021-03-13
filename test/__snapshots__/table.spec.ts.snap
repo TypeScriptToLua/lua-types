@@ -24,7 +24,7 @@ exports[`Lua version 5.1 / table table.sort 1`] = `
 "myTable = {1, 2, 3}
 table.sort(
     myTable,
-    function(a, b) return a - b end
+    function(a, b) return a < b end
 )"
 `;
 
@@ -52,7 +52,7 @@ exports[`Lua version 5.2 / table table.sort 1`] = `
 "myTable = {1, 2, 3}
 table.sort(
     myTable,
-    function(a, b) return a - b end
+    function(a, b) return a < b end
 )"
 `;
 
@@ -80,7 +80,7 @@ exports[`Lua version 5.3 / table table.sort 1`] = `
 "myTable = {1, 2, 3}
 table.sort(
     myTable,
-    function(a, b) return a - b end
+    function(a, b) return a < b end
 )"
 `;
 
@@ -108,6 +108,6 @@ exports[`Lua version jit / table table.sort 1`] = `
 "myTable = {1, 2, 3}
 table.sort(
     myTable,
-    function(a, b) return a - b end
+    function(a, b) return a < b end
 )"
 `;

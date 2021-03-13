@@ -23,7 +23,7 @@ describeForEachLuaTarget("table", target => {
     test("table.insert at position", () => {
         const lua = tstl(target, `
             const myTable = [1, 2, 3];
-            table.insert(myTable, 1, 4, 8);
+            table.insert(myTable, 1, 4);
         `);
 
         expect(lua).toMatchSnapshot();
@@ -41,7 +41,7 @@ describeForEachLuaTarget("table", target => {
     test("table.sort", () => {
         const lua = tstl(target, `
             const myTable = [1, 2, 3];
-            table.sort(myTable, (a, b) => a - b);
+            table.sort(myTable, (a, b) => a < b);
         `);
 
         expect(lua).toMatchSnapshot();

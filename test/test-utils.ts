@@ -16,6 +16,7 @@ const luaTargets = {
     "5.1": LuaTarget.Lua51,
     "5.2": LuaTarget.Lua52,
     "5.3": LuaTarget.Lua53,
+    //"5.4": LuaTarget.Lua54,
     "jit": LuaTarget.LuaJIT,
 }
 
@@ -32,7 +33,7 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
 
     // Create a TS program containing input.ts and the declarations file to test
     const rootNames = ["input.ts", typesPath];
-    const options = { luaTarget, noHeader: true };
+    const options = { luaTarget, noHeader: true, target: ts.ScriptTarget.ESNext };
     const compilerHost = getCompilerHostWithInput(input); // Create a compiler host that returns input for input.ts
     const program = ts.createProgram(rootNames, options, compilerHost);
 
@@ -41,7 +42,8 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
 
     // Expect no diagnostics, either from TS or TSTL
     const diagnostics = [...ts.getPreEmitDiagnostics(program), ...result.diagnostics];
-    expect(diagnostics.map(d => d.messageText)).toEqual([]);
+    const diagnosticMessages = diagnostics.map(d => d.messageText);
+    expect(diagnosticMessages).toEqual([]);
 
     // Get the result from our input
     const testFile = result.transpiledFiles.find(f => f.fileName === "input.ts");
