@@ -4,7 +4,7 @@ import * as ts from 'typescript';
 
 import { LuaTarget, Transpiler } from 'typescript-to-lua';
 
-const targets = [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.Lua53, LuaTarget.LuaJIT];
+const targets = [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.Lua53, LuaTarget.Lua54, LuaTarget.LuaJIT];
 
 export function describeForEachLuaTarget(name: string, action: (luaTarget: LuaTarget) => void) {
     for (const target of targets)
