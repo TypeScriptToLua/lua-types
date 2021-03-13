@@ -180,39 +180,39 @@ exports[`Lua version 5.3 / global tostring 1`] = `"str = tostring(213.4)"`;
 
 exports[`Lua version 5.3 / global type 1`] = `"t = type(213.4)"`;
 
-exports[`Lua version jit / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
+exports[`Lua version JIT / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
-exports[`Lua version jit / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+exports[`Lua version JIT / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
-exports[`Lua version jit / global getmetatable 1`] = `
+exports[`Lua version JIT / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
 `;
 
-exports[`Lua version jit / global ipairs 1`] = `
+exports[`Lua version JIT / global ipairs 1`] = `
 "for i, v in ipairs({1, 2, 3}) do
     print(i, v)
 end"
 `;
 
-exports[`Lua version jit / global next 1`] = `"nextKey, nextValue = next({})"`;
+exports[`Lua version JIT / global next 1`] = `"nextKey, nextValue = next({})"`;
 
-exports[`Lua version jit / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
+exports[`Lua version JIT / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
 
-exports[`Lua version jit / global pairs 1`] = `
+exports[`Lua version JIT / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
 end"
 `;
 
-exports[`Lua version jit / global pcall 1`] = `
+exports[`Lua version JIT / global pcall 1`] = `
 "success, resultOrMessage = pcall(
     function(a) return true end,
     3
 )"
 `;
 
-exports[`Lua version jit / global pcall with context 1`] = `
+exports[`Lua version JIT / global pcall with context 1`] = `
 "success, resultOrMessage = pcall(
     function(____, a) return true end,
     {},
@@ -220,22 +220,22 @@ exports[`Lua version jit / global pcall with context 1`] = `
 )"
 `;
 
-exports[`Lua version jit / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
+exports[`Lua version JIT / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version jit / global select 1`] = `
+exports[`Lua version JIT / global select 1`] = `
 "values = {
     select(2, \\"a\\", \\"b\\", \\"c\\")
 }"
 `;
 
-exports[`Lua version jit / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
+exports[`Lua version JIT / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
-exports[`Lua version jit / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+exports[`Lua version JIT / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
-exports[`Lua version jit / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
+exports[`Lua version JIT / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
-exports[`Lua version jit / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
+exports[`Lua version JIT / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
 
-exports[`Lua version jit / global tostring 1`] = `"str = tostring(213.4)"`;
+exports[`Lua version JIT / global tostring 1`] = `"str = tostring(213.4)"`;
 
-exports[`Lua version jit / global type 1`] = `"t = type(213.4)"`;
+exports[`Lua version JIT / global type 1`] = `"t = type(213.4)"`;

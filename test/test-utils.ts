@@ -4,32 +4,18 @@ import * as ts from 'typescript';
 
 import { LuaTarget, transpile } from 'typescript-to-lua';
 
-const targetTypeNames = {
-    [LuaTarget.Lua51]: '5.1',
-    [LuaTarget.Lua52]: '5.2',
-    [LuaTarget.Lua53]: '5.3',
-    //[LuaTarget.Lua54]: "5.4",
-    [LuaTarget.LuaJIT]: 'jit',
-};
-
-const luaTargets = {
-    '5.1': LuaTarget.Lua51,
-    '5.2': LuaTarget.Lua52,
-    '5.3': LuaTarget.Lua53,
-    //"5.4": LuaTarget.Lua54,
-    jit: LuaTarget.LuaJIT,
-};
+const targets = [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.Lua53, LuaTarget.LuaJIT];
 
 export function describeForEachLuaTarget(name: string, action: (luaTarget: LuaTarget) => void) {
-    for (const [targetName, target] of Object.entries(luaTargets))
-        describe(`Lua version ${targetName} / ${name}`, () => {
+    for (const target of targets)
+        describe(`Lua version ${target} / ${name}`, () => {
             action(target);
         });
 }
 
 export function tstl(luaTarget: LuaTarget, input: string): string {
     // Resolve the path to the lua version delcaration file we want to test
-    const typesPath = path.resolve(__dirname, `../${targetTypeNames[luaTarget]}.d.ts`);
+    const typesPath = path.resolve(__dirname, `../${luaTarget.toLowerCase()}.d.ts`);
 
     // Create a TS program containing input.ts and the declarations file to test
     const rootNames = ['input.ts', typesPath];
