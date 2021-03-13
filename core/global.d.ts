@@ -170,15 +170,15 @@ declare function pairs<T>(t: T): LuaTupleIterable<[keyof T, T[keyof T]]>;
  * @tupleReturn
  */
 declare function pcall<This, Args extends any[], R>(
-  f: (this: This, ...args: Args) => R,
-  context: This,
-  ...args: Args
+    f: (this: This, ...args: Args) => R,
+    context: This,
+    ...args: Args
 ): [true, R] | [false, string];
 
 /** @tupleReturn */
 declare function pcall<A extends any[], R>(
-  f: (this: void, ...args: A) => R,
-  ...args: A
+    f: (this: void, ...args: A) => R,
+    ...args: A
 ): [true, R] | [false, string];
 
 /**
@@ -243,8 +243,8 @@ declare function select<T>(index: '#', ...args: T[]): number;
  * This function returns table.
  */
 declare function setmetatable<T extends object, TIndex extends object>(
-  table: T,
-  metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined,
+    table: T,
+    metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined
 ): T & TIndex;
 
 /**
@@ -280,5 +280,5 @@ declare function tostring(v: any): string;
  * Returns the type of its only argument, coded as a string.
  */
 declare function type(
-  v: any,
+    v: any
 ): 'nil' | 'number' | 'string' | 'boolean' | 'table' | 'function' | 'thread' | 'userdata';
