@@ -33,10 +33,10 @@
  * @tupleReturn
  */
 declare function load(
-  chunk: string | (() => string | null | undefined),
-  chunkname?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: object,
+    chunk: string | (() => string | null | undefined),
+    chunkname?: string,
+    mode?: 'b' | 't' | 'bt',
+    env?: object
 ): [() => any] | [undefined, string];
 
 /**
@@ -45,9 +45,9 @@ declare function load(
  * @tupleReturn
  */
 declare function loadfile(
-  filename?: string,
-  mode?: 'b' | 't' | 'bt',
-  env?: object,
+    filename?: string,
+    mode?: 'b' | 't' | 'bt',
+    env?: object
 ): [() => any] | [undefined, string];
 
 /**
@@ -56,97 +56,97 @@ declare function loadfile(
  * @tupleReturn
  */
 declare function xpcall<This, Args extends any[], R, E>(
-  f: (this: This, ...args: Args) => R,
-  msgh: (this: void, err: any) => E,
-  context: This,
-  ...args: Args
+    f: (this: This, ...args: Args) => R,
+    msgh: (this: void, err: any) => E,
+    context: This,
+    ...args: Args
 ): [true, R] | [false, E];
 
 /** @tupleReturn */
 declare function xpcall<Args extends any[], R, E>(
-  f: (this: void, ...args: Args) => R,
-  msgh: (err: any) => E,
-  ...args: Args
+    f: (this: void, ...args: Args) => R,
+    msgh: (err: any) => E,
+    ...args: Args
 ): [true, R] | [false, E];
 
 declare namespace debug {
-  interface FunctionInfo<T extends Function = Function> {
-    nparams: number;
-    isvararg: boolean;
-  }
+    interface FunctionInfo<T extends Function = Function> {
+        nparams: number;
+        isvararg: boolean;
+    }
 
-  /**
-   * This function returns the name and the value of the local variable with
-   * index local of the function at level f of the stack. This function accesses
-   * not only explicit local variables, but also parameters, temporaries, etc.
-   *
-   * The first parameter or local variable has index 1, and so on, following the
-   * order that they are declared in the code, counting only the variables that
-   * are active in the current scope of the function. Negative indices refer to
-   * vararg parameters; -1 is the first vararg parameter. The function returns
-   * nil if there is no variable with the given index, and raises an error when
-   * called with a level out of range. (You can call debug.getinfo to check
-   * whether the level is valid.)
-   *
-   * Variable names starting with '(' (open parenthesis) represent variables
-   * with no known names (internal variables such as loop control variables, and
-   * variables from chunks saved without debug information).
-   *
-   * The parameter f may also be a function. In that case, getlocal returns only
-   * the name of function parameters.
-   * @tupleReturn
-   */
-  function getlocal(f: Function | number, local: number): [string, any];
-  /** @tupleReturn */
-  function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
+    /**
+     * This function returns the name and the value of the local variable with
+     * index local of the function at level f of the stack. This function accesses
+     * not only explicit local variables, but also parameters, temporaries, etc.
+     *
+     * The first parameter or local variable has index 1, and so on, following the
+     * order that they are declared in the code, counting only the variables that
+     * are active in the current scope of the function. Negative indices refer to
+     * vararg parameters; -1 is the first vararg parameter. The function returns
+     * nil if there is no variable with the given index, and raises an error when
+     * called with a level out of range. (You can call debug.getinfo to check
+     * whether the level is valid.)
+     *
+     * Variable names starting with '(' (open parenthesis) represent variables
+     * with no known names (internal variables such as loop control variables, and
+     * variables from chunks saved without debug information).
+     *
+     * The parameter f may also be a function. In that case, getlocal returns only
+     * the name of function parameters.
+     * @tupleReturn
+     */
+    function getlocal(f: Function | number, local: number): [string, any];
+    /** @tupleReturn */
+    function getlocal(thread: LuaThread, f: Function | number, local: number): [string, any];
 
-  /**
-   * Returns a unique identifier (as a light userdata) for the upvalue numbered
-   * n from the given function.
-   *
-   * These unique identifiers allow a program to check whether different
-   * closures share upvalues. Lua closures that share an upvalue (that is, that
-   * access a same external local variable) will return identical ids for those
-   * upvalue indices.
-   */
-  function upvalueid(f: Function, n: number): LuaUserdata;
+    /**
+     * Returns a unique identifier (as a light userdata) for the upvalue numbered
+     * n from the given function.
+     *
+     * These unique identifiers allow a program to check whether different
+     * closures share upvalues. Lua closures that share an upvalue (that is, that
+     * access a same external local variable) will return identical ids for those
+     * upvalue indices.
+     */
+    function upvalueid(f: Function, n: number): LuaUserdata;
 
-  /**
-   * Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of
-   * the Lua closure f2.
-   */
-  function upvaluejoin(f1: Function, n1: number, f2: Function, n2: number): void;
+    /**
+     * Make the n1-th upvalue of the Lua closure f1 refer to the n2-th upvalue of
+     * the Lua closure f2.
+     */
+    function upvaluejoin(f1: Function, n1: number, f2: Function, n2: number): void;
 }
 
 declare namespace math {
-  /**
-   * Returns the logarithm of x in the given base. The default for base is e (so
-   * that the function returns the natural logarithm of x).
-   */
-  function log(x: number, base?: number): number;
+    /**
+     * Returns the logarithm of x in the given base. The default for base is e (so
+     * that the function returns the natural logarithm of x).
+     */
+    function log(x: number, base?: number): number;
 }
 
 declare namespace string {
-  /**
-   * Returns a string that is the concatenation of n copies of the string s
-   * separated by the string sep. The default value for sep is the empty string
-   * (that is, no separator). Returns the empty string if n is not positive.
-   *
-   * (Note that it is very easy to exhaust the memory of your machine with a
-   * single call to this function.)
-   */
-  function rep(s: string, n: number, sep?: string): string;
+    /**
+     * Returns a string that is the concatenation of n copies of the string s
+     * separated by the string sep. The default value for sep is the empty string
+     * (that is, no separator). Returns the empty string if n is not positive.
+     *
+     * (Note that it is very easy to exhaust the memory of your machine with a
+     * single call to this function.)
+     */
+    function rep(s: string, n: number, sep?: string): string;
 }
 
 declare namespace os {
-  /**
-   * Calls the ISO C function exit to terminate the host program. If code is
-   * true, the returned status is EXIT_SUCCESS; if code is false, the returned
-   * status is EXIT_FAILURE; if code is a number, the returned status is this
-   * number. The default value for code is true.
-   *
-   * If the optional second argument close is true, closes the Lua state before
-   * exiting.
-   */
-  function exit(code?: boolean | number, close?: boolean): never;
+    /**
+     * Calls the ISO C function exit to terminate the host program. If code is
+     * true, the returned status is EXIT_SUCCESS; if code is false, the returned
+     * status is EXIT_FAILURE; if code is a number, the returned status is this
+     * number. The default value for code is true.
+     *
+     * If the optional second argument close is true, closes the Lua state before
+     * exiting.
+     */
+    function exit(code?: boolean | number, close?: boolean): never;
 }

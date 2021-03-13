@@ -28,10 +28,10 @@ npm install -D lua-types
 
 Where `<version>` is one of:
 
-- `5.1`
-- `5.2`
-- `5.3`
-- `5.4`
-- `jit`
+-   `5.1`
+-   `5.2`
+-   `5.3`
+-   `5.4`
+-   `jit`
 
 > NOTE: All other files in this module shouldn't be considered public. Do not import them manually, as they may change in non-major updates. If your environment doesn't provide all of standard Lua features, consider banning them with a [no-restricted-globals](https://eslint.org/docs/rules/no-restricted-globals) eslint rule.
