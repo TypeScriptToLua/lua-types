@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lua version 5.1 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
+
+exports[`Lua version 5.1 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version 5.1 / global getmetatable 1`] = `
+"metatable = getmetatable({})
+add = metatable.__add"
+`;
+
+exports[`Lua version 5.1 / global ipairs 1`] = `
+"for i, v in ipairs({1, 2, 3}) do
+    print(i, v)
+end"
+`;
+
+exports[`Lua version 5.1 / global next 1`] = `"nextKey, nextValue = next({})"`;
+
+exports[`Lua version 5.1 / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
+
+exports[`Lua version 5.1 / global pairs 1`] = `
+"for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
+    print(k, v)
+end"
+`;
+
+exports[`Lua version 5.1 / global pcall 1`] = `
+"success, resultOrMessage = pcall(
+    function(a) return true end,
+    3
+)"
+`;
+
+exports[`Lua version 5.1 / global pcall with context 1`] = `
+"success, resultOrMessage = pcall(
+    function(____, a) return true end,
+    {},
+    3
+)"
+`;
+
+exports[`Lua version 5.1 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
+
+exports[`Lua version 5.1 / global select 1`] = `
+"values = {
+    select(2, \\"a\\", \\"b\\", \\"c\\")
+}"
+`;
+
+exports[`Lua version 5.1 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.1 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.1 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
+
+exports[`Lua version 5.1 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
+
+exports[`Lua version 5.1 / global tostring 1`] = `"str = tostring(213.4)"`;
+
+exports[`Lua version 5.1 / global type 1`] = `"t = type(213.4)"`;
+
+exports[`Lua version 5.2 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
+
+exports[`Lua version 5.2 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version 5.2 / global getmetatable 1`] = `
+"metatable = getmetatable({})
+add = metatable.__add"
+`;
+
+exports[`Lua version 5.2 / global ipairs 1`] = `
+"for i, v in ipairs({1, 2, 3}) do
+    print(i, v)
+end"
+`;
+
+exports[`Lua version 5.2 / global next 1`] = `"nextKey, nextValue = next({})"`;
+
+exports[`Lua version 5.2 / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
+
+exports[`Lua version 5.2 / global pairs 1`] = `
+"for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
+    print(k, v)
+end"
+`;
+
+exports[`Lua version 5.2 / global pcall 1`] = `
+"success, resultOrMessage = pcall(
+    function(a) return true end,
+    3
+)"
+`;
+
+exports[`Lua version 5.2 / global pcall with context 1`] = `
+"success, resultOrMessage = pcall(
+    function(____, a) return true end,
+    {},
+    3
+)"
+`;
+
+exports[`Lua version 5.2 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
+
+exports[`Lua version 5.2 / global select 1`] = `
+"values = {
+    select(2, \\"a\\", \\"b\\", \\"c\\")
+}"
+`;
+
+exports[`Lua version 5.2 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.2 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.2 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
+
+exports[`Lua version 5.2 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
+
+exports[`Lua version 5.2 / global tostring 1`] = `"str = tostring(213.4)"`;
+
+exports[`Lua version 5.2 / global type 1`] = `"t = type(213.4)"`;
+
+exports[`Lua version 5.3 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
+
+exports[`Lua version 5.3 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version 5.3 / global getmetatable 1`] = `
+"metatable = getmetatable({})
+add = metatable.__add"
+`;
+
+exports[`Lua version 5.3 / global ipairs 1`] = `
+"for i, v in ipairs({1, 2, 3}) do
+    print(i, v)
+end"
+`;
+
+exports[`Lua version 5.3 / global next 1`] = `"nextKey, nextValue = next({})"`;
+
+exports[`Lua version 5.3 / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
+
+exports[`Lua version 5.3 / global pairs 1`] = `
+"for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
+    print(k, v)
+end"
+`;
+
+exports[`Lua version 5.3 / global pcall 1`] = `
+"success, resultOrMessage = pcall(
+    function(a) return true end,
+    3
+)"
+`;
+
+exports[`Lua version 5.3 / global pcall with context 1`] = `
+"success, resultOrMessage = pcall(
+    function(____, a) return true end,
+    {},
+    3
+)"
+`;
+
+exports[`Lua version 5.3 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
+
+exports[`Lua version 5.3 / global select 1`] = `
+"values = {
+    select(2, \\"a\\", \\"b\\", \\"c\\")
+}"
+`;
+
+exports[`Lua version 5.3 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.3 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.3 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
+
+exports[`Lua version 5.3 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
+
+exports[`Lua version 5.3 / global tostring 1`] = `"str = tostring(213.4)"`;
+
+exports[`Lua version 5.3 / global type 1`] = `"t = type(213.4)"`;
+
+exports[`Lua version JIT / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
+
+exports[`Lua version JIT / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version JIT / global getmetatable 1`] = `
+"metatable = getmetatable({})
+add = metatable.__add"
+`;
+
+exports[`Lua version JIT / global ipairs 1`] = `
+"for i, v in ipairs({1, 2, 3}) do
+    print(i, v)
+end"
+`;
+
+exports[`Lua version JIT / global next 1`] = `"nextKey, nextValue = next({})"`;
+
+exports[`Lua version JIT / global next with previous index 1`] = `"nextKey, nextValue = next({a = \\"b\\", c = \\"d\\"}, \\"a\\")"`;
+
+exports[`Lua version JIT / global pairs 1`] = `
+"for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
+    print(k, v)
+end"
+`;
+
+exports[`Lua version JIT / global pcall 1`] = `
+"success, resultOrMessage = pcall(
+    function(a) return true end,
+    3
+)"
+`;
+
+exports[`Lua version JIT / global pcall with context 1`] = `
+"success, resultOrMessage = pcall(
+    function(____, a) return true end,
+    {},
+    3
+)"
+`;
+
+exports[`Lua version JIT / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
+
+exports[`Lua version JIT / global select 1`] = `
+"values = {
+    select(2, \\"a\\", \\"b\\", \\"c\\")
+}"
+`;
+
+exports[`Lua version JIT / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version JIT / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version JIT / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
+
+exports[`Lua version JIT / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
+
+exports[`Lua version JIT / global tostring 1`] = `"str = tostring(213.4)"`;
+
+exports[`Lua version JIT / global type 1`] = `"t = type(213.4)"`;

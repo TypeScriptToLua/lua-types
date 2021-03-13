@@ -164,14 +164,14 @@ declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, T[keyof T]
  * pcall returns false plus the error message.
  */
 declare function pcall<This, Args extends any[], R>(
-  f: (this: This, ...args: Args) => R,
-  context: This,
-  ...args: Args
+    f: (this: This, ...args: Args) => R,
+    context: This,
+    ...args: Args
 ): LuaMultiReturn<[true, R] | [false, string]>;
 
 declare function pcall<A extends any[], R>(
-  f: (this: void, ...args: A) => R,
-  ...args: A
+    f: (this: void, ...args: A) => R,
+    ...args: A
 ): LuaMultiReturn<[true, R] | [false, string]>;
 
 /**
@@ -235,8 +235,8 @@ declare function select<T>(index: '#', ...args: T[]): number;
  * This function returns table.
  */
 declare function setmetatable<T extends object, TIndex extends object>(
-  table: T,
-  metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined,
+    table: T,
+    metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined
 ): T & TIndex;
 
 /**
@@ -272,5 +272,5 @@ declare function tostring(v: any): string;
  * Returns the type of its only argument, coded as a string.
  */
 declare function type(
-  v: any,
+    v: any
 ): 'nil' | 'number' | 'string' | 'boolean' | 'table' | 'function' | 'thread' | 'userdata';

@@ -1,33 +1,39 @@
 {
-  "name": "lua-types",
-  "version": "2.8.0",
-  "description": "TypeScript definitions for Lua standard library",
-  "keywords": [
-    "lua",
-    "typescript",
-    "tstl"
-  ],
-  "repository": "https://github.com/ark120202/lua-types",
-  "license": "MIT",
-  "author": "ark120202",
-  "files": [
-    "**/*.d.ts",
-    "tsconfig.json"
-  ],
-  "scripts": {
-    "build": "tstl",
-    "lint": "prettier --check ."
-  },
-  "prettier": {
-    "printWidth": 100,
-    "proseWrap": "never",
-    "singleQuote": true,
-    "trailingComma": "all"
-  },
-  "devDependencies": {
-    "prettier": "^2.0.5"
-  },
-  "dependencies": {
-    "typescript-to-lua": "^0.39.0"
-  }
+    "name": "lua-types",
+    "version": "2.8.0",
+    "description": "TypeScript definitions for Lua standard library",
+    "keywords": [
+        "lua",
+        "typescript",
+        "tstl"
+    ],
+    "repository": "https://github.com/ark120202/lua-types",
+    "license": "MIT",
+    "author": "ark120202",
+    "files": [
+        "**/*.d.ts",
+        "tsconfig.json"
+    ],
+    "scripts": {
+        "test": "jest",
+        "lint": "prettier --check ."
+    },
+    "prettier": {
+        "printWidth": 100,
+        "tabWidth": 4,
+        "proseWrap": "never",
+        "singleQuote": true
+    },
+    "dependencies": {
+        "typescript-to-lua": "^0.39.0"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.34",
+        "jest": "^26.6.3",
+        "jest-circus": "^26.6.3",
+        "prettier": "^2.0.5",
+        "ts-jest": "^26.5.3",
+        "typescript-to-lua": "^0.32.2"
+    }
 }
