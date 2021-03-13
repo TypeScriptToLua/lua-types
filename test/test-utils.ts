@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as ts from 'typescript';
 
-import { LuaTarget, transpile } from 'typescript-to-lua';
+import { LuaTarget, Transpiler } from 'typescript-to-lua';
 
 const targets = [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.Lua53, LuaTarget.LuaJIT];
 
@@ -16,27 +16,46 @@ export function describeForEachLuaTarget(name: string, action: (luaTarget: LuaTa
 export function tstl(luaTarget: LuaTarget, input: string): string {
     // Resolve the path to the lua version delcaration file we want to test
     const typesPath = path.resolve(__dirname, `../${luaTarget.toLowerCase()}.d.ts`);
+    const languageExtensionsPath = path.resolve(
+        __dirname,
+        `../node_modules/typescript-to-lua/language-extensions`
+    );
 
     // Create a TS program containing input.ts and the declarations file to test
     const rootNames = ['input.ts', typesPath];
-    const options = { luaTarget, noHeader: true, target: ts.ScriptTarget.ESNext };
+    const options = {
+        luaTarget,
+        skipLibCheck: true,
+        lib: ["lib.esnext.d.ts"],
+        noHeader: true,
+        target: ts.ScriptTarget.ESNext,
+        types: [languageExtensionsPath],
+        moduleResolution: ts.ModuleResolutionKind.NodeJs,
+    };
     const compilerHost = getCompilerHostWithInput(input); // Create a compiler host that returns input for input.ts
     const program = ts.createProgram(rootNames, options, compilerHost);
 
     // Run TypeScriptToLua
-    const result = transpile({ program });
+    const outFiles: Array<{ fileName: string, fileContent: string }> = [];
+    const { diagnostics: transpileDiagnostics } = new Transpiler().emit({
+        program,
+        writeFile: (fileName, fileContent) => outFiles.push({ fileName, fileContent }),
+    });
+
+    const diagnostics = ts.sortAndDeduplicateDiagnostics([
+        ...ts.getPreEmitDiagnostics(program),
+        ...transpileDiagnostics,
+    ]);
 
     // Expect no diagnostics, either from TS or TSTL
-    const diagnostics = [...ts.getPreEmitDiagnostics(program), ...result.diagnostics];
     const diagnosticMessages = diagnostics.map((d) => d.messageText);
     expect(diagnosticMessages).toEqual([]);
 
     // Get the result from our input
-    const testFile = result.transpiledFiles.find((f) => f.fileName === 'input.ts');
-    expect(testFile).toBeDefined();
+    const outFile = outFiles.find(f => f.fileName.endsWith("input.lua"));
+    expect(outFile).toBeDefined();
 
-    //return result.file.lua;
-    return testFile.lua.trim();
+    return outFile.fileContent.trim();
 }
 
 const fileCache: Record<string, string> = {};

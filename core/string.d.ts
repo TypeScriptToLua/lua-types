@@ -25,7 +25,7 @@ declare namespace string {
      *
      * Numeric codes are not necessarily portable across platforms.
      */
-    function byte(s: string, i?: number): LuaMultiReturn<number[]>;
+    function byte(s: string, i?: number): number;
     function byte(s: string, i?: number, j?: number): LuaMultiReturn<number[]>;
 
     /**
