@@ -11,8 +11,7 @@
     "license": "MIT",
     "author": "ark120202",
     "files": [
-        "**/*.d.ts",
-        "tsconfig.json"
+        "**/*.d.ts"
     ],
     "scripts": {
         "test": "jest",
