@@ -78,7 +78,7 @@ function getCompilerHostWithInput(input: string) {
         useCaseSensitiveFileNames: () => false,
         writeFile() {},
 
-        getSourceFile(fileName, languageVersion) {
+        getSourceFile(fileName: string, languageVersion) {
             if (fileName === 'input.ts') {
                 return ts.createSourceFile(fileName, input, languageVersion);
             }
@@ -92,6 +92,13 @@ function getCompilerHostWithInput(input: string) {
             if (fileName.startsWith('lib.')) {
                 const typeScriptDir = path.dirname(require.resolve('typescript'));
                 filePath = path.join(typeScriptDir, fileName);
+            }
+
+            if (fileName.endsWith('typescript-to-lua/language-extensions/index.d.ts')) {
+                filePath = path.resolve(
+                    __dirname,
+                    `../node_modules/typescript-to-lua/language-extensions/index.d.ts`
+                );
             }
 
             const fileContent = fs.readFileSync(filePath).toString();
