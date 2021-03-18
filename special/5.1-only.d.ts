@@ -11,19 +11,17 @@
  *
  * chunkname is used as the chunk name for error messages and debug information.
  * When absent, it defaults to "=(load)".
- * @tupleReturn
  */
 declare function load(
     func: () => string | null | undefined,
     chunkname?: string
-): [() => any] | [undefined, string];
+): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 /**
  * Similar to load, but gets the chunk from file filename or from the standard
  * input, if no file name is given.
- * @tupleReturn
  */
-declare function loadfile(filename?: string): [() => any] | [undefined, string];
+declare function loadfile(filename?: string): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 /**
  * Similar to load, but gets the chunk from the given string.
@@ -33,9 +31,11 @@ declare function loadfile(filename?: string): [() => any] | [undefined, string];
  * `assert(loadstring(s))()`
  *
  * When absent, chunkname defaults to the given string.
- * @tupleReturn
  */
-declare function loadstring(string: string, chunkname?: string): [() => any] | [undefined, string];
+declare function loadstring(
+    string: string,
+    chunkname?: string
+): LuaMultiReturn<[() => any] | [undefined, string]>;
 
 /**
  * This function is similar to pcall, except that it sets a new message handler
@@ -48,9 +48,11 @@ declare function loadstring(string: string, chunkname?: string): [() => any] | [
  * call succeeds without errors. In this case, xpcall also returns all results
  * from the call, after this first result. In case of any error, xpcall returns
  * false plus the result from err.
- * @tupleReturn
  */
-declare function xpcall<R, E>(f: () => R, err: (err: any) => E): [true, R] | [false, E];
+declare function xpcall<R, E>(
+    f: () => R,
+    err: (err: any) => E
+): LuaMultiReturn<[true, R] | [false, E]>;
 
 declare namespace math {
     /**
@@ -85,11 +87,13 @@ declare namespace debug {
      *
      * Variable names starting with '(' (open parentheses) represent internal
      * variables (loop control variables, temporaries, and C function locals).
-     * @tupleReturn
      */
-    function getlocal(level: number, local: number): [string, any];
-    /** @tupleReturn */
-    function getlocal(thread: LuaThread, level: number, local: number): [string, any];
+    function getlocal(level: number, local: number): LuaMultiReturn<[string, any]>;
+    function getlocal(
+        thread: LuaThread,
+        level: number,
+        local: number
+    ): LuaMultiReturn<[string, any]>;
 }
 
 type FileReadFormat = '*n' | '*a' | '*l' | number;

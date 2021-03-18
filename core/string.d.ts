@@ -26,8 +26,7 @@ declare namespace string {
      * Numeric codes are not necessarily portable across platforms.
      */
     function byte(s: string, i?: number): number;
-    /** @tupleReturn */
-    function byte(s: string, i?: number, j?: number): number[];
+    function byte(s: string, i?: number, j?: number): LuaMultiReturn<number[]>;
 
     /**
      * Receives zero or more integers. Returns a string with length equal to the
@@ -57,14 +56,13 @@ declare namespace string {
      *
      * If the pattern has captures, then in a successful match the captured values
      * are also returned, after the two indices.
-     * @tupleReturn
      */
     function find(
         s: string,
         pattern: string,
         init?: number,
         plain?: boolean
-    ): [number, number, ...string[]] | [];
+    ): LuaMultiReturn<[number, number, ...string[]] | []>;
 
     /**
      * Returns a formatted version of its variable number of arguments following
@@ -123,7 +121,7 @@ declare namespace string {
      * For this function, a caret '^' at the start of a pattern does not work as
      * an anchor, as this would prevent the iteration.
      */
-    function gmatch(s: string, pattern: string): LuaTupleIterable<string[]>;
+    function gmatch(s: string, pattern: string): LuaIterable<LuaMultiReturn<string[]>>;
 
     /**
      * Returns a copy of s in which all (or the first n, if given) occurrences of
@@ -151,14 +149,13 @@ declare namespace string {
      * string or a number, then it is used as the replacement string; otherwise,
      * if it is false or nil, then there is no replacement (that is, the original
      * match is kept in the string).
-     * @tupleReturn
      */
     function gsub(
         s: string,
         pattern: string,
         repl: string | Record<string, string> | ((...matches: string[]) => string),
         n?: number
-    ): [string, number];
+    ): LuaMultiReturn<[string, number]>;
 
     /**
      * Receives a string and returns its length. The empty string "" has length 0.
@@ -179,9 +176,8 @@ declare namespace string {
      * returns nil. If pattern specifies no captures, then the whole match is
      * returned. A third, optional numeric argument init specifies where to start
      * the search; its default value is 1 and can be negative.
-     * @tupleReturn
      */
-    function match(s: string, pattern: string, init?: number): string[];
+    function match(s: string, pattern: string, init?: number): LuaMultiReturn<string[]>;
 
     /**
      * Returns a string that is the string s reversed.

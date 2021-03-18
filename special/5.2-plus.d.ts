@@ -80,8 +80,8 @@ declare namespace package {
      * The first searcher returns no extra value.
      */
     var searchers: (
-        | /** @tupleReturn */ ((modname: string) => [(modname: string) => void])
-        | /** @tupleReturn */ (<T>(modname: string) => [(modname: string, extra: T) => T, T])
+        | ((modname: string) => LuaMultiReturn<[(modname: string) => void]>)
+        | (<T>(modname: string) => LuaMultiReturn<[(modname: string, extra: T) => T, T]>)
         | string
     )[];
 }
@@ -93,11 +93,9 @@ declare namespace table {
      * `return list[i], list[i+1], ···, list[j]`
      *
      * By default, i is 1 and j is #list.
-     * @tupleReturn
      */
-    function unpack<T extends any[]>(list: T): T;
-    /** @tupleReturn */
-    function unpack<T>(list: T[], i: number, j?: number): T[];
+    function unpack<T extends any[]>(list: T): LuaMultiReturn<T[]>;
+    function unpack<T>(list: T[], i: number, j?: number): LuaMultiReturn<T[]>;
 
     /**
      * Returns a new table with all parameters stored into keys 1, 2, etc. and
@@ -135,9 +133,10 @@ declare namespace os {
      *
      * When called without a command, os.execute returns a boolean that is true if
      * a shell is available.
-     * @tupleReturn
      */
-    function execute(command: string): [true | undefined, 'exit' | 'signal', number];
+    function execute(
+        command: string
+    ): LuaMultiReturn<[true | undefined, 'exit' | 'signal', number]>;
 }
 
 declare namespace debug {
@@ -164,7 +163,6 @@ declare namespace coroutine {
     /**
      * Returns the running coroutine plus a boolean, true when the running
      * coroutine is the main one.
-     * @tupleReturn
      */
-    function running(): [LuaThread, boolean];
+    function running(): LuaMultiReturn<[LuaThread, boolean]>;
 }

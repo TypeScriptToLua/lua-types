@@ -60,8 +60,10 @@ declare namespace io {
     function lines<T extends FileReadFormat[]>(
         filename?: string,
         ...formats: T
-    ): LuaTupleIterable<
-        [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+    ): LuaIterable<
+        LuaMultiReturn<
+            [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+        >
     >;
 
     /**
@@ -80,9 +82,11 @@ declare namespace io {
      *
      * The mode string can also have a 'b' at the end, which is needed in some
      * systems to open the file in binary mode.
-     * @tupleReturn
      */
-    function open(filename: string, mode?: string): [LuaFile] | [undefined, string, number];
+    function open(
+        filename: string,
+        mode?: string
+    ): LuaMultiReturn<[LuaFile] | [undefined, string, number]>;
 
     /**
      * Similar to io.input, but operates over the default output file.
@@ -100,7 +104,6 @@ declare namespace io {
 
     /**
      * Equivalent to io.input():read(···).
-     * @tupleReturn
      */
     const read: LuaFile['read'];
 
@@ -120,9 +123,8 @@ declare namespace io {
 
     /**
      * Equivalent to io.output():write(···).
-     * @tupleReturn
      */
-    function write(...args: (string | number)[]): [LuaFile] | [undefined, string];
+    function write(...args: (string | number)[]): LuaMultiReturn<[LuaFile] | [undefined, string]>;
 }
 
 interface LuaFile {
@@ -157,8 +159,10 @@ interface LuaFile {
      */
     lines<T extends FileReadFormat[]>(
         ...formats: T
-    ): LuaTupleIterable<
-        [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+    ): LuaIterable<
+        LuaMultiReturn<
+            [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
+        >
     >;
 
     /**
@@ -188,11 +192,10 @@ interface LuaFile {
      *   string, or nil on end of file.
      *
      * The formats "l" and "L" should be used only for text files.
-     * @tupleReturn
      */
     read<T extends FileReadFormat[]>(
         ...formats: T
-    ): { [P in keyof T]?: T[P] extends 'n' ? number : string };
+    ): LuaMultiReturn<{ [P in keyof T]?: T[P] extends 'n' ? number : string }>;
 
     /**
      * Sets and geionts the file position, measured from the beginning of the
@@ -212,9 +215,11 @@ interface LuaFile {
      * the call file:seek("set") sets the position to the beginning of the file
      * (and returns 0); and the call file:seek("end") sets the position to the end
      * of the file, and returns its size.
-     * @tupleReturn
      */
-    seek(whence?: 'set' | 'cur' | 'end', offset?: number): [number] | [undefined, string];
+    seek(
+        whence?: 'set' | 'cur' | 'end',
+        offset?: number
+    ): LuaMultiReturn<[number] | [undefined, string]>;
 
     /**
      * Sets the buffering mode for an output file. There are three available
@@ -237,7 +242,6 @@ interface LuaFile {
      *
      * In case of success, this function returns file. Otherwise it returns nil
      * plus a string describing the error.
-     * @tupleReturn
      */
-    write(...args: (string | number)[]): [LuaFile] | [undefined, string];
+    write(...args: (string | number)[]): LuaMultiReturn<[LuaFile] | [undefined, string]>;
 }
