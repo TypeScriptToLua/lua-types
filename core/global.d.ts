@@ -157,6 +157,9 @@ declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | [
  * See function next for the caveats of modifying the table during its
  * traversal.
  */
+declare function pairs<TKey, TValue>(
+    t: LuaTable<TKey, TValue>
+): LuaIterable<LuaMultiReturn<[TKey, TValue]>>;
 declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, T[keyof T]]>>;
 
 /**

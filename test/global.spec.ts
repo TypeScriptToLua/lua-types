@@ -121,6 +121,24 @@ describeForEachLuaTarget('global', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
+    test('pairs with LuaTable', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = new LuaTable<string, string>();
+            tbl.set("foo", "bar");
+            tbl.set("baz", "bur");
+            const takesStr = (str: string) => {};
+            for (const [k, v] of pairs(tbl)) {
+                takesStr(k);
+                takesStr(v);
+            }
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
     test('pcall', () => {
         const lua = tstl(
             target,

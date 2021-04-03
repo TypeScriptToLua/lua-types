@@ -42,6 +42,18 @@ exports[`Lua version 5.1 / global pairs 1`] = `
 end"
 `;
 
+exports[`Lua version 5.1 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
+end"
+`;
+
 exports[`Lua version 5.1 / global pcall 1`] = `
 "success, resultOrMessage = pcall(
     function(a) return true end,
@@ -137,6 +149,18 @@ exports[`Lua version 5.2 / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version 5.2 / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version 5.2 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -238,6 +262,18 @@ exports[`Lua version 5.3 / global pairs 1`] = `
 end"
 `;
 
+exports[`Lua version 5.3 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
+end"
+`;
+
 exports[`Lua version 5.3 / global pcall 1`] = `
 "success, resultOrMessage = pcall(
     function(a) return true end,
@@ -336,6 +372,18 @@ exports[`Lua version 5.4 / global pairs 1`] = `
 end"
 `;
 
+exports[`Lua version 5.4 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
+end"
+`;
+
 exports[`Lua version 5.4 / global pcall 1`] = `
 "success, resultOrMessage = pcall(
     function(a) return true end,
@@ -431,6 +479,18 @@ exports[`Lua version JIT / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version JIT / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version JIT / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
