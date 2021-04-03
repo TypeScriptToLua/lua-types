@@ -1,0 +1,361 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lua version 5.1 / file close 1`] = `"file:close()"`;
+
+exports[`Lua version 5.1 / file flush 1`] = `"file:flush()"`;
+
+exports[`Lua version 5.1 / file lines 1`] = `
+"for line in file:lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.1 / file read 1`] = `"foo = file:read()"`;
+
+exports[`Lua version 5.1 / file seek 1`] = `"pos, err = file:seek()"`;
+
+exports[`Lua version 5.1 / file seek offset 1`] = `"pos, err = file:seek(\\"cur\\", 1)"`;
+
+exports[`Lua version 5.1 / file seek whence 1`] = `"pos, err = file:seek(\\"cur\\")"`;
+
+exports[`Lua version 5.1 / file setvbuf 1`] = `"file:setvbuf(\\"no\\")"`;
+
+exports[`Lua version 5.1 / file setvbuf with size 1`] = `"file:setvbuf(\\"line\\", 10)"`;
+
+exports[`Lua version 5.1 / file write 1`] = `"f, err = file:write(\\"foo\\", \\"bar\\")"`;
+
+exports[`Lua version 5.1 / io close 1`] = `"io.close()"`;
+
+exports[`Lua version 5.1 / io close file 1`] = `"io.close(file)"`;
+
+exports[`Lua version 5.1 / io flush 1`] = `"io.flush()"`;
+
+exports[`Lua version 5.1 / io input 1`] = `"inp = io.input()"`;
+
+exports[`Lua version 5.1 / io input with file handle 1`] = `"inp = io.input(file)"`;
+
+exports[`Lua version 5.1 / io input with filename 1`] = `"inp = io.input(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.1 / io lines 1`] = `
+"for line in io.lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.1 / io lines with filename 1`] = `
+"for line in io.lines(\\"foo.bar\\") do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.1 / io open 1`] = `"f, err = io.open(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.1 / io open with mode flag 1`] = `"f, err = io.open(\\"foo.bar\\", \\"r\\")"`;
+
+exports[`Lua version 5.1 / io output 1`] = `"inp = io.output()"`;
+
+exports[`Lua version 5.1 / io output with file handle 1`] = `"inp = io.output(file)"`;
+
+exports[`Lua version 5.1 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.1 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+
+exports[`Lua version 5.1 / io read 1`] = `"foo = io:read()"`;
+
+exports[`Lua version 5.1 / io tmpfile 1`] = `"file = io.tmpfile()"`;
+
+exports[`Lua version 5.1 / io type 1`] = `
+"print(
+    io.type(file)
+)"
+`;
+
+exports[`Lua version 5.1 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
+
+exports[`Lua version 5.2 / file close 1`] = `"file:close()"`;
+
+exports[`Lua version 5.2 / file flush 1`] = `"file:flush()"`;
+
+exports[`Lua version 5.2 / file lines 1`] = `
+"for line in file:lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.2 / file read 1`] = `"foo = file:read()"`;
+
+exports[`Lua version 5.2 / file seek 1`] = `"pos, err = file:seek()"`;
+
+exports[`Lua version 5.2 / file seek offset 1`] = `"pos, err = file:seek(\\"cur\\", 1)"`;
+
+exports[`Lua version 5.2 / file seek whence 1`] = `"pos, err = file:seek(\\"cur\\")"`;
+
+exports[`Lua version 5.2 / file setvbuf 1`] = `"file:setvbuf(\\"no\\")"`;
+
+exports[`Lua version 5.2 / file setvbuf with size 1`] = `"file:setvbuf(\\"line\\", 10)"`;
+
+exports[`Lua version 5.2 / file write 1`] = `"f, err = file:write(\\"foo\\", \\"bar\\")"`;
+
+exports[`Lua version 5.2 / io close 1`] = `"io.close()"`;
+
+exports[`Lua version 5.2 / io close file 1`] = `"io.close(file)"`;
+
+exports[`Lua version 5.2 / io flush 1`] = `"io.flush()"`;
+
+exports[`Lua version 5.2 / io input 1`] = `"inp = io.input()"`;
+
+exports[`Lua version 5.2 / io input with file handle 1`] = `"inp = io.input(file)"`;
+
+exports[`Lua version 5.2 / io input with filename 1`] = `"inp = io.input(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.2 / io lines 1`] = `
+"for line in io.lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.2 / io lines with filename 1`] = `
+"for line in io.lines(\\"foo.bar\\") do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.2 / io open 1`] = `"f, err = io.open(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.2 / io open with mode flag 1`] = `"f, err = io.open(\\"foo.bar\\", \\"r\\")"`;
+
+exports[`Lua version 5.2 / io output 1`] = `"inp = io.output()"`;
+
+exports[`Lua version 5.2 / io output with file handle 1`] = `"inp = io.output(file)"`;
+
+exports[`Lua version 5.2 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.2 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+
+exports[`Lua version 5.2 / io read 1`] = `"foo = io:read()"`;
+
+exports[`Lua version 5.2 / io tmpfile 1`] = `"file = io.tmpfile()"`;
+
+exports[`Lua version 5.2 / io type 1`] = `
+"print(
+    io.type(file)
+)"
+`;
+
+exports[`Lua version 5.2 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
+
+exports[`Lua version 5.3 / file close 1`] = `"file:close()"`;
+
+exports[`Lua version 5.3 / file flush 1`] = `"file:flush()"`;
+
+exports[`Lua version 5.3 / file lines 1`] = `
+"for line in file:lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.3 / file read 1`] = `"foo = file:read()"`;
+
+exports[`Lua version 5.3 / file seek 1`] = `"pos, err = file:seek()"`;
+
+exports[`Lua version 5.3 / file seek offset 1`] = `"pos, err = file:seek(\\"cur\\", 1)"`;
+
+exports[`Lua version 5.3 / file seek whence 1`] = `"pos, err = file:seek(\\"cur\\")"`;
+
+exports[`Lua version 5.3 / file setvbuf 1`] = `"file:setvbuf(\\"no\\")"`;
+
+exports[`Lua version 5.3 / file setvbuf with size 1`] = `"file:setvbuf(\\"line\\", 10)"`;
+
+exports[`Lua version 5.3 / file write 1`] = `"f, err = file:write(\\"foo\\", \\"bar\\")"`;
+
+exports[`Lua version 5.3 / io close 1`] = `"io.close()"`;
+
+exports[`Lua version 5.3 / io close file 1`] = `"io.close(file)"`;
+
+exports[`Lua version 5.3 / io flush 1`] = `"io.flush()"`;
+
+exports[`Lua version 5.3 / io input 1`] = `"inp = io.input()"`;
+
+exports[`Lua version 5.3 / io input with file handle 1`] = `"inp = io.input(file)"`;
+
+exports[`Lua version 5.3 / io input with filename 1`] = `"inp = io.input(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.3 / io lines 1`] = `
+"for line in io.lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.3 / io lines with filename 1`] = `
+"for line in io.lines(\\"foo.bar\\") do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.3 / io open 1`] = `"f, err = io.open(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.3 / io open with mode flag 1`] = `"f, err = io.open(\\"foo.bar\\", \\"r\\")"`;
+
+exports[`Lua version 5.3 / io output 1`] = `"inp = io.output()"`;
+
+exports[`Lua version 5.3 / io output with file handle 1`] = `"inp = io.output(file)"`;
+
+exports[`Lua version 5.3 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.3 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+
+exports[`Lua version 5.3 / io read 1`] = `"foo = io:read()"`;
+
+exports[`Lua version 5.3 / io tmpfile 1`] = `"file = io.tmpfile()"`;
+
+exports[`Lua version 5.3 / io type 1`] = `
+"print(
+    io.type(file)
+)"
+`;
+
+exports[`Lua version 5.3 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
+
+exports[`Lua version 5.4 / file close 1`] = `"file:close()"`;
+
+exports[`Lua version 5.4 / file flush 1`] = `"file:flush()"`;
+
+exports[`Lua version 5.4 / file lines 1`] = `
+"for line in file:lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.4 / file read 1`] = `"foo = file:read()"`;
+
+exports[`Lua version 5.4 / file seek 1`] = `"pos, err = file:seek()"`;
+
+exports[`Lua version 5.4 / file seek offset 1`] = `"pos, err = file:seek(\\"cur\\", 1)"`;
+
+exports[`Lua version 5.4 / file seek whence 1`] = `"pos, err = file:seek(\\"cur\\")"`;
+
+exports[`Lua version 5.4 / file setvbuf 1`] = `"file:setvbuf(\\"no\\")"`;
+
+exports[`Lua version 5.4 / file setvbuf with size 1`] = `"file:setvbuf(\\"line\\", 10)"`;
+
+exports[`Lua version 5.4 / file write 1`] = `"f, err = file:write(\\"foo\\", \\"bar\\")"`;
+
+exports[`Lua version 5.4 / io close 1`] = `"io.close()"`;
+
+exports[`Lua version 5.4 / io close file 1`] = `"io.close(file)"`;
+
+exports[`Lua version 5.4 / io flush 1`] = `"io.flush()"`;
+
+exports[`Lua version 5.4 / io input 1`] = `"inp = io.input()"`;
+
+exports[`Lua version 5.4 / io input with file handle 1`] = `"inp = io.input(file)"`;
+
+exports[`Lua version 5.4 / io input with filename 1`] = `"inp = io.input(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.4 / io lines 1`] = `
+"for line in io.lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.4 / io lines with filename 1`] = `
+"for line in io.lines(\\"foo.bar\\") do
+    print(line)
+end"
+`;
+
+exports[`Lua version 5.4 / io open 1`] = `"f, err = io.open(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.4 / io open with mode flag 1`] = `"f, err = io.open(\\"foo.bar\\", \\"r\\")"`;
+
+exports[`Lua version 5.4 / io output 1`] = `"inp = io.output()"`;
+
+exports[`Lua version 5.4 / io output with file handle 1`] = `"inp = io.output(file)"`;
+
+exports[`Lua version 5.4 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
+
+exports[`Lua version 5.4 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+
+exports[`Lua version 5.4 / io read 1`] = `"foo = io:read()"`;
+
+exports[`Lua version 5.4 / io tmpfile 1`] = `"file = io.tmpfile()"`;
+
+exports[`Lua version 5.4 / io type 1`] = `
+"print(
+    io.type(file)
+)"
+`;
+
+exports[`Lua version 5.4 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
+
+exports[`Lua version JIT / file close 1`] = `"file:close()"`;
+
+exports[`Lua version JIT / file flush 1`] = `"file:flush()"`;
+
+exports[`Lua version JIT / file lines 1`] = `
+"for line in file:lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version JIT / file read 1`] = `"foo = file:read()"`;
+
+exports[`Lua version JIT / file seek 1`] = `"pos, err = file:seek()"`;
+
+exports[`Lua version JIT / file seek offset 1`] = `"pos, err = file:seek(\\"cur\\", 1)"`;
+
+exports[`Lua version JIT / file seek whence 1`] = `"pos, err = file:seek(\\"cur\\")"`;
+
+exports[`Lua version JIT / file setvbuf 1`] = `"file:setvbuf(\\"no\\")"`;
+
+exports[`Lua version JIT / file setvbuf with size 1`] = `"file:setvbuf(\\"line\\", 10)"`;
+
+exports[`Lua version JIT / file write 1`] = `"f, err = file:write(\\"foo\\", \\"bar\\")"`;
+
+exports[`Lua version JIT / io close 1`] = `"io.close()"`;
+
+exports[`Lua version JIT / io close file 1`] = `"io.close(file)"`;
+
+exports[`Lua version JIT / io flush 1`] = `"io.flush()"`;
+
+exports[`Lua version JIT / io input 1`] = `"inp = io.input()"`;
+
+exports[`Lua version JIT / io input with file handle 1`] = `"inp = io.input(file)"`;
+
+exports[`Lua version JIT / io input with filename 1`] = `"inp = io.input(\\"foo.bar\\")"`;
+
+exports[`Lua version JIT / io lines 1`] = `
+"for line in io.lines() do
+    print(line)
+end"
+`;
+
+exports[`Lua version JIT / io lines with filename 1`] = `
+"for line in io.lines(\\"foo.bar\\") do
+    print(line)
+end"
+`;
+
+exports[`Lua version JIT / io open 1`] = `"f, err = io.open(\\"foo.bar\\")"`;
+
+exports[`Lua version JIT / io open with mode flag 1`] = `"f, err = io.open(\\"foo.bar\\", \\"r\\")"`;
+
+exports[`Lua version JIT / io output 1`] = `"inp = io.output()"`;
+
+exports[`Lua version JIT / io output with file handle 1`] = `"inp = io.output(file)"`;
+
+exports[`Lua version JIT / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
+
+exports[`Lua version JIT / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+
+exports[`Lua version JIT / io read 1`] = `"foo = io:read()"`;
+
+exports[`Lua version JIT / io tmpfile 1`] = `"file = io.tmpfile()"`;
+
+exports[`Lua version JIT / io type 1`] = `
+"print(
+    io.type(file)
+)"
+`;
+
+exports[`Lua version JIT / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
