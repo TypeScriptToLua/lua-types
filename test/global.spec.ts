@@ -61,6 +61,18 @@ describeForEachLuaTarget('global', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
+    test('getmetatable on string', () => {
+        const lua = tstl(
+            target,
+            `
+            const metatable = getmetatable("foo");
+            const index = metatable!.__index;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
     test('ipairs', () => {
         const lua = tstl(
             target,
