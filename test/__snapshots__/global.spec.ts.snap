@@ -4,6 +4,18 @@ exports[`Lua version 5.1 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.1 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.1 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.1 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.1 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
@@ -63,6 +75,18 @@ exports[`Lua version 5.1 / global type 1`] = `"t = type(213.4)"`;
 exports[`Lua version 5.2 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
 exports[`Lua version 5.2 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version 5.2 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.2 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
 
 exports[`Lua version 5.2 / global getmetatable 1`] = `
 "metatable = getmetatable({})
@@ -124,6 +148,18 @@ exports[`Lua version 5.3 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.3 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.3 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.3 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.3 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
@@ -184,6 +220,18 @@ exports[`Lua version 5.4 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.4 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.4 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.4 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.4 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
@@ -243,6 +291,18 @@ exports[`Lua version 5.4 / global type 1`] = `"t = type(213.4)"`;
 exports[`Lua version JIT / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
 exports[`Lua version JIT / global assert 2`] = `"assert(false, \\"assert message\\")"`;
+
+exports[`Lua version JIT / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version JIT / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
 
 exports[`Lua version JIT / global getmetatable 1`] = `
 "metatable = getmetatable({})

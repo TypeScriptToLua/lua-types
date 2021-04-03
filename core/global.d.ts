@@ -25,7 +25,11 @@ declare const _G: typeof globalThis;
  * otherwise, returns all its arguments. In case of error, `message` is the
  * error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert(v: any, message?: string): asserts v;
+declare function assert<V>(v: V): Exclude<V, undefined | null | false>;
+declare function assert<V, A extends any[]>(
+    v: V,
+    ...args: A
+): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
 
 /**
  * This function is a generic interface to the garbage collector. It performs

@@ -12,6 +12,32 @@ describeForEachLuaTarget('global', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
+    test('assert with return', () => {
+        const lua = tstl(
+            target,
+            `
+            const v = assert({ bla: "not false"});
+            const bla = v.bla;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('assert with multi-return', () => {
+        const lua = tstl(
+            target,
+            `
+            const [v, a, b] = assert({ bla: "not false"}, { foo: "FOO" }, { bar: "BAR" });
+            const bla = v.bla;
+            const foo = a.foo;
+            const bar = b.bar;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
     test('assert', () => {
         const lua = tstl(
             target,
