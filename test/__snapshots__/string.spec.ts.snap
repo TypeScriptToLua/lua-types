@@ -70,6 +70,8 @@ exports[`Lua version 5.1 / string string.match 1`] = `
 
 exports[`Lua version 5.1 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
+exports[`Lua version 5.1 / string string.rep 1`] = `"str = string.rep(\\"foo\\", 3)"`;
+
 exports[`Lua version 5.2 / string string.byte 1`] = `"b = string.byte(\\"d\\")"`;
 
 exports[`Lua version 5.2 / string string.byte multiple 1`] = `"a, b, c, d = string.byte(\\"abcd\\", 1, 4)"`;
@@ -139,6 +141,8 @@ exports[`Lua version 5.2 / string string.match 1`] = `
 `;
 
 exports[`Lua version 5.2 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
+
+exports[`Lua version 5.2 / string string.rep 1`] = `"str = string.rep(\\"foo\\", 3)"`;
 
 exports[`Lua version 5.3 / string string.byte 1`] = `"b = string.byte(\\"d\\")"`;
 
@@ -210,6 +214,8 @@ exports[`Lua version 5.3 / string string.match 1`] = `
 
 exports[`Lua version 5.3 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
+exports[`Lua version 5.3 / string string.rep 1`] = `"str = string.rep(\\"foo\\", 3)"`;
+
 exports[`Lua version 5.4 / string string.byte 1`] = `"b = string.byte(\\"d\\")"`;
 
 exports[`Lua version 5.4 / string string.byte multiple 1`] = `"a, b, c, d = string.byte(\\"abcd\\", 1, 4)"`;
@@ -280,6 +286,8 @@ exports[`Lua version 5.4 / string string.match 1`] = `
 
 exports[`Lua version 5.4 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
+exports[`Lua version 5.4 / string string.rep 1`] = `"str = string.rep(\\"foo\\", 3)"`;
+
 exports[`Lua version JIT / string string.byte 1`] = `"b = string.byte(\\"d\\")"`;
 
 exports[`Lua version JIT / string string.byte multiple 1`] = `"a, b, c, d = string.byte(\\"abcd\\", 1, 4)"`;
@@ -349,3 +357,5 @@ exports[`Lua version JIT / string string.match 1`] = `
 `;
 
 exports[`Lua version JIT / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
+
+exports[`Lua version JIT / string string.rep 1`] = `"str = string.rep(\\"foo\\", 3)"`;

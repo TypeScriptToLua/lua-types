@@ -180,6 +180,11 @@ declare namespace string {
     function match(s: string, pattern: string, init?: number): LuaMultiReturn<string[]>;
 
     /**
+     * Returns a string that is the concatenation of `n` copies of the string `s`.
+     */
+    function rep(s: string, n: number): string;
+
+    /**
      * Returns a string that is the string s reversed.
      */
     function reverse(s: string): string;

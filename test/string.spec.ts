@@ -182,4 +182,15 @@ describeForEachLuaTarget('string', (target) => {
 
         expect(lua).toMatchSnapshot();
     });
+
+    test('string.rep', () => {
+        const lua = tstl(
+            target,
+            `
+            const str = string.rep("foo", 3);
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
 });
