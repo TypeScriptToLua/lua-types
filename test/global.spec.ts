@@ -187,6 +187,43 @@ describeForEachLuaTarget('global', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
+    test('setmetatable with table index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({}, {__index: {foo: "bar"}});
+            const takesStr = (s: string) => {};
+            takesStr(tbl.foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('setmetatable with function index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({}, {__index: (key: string) => key + "bar"});
+            const takesStr = (s: string) => {};
+            takesStr(tbl.foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('setmetatable with no index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({});
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
     test('tonumber', () => {
         const lua = tstl(
             target,

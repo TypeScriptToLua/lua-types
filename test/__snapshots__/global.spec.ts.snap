@@ -69,6 +69,27 @@ exports[`Lua version 5.1 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.1 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.1 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.1 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.1 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.1 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.1 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -145,6 +166,27 @@ exports[`Lua version 5.2 / global select 1`] = `
 exports[`Lua version 5.2 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
 exports[`Lua version 5.2 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version 5.2 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.2 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.2 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
 
 exports[`Lua version 5.2 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
@@ -223,6 +265,27 @@ exports[`Lua version 5.3 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.3 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.3 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.3 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.3 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.3 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.3 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -300,6 +363,27 @@ exports[`Lua version 5.4 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.4 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.4 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.4 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.4 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.4 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.4 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -376,6 +460,27 @@ exports[`Lua version JIT / global select 1`] = `
 exports[`Lua version JIT / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
 exports[`Lua version JIT / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version JIT / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version JIT / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version JIT / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
 
 exports[`Lua version JIT / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 

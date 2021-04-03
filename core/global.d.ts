@@ -238,10 +238,17 @@ declare function select<T>(index: '#', ...args: T[]): number;
  *
  * This function returns table.
  */
-declare function setmetatable<T extends object, TIndex extends object>(
+declare function setmetatable<
+    T extends object,
+    TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
+>(
     table: T,
-    metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined
-): T & TIndex;
+    metatable?: LuaMetatable<T, TIndex> | null
+): TIndex extends (this: T, key: infer TKey) => infer TValue
+    ? T & { [K in TKey & string]: TValue }
+    : TIndex extends object
+    ? T & TIndex
+    : T;
 
 /**
  * When called with no base, tonumber tries to convert its argument to a number.
