@@ -61,9 +61,7 @@ declare namespace io {
         filename?: string,
         ...formats: T
     ): LuaIterable<
-        LuaMultiReturn<
-            [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
-        >
+        LuaMultiReturn<[] extends T ? [string] : { [P in keyof T]: FileReadFormatToType<T[P]> }>
     >;
 
     /**
@@ -105,13 +103,11 @@ declare namespace io {
     /**
      * Equivalent to io.input():read(···).
      */
+    function read(): io.FileReadFormatToType<io.FileReadLineFormat> | undefined;
+    function read<T extends io.FileReadFormat>(format: T): io.FileReadFormatToType<T> | undefined;
     function read<T extends io.FileReadFormat[]>(
         ...formats: T
-    ): T extends { length: 0 }
-        ? io.FileReadFormatToType<io.FileReadLineFormat>
-        : T extends { length: 1 }
-        ? io.FileReadFormatToType<T>
-        : LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
+    ): LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
 
     /**
      * In case of success, returns a handle for a temporary file. This file is
@@ -132,7 +128,7 @@ declare namespace io {
      */
     function write(...args: (string | number)[]): LuaMultiReturn<[LuaFile] | [undefined, string]>;
 
-    type FileReadFormatToType<T> = (T extends FileReadNumberFormat ? number : string) | undefined;
+    type FileReadFormatToType<T> = T extends FileReadNumberFormat ? number : string;
 }
 
 interface LuaFile {
@@ -199,13 +195,11 @@ interface LuaFile {
      *
      * The formats "l" and "L" should be used only for text files.
      */
+    read(): io.FileReadFormatToType<io.FileReadLineFormat> | undefined;
+    read<T extends io.FileReadFormat>(format: T): io.FileReadFormatToType<T> | undefined;
     read<T extends io.FileReadFormat[]>(
         ...formats: T
-    ): T extends { length: 0 }
-        ? io.FileReadFormatToType<io.FileReadLineFormat>
-        : T extends { length: 1 }
-        ? io.FileReadFormatToType<T>
-        : LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
+    ): LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
 
     /**
      * Sets and geionts the file position, measured from the beginning of the
