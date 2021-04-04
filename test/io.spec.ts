@@ -1,3 +1,4 @@
+import { LuaTarget } from 'typescript-to-lua';
 import { describeForEachLuaTarget, tstl } from './test-utils';
 
 describeForEachLuaTarget('io', (target) => {
@@ -162,11 +163,52 @@ describeForEachLuaTarget('io', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
-    test('read', () => {
+    test('read zero', () => {
         const lua = tstl(
             target,
             `
-            const [foo] = io.read();
+            const foo = io.read();
+            declare function takesString(str: string): void;
+            takesString(foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('read one', () => {
+        const useOldFormat =
+            [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.LuaJIT, LuaTarget.Universal].indexOf(
+                target
+            ) >= 0;
+        const lineFormat = useOldFormat ? '*l' : 'l';
+        const lua = tstl(
+            target,
+            `
+            const foo = io.read("${lineFormat}");
+            declare function takesString(str: string): void;
+            takesString(foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('read multi', () => {
+        const useOldFormat =
+            [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.LuaJIT, LuaTarget.Universal].indexOf(
+                target
+            ) >= 0;
+        const numberFormat = useOldFormat ? '*n' : 'n';
+        const lineFormat = useOldFormat ? '*l' : 'l';
+        const lua = tstl(
+            target,
+            `
+            const [foo, bar] = io.read("${lineFormat}", "${numberFormat}");
+            declare function takesString(str: string): void;
+            declare function takesNumber(num: number): void;
+            takesString(foo);
+            takesNumber(bar);
             `
         );
 
@@ -247,17 +289,60 @@ describeForEachLuaTarget('file', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
-    test('read', () => {
-        const lua = tstl(
-            target,
-            `
-            declare const file: LuaFile;
-            const [foo] = file.read();
-            `
-        );
+    test('read zero', () => {
+      const lua = tstl(
+          target,
+          `
+          declare const file: LuaFile;
+          const foo = file.read();
+          declare function takesString(str: string): void;
+          takesString(foo);
+          `
+      );
 
-        expect(lua).toMatchSnapshot();
-    });
+      expect(lua).toMatchSnapshot();
+  });
+
+  test('read one', () => {
+      const useOldFormat =
+          [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.LuaJIT, LuaTarget.Universal].indexOf(
+              target
+          ) >= 0;
+      const lineFormat = useOldFormat ? '*l' : 'l';
+      const lua = tstl(
+          target,
+          `
+          declare const file: LuaFile;
+          const foo = file.read("${lineFormat}");
+          declare function takesString(str: string): void;
+          takesString(foo);
+          `
+      );
+
+      expect(lua).toMatchSnapshot();
+  });
+
+  test('read multi', () => {
+      const useOldFormat =
+          [LuaTarget.Lua51, LuaTarget.Lua52, LuaTarget.LuaJIT, LuaTarget.Universal].indexOf(
+              target
+          ) >= 0;
+      const numberFormat = useOldFormat ? '*n' : 'n';
+      const lineFormat = useOldFormat ? '*l' : 'l';
+      const lua = tstl(
+          target,
+          `
+          declare const file: LuaFile;
+          const [foo, bar] = file.read("${lineFormat}", "${numberFormat}");
+          declare function takesString(str: string): void;
+          declare function takesNumber(num: number): void;
+          takesString(foo);
+          takesNumber(bar);
+          `
+      );
+
+      expect(lua).toMatchSnapshot();
+  });
 
     test('seek', () => {
         const lua = tstl(

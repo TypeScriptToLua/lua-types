@@ -10,7 +10,21 @@ exports[`Lua version 5.1 / file lines 1`] = `
 end"
 `;
 
-exports[`Lua version 5.1 / file read 1`] = `"foo = file:read()"`;
+exports[`Lua version 5.1 / file read multi 1`] = `
+"foo, bar = file:read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.1 / file read one 1`] = `
+"foo = file:read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.1 / file read zero 1`] = `
+"foo = file:read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.1 / file seek 1`] = `"pos, err = file:seek()"`;
 
@@ -60,7 +74,21 @@ exports[`Lua version 5.1 / io output with filename 1`] = `"inp = io.output(\\"fo
 
 exports[`Lua version 5.1 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
-exports[`Lua version 5.1 / io read 1`] = `"foo = io:read()"`;
+exports[`Lua version 5.1 / io read multi 1`] = `
+"foo, bar = io.read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.1 / io read one 1`] = `
+"foo = io.read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.1 / io read zero 1`] = `
+"foo = io.read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.1 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
@@ -82,7 +110,21 @@ exports[`Lua version 5.2 / file lines 1`] = `
 end"
 `;
 
-exports[`Lua version 5.2 / file read 1`] = `"foo = file:read()"`;
+exports[`Lua version 5.2 / file read multi 1`] = `
+"foo, bar = file:read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.2 / file read one 1`] = `
+"foo = file:read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.2 / file read zero 1`] = `
+"foo = file:read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.2 / file seek 1`] = `"pos, err = file:seek()"`;
 
@@ -132,7 +174,21 @@ exports[`Lua version 5.2 / io output with filename 1`] = `"inp = io.output(\\"fo
 
 exports[`Lua version 5.2 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
-exports[`Lua version 5.2 / io read 1`] = `"foo = io:read()"`;
+exports[`Lua version 5.2 / io read multi 1`] = `
+"foo, bar = io.read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.2 / io read one 1`] = `
+"foo = io.read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.2 / io read zero 1`] = `
+"foo = io.read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.2 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
@@ -154,7 +210,21 @@ exports[`Lua version 5.3 / file lines 1`] = `
 end"
 `;
 
-exports[`Lua version 5.3 / file read 1`] = `"foo = file:read()"`;
+exports[`Lua version 5.3 / file read multi 1`] = `
+"foo, bar = file:read(\\"l\\", \\"n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.3 / file read one 1`] = `
+"foo = file:read(\\"l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.3 / file read zero 1`] = `
+"foo = file:read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.3 / file seek 1`] = `"pos, err = file:seek()"`;
 
@@ -204,7 +274,21 @@ exports[`Lua version 5.3 / io output with filename 1`] = `"inp = io.output(\\"fo
 
 exports[`Lua version 5.3 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
-exports[`Lua version 5.3 / io read 1`] = `"foo = io:read()"`;
+exports[`Lua version 5.3 / io read multi 1`] = `
+"foo, bar = io.read(\\"l\\", \\"n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.3 / io read one 1`] = `
+"foo = io.read(\\"l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.3 / io read zero 1`] = `
+"foo = io.read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.3 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
@@ -226,7 +310,21 @@ exports[`Lua version 5.4 / file lines 1`] = `
 end"
 `;
 
-exports[`Lua version 5.4 / file read 1`] = `"foo = file:read()"`;
+exports[`Lua version 5.4 / file read multi 1`] = `
+"foo, bar = file:read(\\"l\\", \\"n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.4 / file read one 1`] = `
+"foo = file:read(\\"l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.4 / file read zero 1`] = `
+"foo = file:read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.4 / file seek 1`] = `"pos, err = file:seek()"`;
 
@@ -276,7 +374,21 @@ exports[`Lua version 5.4 / io output with filename 1`] = `"inp = io.output(\\"fo
 
 exports[`Lua version 5.4 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
-exports[`Lua version 5.4 / io read 1`] = `"foo = io:read()"`;
+exports[`Lua version 5.4 / io read multi 1`] = `
+"foo, bar = io.read(\\"l\\", \\"n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version 5.4 / io read one 1`] = `
+"foo = io.read(\\"l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version 5.4 / io read zero 1`] = `
+"foo = io.read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version 5.4 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
@@ -298,7 +410,21 @@ exports[`Lua version JIT / file lines 1`] = `
 end"
 `;
 
-exports[`Lua version JIT / file read 1`] = `"foo = file:read()"`;
+exports[`Lua version JIT / file read multi 1`] = `
+"foo, bar = file:read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version JIT / file read one 1`] = `
+"foo = file:read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version JIT / file read zero 1`] = `
+"foo = file:read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version JIT / file seek 1`] = `"pos, err = file:seek()"`;
 
@@ -348,7 +474,21 @@ exports[`Lua version JIT / io output with filename 1`] = `"inp = io.output(\\"fo
 
 exports[`Lua version JIT / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
-exports[`Lua version JIT / io read 1`] = `"foo = io:read()"`;
+exports[`Lua version JIT / io read multi 1`] = `
+"foo, bar = io.read(\\"*l\\", \\"*n\\")
+takesString(_G, foo)
+takesNumber(_G, bar)"
+`;
+
+exports[`Lua version JIT / io read one 1`] = `
+"foo = io.read(\\"*l\\")
+takesString(_G, foo)"
+`;
+
+exports[`Lua version JIT / io read zero 1`] = `
+"foo = io.read()
+takesString(_G, foo)"
+`;
 
 exports[`Lua version JIT / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
