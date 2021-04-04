@@ -90,6 +90,12 @@ exports[`Lua version 5.1 / io read zero 1`] = `
 takesString(_G, foo)"
 `;
 
+exports[`Lua version 5.1 / io stderr 1`] = `"io.stderr:write(\\"foobar\\")"`;
+
+exports[`Lua version 5.1 / io stdin 1`] = `"input = io.stdin:read()"`;
+
+exports[`Lua version 5.1 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
+
 exports[`Lua version 5.1 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
 exports[`Lua version 5.1 / io type 1`] = `
@@ -189,6 +195,12 @@ exports[`Lua version 5.2 / io read zero 1`] = `
 "foo = io.read()
 takesString(_G, foo)"
 `;
+
+exports[`Lua version 5.2 / io stderr 1`] = `"io.stderr:write(\\"foobar\\")"`;
+
+exports[`Lua version 5.2 / io stdin 1`] = `"input = io.stdin:read()"`;
+
+exports[`Lua version 5.2 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version 5.2 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
@@ -290,6 +302,12 @@ exports[`Lua version 5.3 / io read zero 1`] = `
 takesString(_G, foo)"
 `;
 
+exports[`Lua version 5.3 / io stderr 1`] = `"io.stderr:write(\\"foobar\\")"`;
+
+exports[`Lua version 5.3 / io stdin 1`] = `"input = io.stdin:read()"`;
+
+exports[`Lua version 5.3 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
+
 exports[`Lua version 5.3 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
 exports[`Lua version 5.3 / io type 1`] = `
@@ -390,6 +408,12 @@ exports[`Lua version 5.4 / io read zero 1`] = `
 takesString(_G, foo)"
 `;
 
+exports[`Lua version 5.4 / io stderr 1`] = `"io.stderr:write(\\"foobar\\")"`;
+
+exports[`Lua version 5.4 / io stdin 1`] = `"input = io.stdin:read()"`;
+
+exports[`Lua version 5.4 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
+
 exports[`Lua version 5.4 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
 exports[`Lua version 5.4 / io type 1`] = `
@@ -489,6 +513,12 @@ exports[`Lua version JIT / io read zero 1`] = `
 "foo = io.read()
 takesString(_G, foo)"
 `;
+
+exports[`Lua version JIT / io stderr 1`] = `"io.stderr:write(\\"foobar\\")"`;
+
+exports[`Lua version JIT / io stdin 1`] = `"input = io.stdin:read()"`;
+
+exports[`Lua version JIT / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version JIT / io tmpfile 1`] = `"file = io.tmpfile()"`;
 

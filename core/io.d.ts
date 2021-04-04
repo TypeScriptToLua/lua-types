@@ -110,6 +110,21 @@ declare namespace io {
     ): LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
 
     /**
+     * Predefined file handle for standard error stream. The I/O library never closes this file.
+     */
+    const stderr: LuaFile;
+
+    /**
+     * Predefined file handle for standard input stream. The I/O library never closes this file.
+     */
+    const stdin: LuaFile;
+
+    /**
+     * Predefined file handle for standard output stream. The I/O library never closes this file.
+     */
+    const stdout: LuaFile;
+
+    /**
      * In case of success, returns a handle for a temporary file. This file is
      * opened in update mode and it is automatically removed when the program
      * ends.
