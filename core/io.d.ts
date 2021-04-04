@@ -100,7 +100,7 @@ declare namespace io {
      * you can use to read data from this program (if mode is "r", the default) or
      * to write data to this program (if mode is "w").
      */
-    function popen(prog: string, mode?: 'r' | 'w'): LuaFile;
+     function popen(prog: string, mode?: 'r' | 'w'): LuaMultiReturn<[LuaFile] | [undefined, string]>;
 
     /**
      * Equivalent to io.input():read(···).

@@ -58,7 +58,7 @@ exports[`Lua version 5.1 / io output with file handle 1`] = `"inp = io.output(fi
 
 exports[`Lua version 5.1 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
 
-exports[`Lua version 5.1 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+exports[`Lua version 5.1 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
 exports[`Lua version 5.1 / io read 1`] = `"foo = io:read()"`;
 
@@ -130,7 +130,7 @@ exports[`Lua version 5.2 / io output with file handle 1`] = `"inp = io.output(fi
 
 exports[`Lua version 5.2 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
 
-exports[`Lua version 5.2 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+exports[`Lua version 5.2 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
 exports[`Lua version 5.2 / io read 1`] = `"foo = io:read()"`;
 
@@ -202,7 +202,7 @@ exports[`Lua version 5.3 / io output with file handle 1`] = `"inp = io.output(fi
 
 exports[`Lua version 5.3 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
 
-exports[`Lua version 5.3 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+exports[`Lua version 5.3 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
 exports[`Lua version 5.3 / io read 1`] = `"foo = io:read()"`;
 
@@ -274,7 +274,7 @@ exports[`Lua version 5.4 / io output with file handle 1`] = `"inp = io.output(fi
 
 exports[`Lua version 5.4 / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
 
-exports[`Lua version 5.4 / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+exports[`Lua version 5.4 / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
 exports[`Lua version 5.4 / io read 1`] = `"foo = io:read()"`;
 
@@ -346,7 +346,7 @@ exports[`Lua version JIT / io output with file handle 1`] = `"inp = io.output(fi
 
 exports[`Lua version JIT / io output with filename 1`] = `"inp = io.output(\\"foo.bar\\")"`;
 
-exports[`Lua version JIT / io popen 1`] = `"proc = io.popen(\\"echo foobar\\")"`;
+exports[`Lua version JIT / io popen 1`] = `"proc, err = io.popen(\\"echo foobar\\")"`;
 
 exports[`Lua version JIT / io read 1`] = `"foo = io:read()"`;
 

@@ -155,7 +155,7 @@ describeForEachLuaTarget('io', (target) => {
         const lua = tstl(
             target,
             `
-            const proc = io.popen("echo foobar");
+            const [proc, err] = io.popen("echo foobar");
             `
         );
 
