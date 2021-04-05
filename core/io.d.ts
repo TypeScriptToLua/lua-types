@@ -176,7 +176,7 @@ interface LuaFile {
      * In case of errors this function raises the error, instead of returning an
      * error code.
      */
-    lines<T extends FileReadFormat[]>(
+    lines<T extends io.FileReadFormat[]>(
         ...formats: T
     ): LuaIterable<
         LuaMultiReturn<[] extends T ? [string] : { [P in keyof T]: io.FileReadFormatToType<T[P]> }>
