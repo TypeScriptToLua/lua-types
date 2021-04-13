@@ -227,4 +227,8 @@ interface LuaMetatable<T> {
     __shr?(this: T, operand: any): any;
 }
 
-type FileReadFormat = 'n' | 'a' | 'l' | 'L' | number;
+declare namespace io {
+    type FileReadNumberFormat = 'n';
+    type FileReadLineFormat = 'l';
+    type FileReadFormat = FileReadNumberFormat | FileReadLineFormat | 'a' | 'L' | number;
+}

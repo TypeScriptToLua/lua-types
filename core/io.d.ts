@@ -61,9 +61,7 @@ declare namespace io {
         filename?: string,
         ...formats: T
     ): LuaIterable<
-        LuaMultiReturn<
-            [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
-        >
+        LuaMultiReturn<[] extends T ? [string] : { [P in keyof T]: FileReadFormatToType<T[P]> }>
     >;
 
     /**
@@ -100,12 +98,31 @@ declare namespace io {
      * you can use to read data from this program (if mode is "r", the default) or
      * to write data to this program (if mode is "w").
      */
-    function popen(prog: string, mode?: 'r' | 'w'): LuaFile;
+    function popen(prog: string, mode?: 'r' | 'w'): LuaMultiReturn<[LuaFile] | [undefined, string]>;
 
     /**
      * Equivalent to io.input():read(···).
      */
-    const read: LuaFile['read'];
+    function read(): io.FileReadFormatToType<io.FileReadLineFormat> | undefined;
+    function read<T extends io.FileReadFormat>(format: T): io.FileReadFormatToType<T> | undefined;
+    function read<T extends io.FileReadFormat[]>(
+        ...formats: T
+    ): LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
+
+    /**
+     * Predefined file handle for standard error stream. The I/O library never closes this file.
+     */
+    const stderr: LuaFile;
+
+    /**
+     * Predefined file handle for standard input stream. The I/O library never closes this file.
+     */
+    const stdin: LuaFile;
+
+    /**
+     * Predefined file handle for standard output stream. The I/O library never closes this file.
+     */
+    const stdout: LuaFile;
 
     /**
      * In case of success, returns a handle for a temporary file. This file is
@@ -125,6 +142,8 @@ declare namespace io {
      * Equivalent to io.output():write(···).
      */
     function write(...args: (string | number)[]): LuaMultiReturn<[LuaFile] | [undefined, string]>;
+
+    type FileReadFormatToType<T> = T extends FileReadNumberFormat ? number : string;
 }
 
 interface LuaFile {
@@ -157,12 +176,10 @@ interface LuaFile {
      * In case of errors this function raises the error, instead of returning an
      * error code.
      */
-    lines<T extends FileReadFormat[]>(
+    lines<T extends io.FileReadFormat[]>(
         ...formats: T
     ): LuaIterable<
-        LuaMultiReturn<
-            [] extends T ? [string] : { [P in keyof T]: T[P] extends 'n' ? number : string }
-        >
+        LuaMultiReturn<[] extends T ? [string] : { [P in keyof T]: io.FileReadFormatToType<T[P]> }>
     >;
 
     /**
@@ -193,9 +210,11 @@ interface LuaFile {
      *
      * The formats "l" and "L" should be used only for text files.
      */
-    read<T extends FileReadFormat[]>(
+    read(): io.FileReadFormatToType<io.FileReadLineFormat> | undefined;
+    read<T extends io.FileReadFormat>(format: T): io.FileReadFormatToType<T> | undefined;
+    read<T extends io.FileReadFormat[]>(
         ...formats: T
-    ): LuaMultiReturn<{ [P in keyof T]?: T[P] extends 'n' ? number : string }>;
+    ): LuaMultiReturn<{ [P in keyof T]?: io.FileReadFormatToType<T[P]> }>;
 
     /**
      * Sets and geionts the file position, measured from the beginning of the

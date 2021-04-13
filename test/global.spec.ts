@@ -12,6 +12,32 @@ describeForEachLuaTarget('global', (target) => {
         expect(lua).toMatchSnapshot();
     });
 
+    test('assert with return', () => {
+        const lua = tstl(
+            target,
+            `
+            const v = assert({ bla: "not false"});
+            const bla = v.bla;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('assert with multi-return', () => {
+        const lua = tstl(
+            target,
+            `
+            const [v, a, b] = assert({ bla: "not false"}, { foo: "FOO" }, { bar: "BAR" });
+            const bla = v.bla;
+            const foo = a.foo;
+            const bar = b.bar;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
     test('assert', () => {
         const lua = tstl(
             target,
@@ -29,6 +55,18 @@ describeForEachLuaTarget('global', (target) => {
             `
             const metatable = getmetatable({});
             const add = metatable!.__add;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('getmetatable on string', () => {
+        const lua = tstl(
+            target,
+            `
+            const metatable = getmetatable("foo");
+            const index = metatable!.__index;
         `
         );
 
@@ -76,6 +114,24 @@ describeForEachLuaTarget('global', (target) => {
             `
             for (const [k, v] of pairs({ foo: "bar", baz: "bur" })) {
                 print(k, v);
+            }
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('pairs with LuaTable', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = new LuaTable<string, string>();
+            tbl.set("foo", "bar");
+            tbl.set("baz", "bur");
+            const takesStr = (str: string) => {};
+            for (const [k, v] of pairs(tbl)) {
+                takesStr(k);
+                takesStr(v);
             }
         `
         );
@@ -144,6 +200,43 @@ describeForEachLuaTarget('global', (target) => {
             `
             const count = select("#", "a", "b", "c");
         `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('setmetatable with table index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({}, {__index: {foo: "bar"}});
+            const takesStr = (s: string) => {};
+            takesStr(tbl.foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('setmetatable with function index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({}, {__index: (key: string) => key + "bar"});
+            const takesStr = (s: string) => {};
+            takesStr(tbl.foo);
+            `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
+
+    test('setmetatable with no index', () => {
+        const lua = tstl(
+            target,
+            `
+            const tbl = setmetatable({});
+            `
         );
 
         expect(lua).toMatchSnapshot();

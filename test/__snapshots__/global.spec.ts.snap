@@ -4,9 +4,26 @@ exports[`Lua version 5.1 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.1 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.1 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.1 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.1 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
+`;
+
+exports[`Lua version 5.1 / global getmetatable on string 1`] = `
+"metatable = getmetatable(\\"foo\\")
+index = metatable.__index"
 `;
 
 exports[`Lua version 5.1 / global ipairs 1`] = `
@@ -22,6 +39,18 @@ exports[`Lua version 5.1 / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version 5.1 / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version 5.1 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -52,6 +81,27 @@ exports[`Lua version 5.1 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.1 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.1 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.1 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.1 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.1 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.1 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -64,9 +114,26 @@ exports[`Lua version 5.2 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.2 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.2 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.2 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.2 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
+`;
+
+exports[`Lua version 5.2 / global getmetatable on string 1`] = `
+"metatable = getmetatable(\\"foo\\")
+index = metatable.__index"
 `;
 
 exports[`Lua version 5.2 / global ipairs 1`] = `
@@ -82,6 +149,18 @@ exports[`Lua version 5.2 / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version 5.2 / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version 5.2 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -112,6 +191,27 @@ exports[`Lua version 5.2 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.2 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.2 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.2 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.2 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.2 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.2 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -124,9 +224,26 @@ exports[`Lua version 5.3 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.3 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.3 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.3 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.3 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
+`;
+
+exports[`Lua version 5.3 / global getmetatable on string 1`] = `
+"metatable = getmetatable(\\"foo\\")
+index = metatable.__index"
 `;
 
 exports[`Lua version 5.3 / global ipairs 1`] = `
@@ -142,6 +259,18 @@ exports[`Lua version 5.3 / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version 5.3 / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version 5.3 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -172,6 +301,27 @@ exports[`Lua version 5.3 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.3 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.3 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.3 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.3 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.3 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.3 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -184,9 +334,26 @@ exports[`Lua version 5.4 / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version 5.4 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version 5.4 / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version 5.4 / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version 5.4 / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
+`;
+
+exports[`Lua version 5.4 / global getmetatable on string 1`] = `
+"metatable = getmetatable(\\"foo\\")
+index = metatable.__index"
 `;
 
 exports[`Lua version 5.4 / global ipairs 1`] = `
@@ -202,6 +369,18 @@ exports[`Lua version 5.4 / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version 5.4 / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version 5.4 / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -232,6 +411,27 @@ exports[`Lua version 5.4 / global select destructured 1`] = `"b, c = select(2, \
 
 exports[`Lua version 5.4 / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
 
+exports[`Lua version 5.4 / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version 5.4 / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version 5.4 / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
 exports[`Lua version 5.4 / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 
 exports[`Lua version 5.4 / global tonumber with base 1`] = `"number = tonumber(\\"213.4\\", 5)"`;
@@ -244,9 +444,26 @@ exports[`Lua version JIT / global assert 1`] = `"assert({bla = \\"not false\\"})
 
 exports[`Lua version JIT / global assert 2`] = `"assert(false, \\"assert message\\")"`;
 
+exports[`Lua version JIT / global assert with multi-return 1`] = `
+"v, a, b = assert({bla = \\"not false\\"}, {foo = \\"FOO\\"}, {bar = \\"BAR\\"})
+bla = v.bla
+foo = a.foo
+bar = b.bar"
+`;
+
+exports[`Lua version JIT / global assert with return 1`] = `
+"v = assert({bla = \\"not false\\"})
+bla = v.bla"
+`;
+
 exports[`Lua version JIT / global getmetatable 1`] = `
 "metatable = getmetatable({})
 add = metatable.__add"
+`;
+
+exports[`Lua version JIT / global getmetatable on string 1`] = `
+"metatable = getmetatable(\\"foo\\")
+index = metatable.__index"
 `;
 
 exports[`Lua version JIT / global ipairs 1`] = `
@@ -262,6 +479,18 @@ exports[`Lua version JIT / global next with previous index 1`] = `"nextKey, next
 exports[`Lua version JIT / global pairs 1`] = `
 "for k, v in pairs({foo = \\"bar\\", baz = \\"bur\\"}) do
     print(k, v)
+end"
+`;
+
+exports[`Lua version JIT / global pairs with LuaTable 1`] = `
+"tbl = {}
+tbl.foo = \\"bar\\"
+tbl.baz = \\"bur\\"
+takesStr = function(____, str)
+end
+for k, v in pairs(tbl) do
+    takesStr(_G, k)
+    takesStr(_G, v)
 end"
 `;
 
@@ -291,6 +520,27 @@ exports[`Lua version JIT / global select 1`] = `
 exports[`Lua version JIT / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
 exports[`Lua version JIT / global select with # 1`] = `"count = select(\\"#\\", \\"a\\", \\"b\\", \\"c\\")"`;
+
+exports[`Lua version JIT / global setmetatable with function index 1`] = `
+"tbl = setmetatable(
+    {},
+    {
+        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+    }
+)
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
+
+exports[`Lua version JIT / global setmetatable with no index 1`] = `"tbl = setmetatable({})"`;
+
+exports[`Lua version JIT / global setmetatable with table index 1`] = `
+"tbl = setmetatable({}, {__index = {foo = \\"bar\\"}})
+takesStr = function(____, s)
+end
+takesStr(_G, tbl.foo)"
+`;
 
 exports[`Lua version JIT / global tonumber 1`] = `"number = tonumber(\\"213.4\\")"`;
 

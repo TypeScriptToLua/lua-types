@@ -96,4 +96,8 @@ declare namespace debug {
     ): LuaMultiReturn<[string, any]>;
 }
 
-type FileReadFormat = '*n' | '*a' | '*l' | number;
+declare namespace io {
+    type FileReadNumberFormat = '*n';
+    type FileReadLineFormat = '*l';
+    type FileReadFormat = FileReadNumberFormat | FileReadLineFormat | '*a' | number;
+}

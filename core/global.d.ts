@@ -25,7 +25,11 @@ declare const _G: typeof globalThis;
  * otherwise, returns all its arguments. In case of error, `message` is the
  * error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert(v: any, message?: string): asserts v;
+declare function assert<V>(v: V): Exclude<V, undefined | null | false>;
+declare function assert<V, A extends any[]>(
+    v: V,
+    ...args: A
+): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
 
 /**
  * This function is a generic interface to the garbage collector. It performs
@@ -109,7 +113,7 @@ declare function error(message: string, level?: number): never;
  * metatable has a __metatable field, returns the associated value. Otherwise,
  * returns the metatable of the given object.
  */
-declare function getmetatable<T extends object>(object: T): LuaMetatable<T> | undefined;
+declare function getmetatable<T>(object: T): LuaMetatable<T> | undefined;
 
 /**
  * Returns three values (an iterator function, the table t, and 0) so that the
@@ -153,6 +157,9 @@ declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | [
  * See function next for the caveats of modifying the table during its
  * traversal.
  */
+declare function pairs<TKey, TValue>(
+    t: LuaTable<TKey, TValue>
+): LuaIterable<LuaMultiReturn<[TKey, TValue]>>;
 declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, T[keyof T]]>>;
 
 /**
@@ -234,10 +241,17 @@ declare function select<T>(index: '#', ...args: T[]): number;
  *
  * This function returns table.
  */
-declare function setmetatable<T extends object, TIndex extends object>(
+declare function setmetatable<
+    T extends object,
+    TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
+>(
     table: T,
-    metatable: LuaMetatable<T & TIndex, TIndex> | null | undefined
-): T & TIndex;
+    metatable?: LuaMetatable<T, TIndex> | null
+): TIndex extends (this: T, key: infer TKey) => infer TValue
+    ? T & { [K in TKey & string]: TValue }
+    : TIndex extends object
+    ? T & TIndex
+    : T;
 
 /**
  * When called with no base, tonumber tries to convert its argument to a number.
