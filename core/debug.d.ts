@@ -192,10 +192,17 @@ declare namespace debug {
      * Sets the metatable for the given value to the given table (which can be
      * nil). Returns value.
      */
-    function setmetatable<T, TIndex>(
+    function setmetatable<
+        T extends object,
+        TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
+    >(
         value: T,
-        table: LuaMetatable<T & TIndex, TIndex> | null | undefined
-    ): T & TIndex;
+        table?: LuaMetatable<T, TIndex> | null
+    ): TIndex extends (this: T, key: infer TKey) => infer TValue
+        ? T & { [K in TKey & string]: TValue }
+        : TIndex extends object
+        ? T & TIndex
+        : T;
 
     /**
      * This function assigns the value value to the upvalue with index up of the
