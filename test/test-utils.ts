@@ -22,20 +22,14 @@ export function describeForEachLuaTarget(name: string, action: (luaTarget: LuaTa
 export function tstl(luaTarget: LuaTarget, input: string): string {
     // Resolve the path to the lua version delcaration file we want to test
     const typesPath = path.resolve(__dirname, `../${luaTarget.toLowerCase()}.d.ts`);
-    const languageExtensionsPath = path.resolve(
-        __dirname,
-        `../node_modules/typescript-to-lua/language-extensions`
-    );
 
     // Create a TS program containing input.ts and the declarations file to test
     const rootNames = ['input.ts', typesPath];
     const options = {
         luaTarget,
-        skipLibCheck: true,
         lib: ['lib.esnext.d.ts'],
         noHeader: true,
         target: ts.ScriptTarget.ESNext,
-        types: [languageExtensionsPath],
         moduleResolution: ts.ModuleResolutionKind.NodeJs,
     };
     const compilerHost = getCompilerHostWithInput(input); // Create a compiler host that returns input for input.ts
