@@ -124,7 +124,9 @@ declare function getmetatable<T>(object: T): LuaMetatable<T> | undefined;
  * will iterate over the key–value pairs (1,t[1]), (2,t[2]), ..., up to the
  * first nil value.
  */
-declare function ipairs<T>(t: Record<number, T>): LuaIterable<LuaMultiReturn<[number, NonNullable<T>]>>;
+declare function ipairs<T>(
+    t: Record<number, T>
+): LuaIterable<LuaMultiReturn<[number, NonNullable<T>]>>;
 
 /**
  * Allows a program to traverse all fields of a table. Its first argument is a
