@@ -161,7 +161,7 @@ declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | [
  */
 declare function pairs<TKey, TValue>(
     t: LuaTable<TKey, TValue>
-): LuaIterable<LuaMultiReturn<[TKey, TValue]>>;
+): LuaIterable<LuaMultiReturn<[TKey, NonNullable<TValue>]>>;
 declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, NonNullable<T[keyof T]>]>>;
 
 /**
