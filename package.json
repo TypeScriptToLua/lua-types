@@ -24,7 +24,7 @@
         "singleQuote": true
     },
     "dependencies": {
-        "typescript-to-lua": "^0.39.0"
+        "typescript-to-lua": "^0.41.0"
     },
     "devDependencies": {
         "@types/jest": "^26.0.20",
