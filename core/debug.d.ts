@@ -197,7 +197,7 @@ declare namespace debug {
         TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
     >(
         value: T,
-        table?: LuaMetatable<T, TIndex> | null
+        table?: LuaMetatable<T, TIndex>
     ): TIndex extends (this: T, key: infer TKey) => infer TValue
         ? T & { [K in TKey & string]: TValue }
         : TIndex extends object
@@ -227,8 +227,8 @@ declare namespace debug {
      * level to start the traceback (default is 1, the function calling
      * traceback).
      */
-    function traceback(message?: string | null, level?: number | null): string;
-    function traceback(thread?: LuaThread, message?: string | null, level?: number | null): string;
+    function traceback(message?: string, level?: number): string;
+    function traceback(thread?: LuaThread, message?: string, level?: number): string;
     function traceback<T>(message: T): T;
     function traceback<T>(thread: LuaThread, message: T): T;
 }

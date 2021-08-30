@@ -32,7 +32,7 @@
  * binary chunks can crash the interpreter.
  */
 declare function loadstring(
-    chunk: string | (() => string | null | undefined),
+    chunk: string | (() => string | undefined),
     chunkname?: string,
     mode?: 'b' | 't' | 'bt',
     env?: object

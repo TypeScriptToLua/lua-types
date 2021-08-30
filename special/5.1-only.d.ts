@@ -13,7 +13,7 @@
  * When absent, it defaults to "=(load)".
  */
 declare function load(
-    func: () => string | null | undefined,
+    func?: () => string,
     chunkname?: string
 ): LuaMultiReturn<[() => any] | [undefined, string]>;
 

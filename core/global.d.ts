@@ -25,11 +25,11 @@ declare const _G: typeof globalThis;
  * otherwise, returns all its arguments. In case of error, `message` is the
  * error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert<V>(v: V): Exclude<V, undefined | null | false>;
+declare function assert<V>(v: V): Exclude<V, undefined | false>;
 declare function assert<V, A extends any[]>(
     v: V,
     ...args: A
-): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
+): LuaMultiReturn<[Exclude<V, undefined | false>, ...A]>;
 
 /**
  * This function is a generic interface to the garbage collector. It performs
@@ -248,7 +248,7 @@ declare function setmetatable<
     TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
 >(
     table: T,
-    metatable?: LuaMetatable<T, TIndex> | null
+    metatable?: LuaMetatable<T, TIndex>
 ): TIndex extends (this: T, key: infer TKey) => infer TValue
     ? T & { [K in TKey & string]: TValue }
     : TIndex extends object
