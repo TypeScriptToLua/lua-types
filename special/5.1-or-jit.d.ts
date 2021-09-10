@@ -19,7 +19,7 @@ declare function collectgarbage(opt: 'count'): number;
  * elements. By default, i is 1 and j is the length of the list, as defined by
  * the length operator (see §2.5.5).
  */
-declare function unpack<T extends any[]>(list: T): LuaMultiReturn<T[]>;
+declare function unpack<T extends any[]>(list: T): LuaMultiReturn<T>;
 declare function unpack<T>(list: T[], i: number, j?: number): LuaMultiReturn<T[]>;
 
 /**

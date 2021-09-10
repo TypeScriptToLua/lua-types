@@ -94,7 +94,7 @@ declare namespace table {
      *
      * By default, i is 1 and j is #list.
      */
-    function unpack<T extends any[]>(list: T): LuaMultiReturn<T[]>;
+    function unpack<T extends any[]>(list: T): LuaMultiReturn<T>;
     function unpack<T>(list: T[], i: number, j?: number): LuaMultiReturn<T[]>;
 
     /**
