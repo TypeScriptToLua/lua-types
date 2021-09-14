@@ -85,7 +85,7 @@ exports[`Lua version 5.1 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
     {
-        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+        __index = function(____, key) return key .. \\"bar\\" end
     }
 )
 takesStr = function(____, s)
@@ -195,7 +195,7 @@ exports[`Lua version 5.2 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
     {
-        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+        __index = function(____, key) return key .. \\"bar\\" end
     }
 )
 takesStr = function(____, s)
@@ -305,7 +305,7 @@ exports[`Lua version 5.3 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
     {
-        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+        __index = function(____, key) return key .. \\"bar\\" end
     }
 )
 takesStr = function(____, s)
@@ -415,7 +415,7 @@ exports[`Lua version 5.4 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
     {
-        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+        __index = function(____, key) return key .. \\"bar\\" end
     }
 )
 takesStr = function(____, s)
@@ -525,7 +525,7 @@ exports[`Lua version JIT / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
     {
-        __index = function(____, key) return tostring(key) .. \\"bar\\" end
+        __index = function(____, key) return key .. \\"bar\\" end
     }
 )
 takesStr = function(____, s)
