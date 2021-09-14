@@ -23,8 +23,8 @@
         "proseWrap": "never",
         "singleQuote": true
     },
-    "dependencies": {
-        "typescript-to-lua": "^0.39.0"
+    "peerDependencies": {
+        "typescript-to-lua": "^1.0.0"
     },
     "devDependencies": {
         "@types/jest": "^26.0.20",
@@ -32,6 +32,7 @@
         "jest": "^26.6.3",
         "jest-circus": "^26.6.3",
         "prettier": "^2.0.5",
-        "ts-jest": "^26.5.3"
+        "ts-jest": "^26.5.3",
+        "typescript-to-lua": "^1.0.1"
     }
 }
