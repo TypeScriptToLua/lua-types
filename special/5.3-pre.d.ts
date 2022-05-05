@@ -14,11 +14,6 @@ declare namespace math {
     function atan2(y: number, x: number): number;
 
     /**
-     * Returns the hyperbolic cosine of x.
-     */
-    function cosh(x: number): number;
-
-    /**
      * Returns m and e such that x = m2e, e is an integer and the absolute value
      * of m is in the range [0.5, 1) (or zero when x is zero).
      */
@@ -33,14 +28,4 @@ declare namespace math {
      * Returns xy. (You can also use the expression x^y to compute this value.)
      */
     function pow(x: number, y: number): number;
-
-    /**
-     * Returns the hyperbolic sine of x.
-     */
-    function sinh(x: number): number;
-
-    /**
-     * Returns the hyperbolic tangent of x.
-     */
-    function tanh(x: number): number;
 }

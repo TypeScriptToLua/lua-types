@@ -93,37 +93,6 @@ declare namespace string {
     function format(formatstring: string, ...args: any[]): string;
 
     /**
-     * Returns an iterator function that, each time it is called, returns the next
-     * captures from pattern (see §6.4.1) over the string s. If pattern specifies
-     * no captures, then the whole match is produced in each call.
-     *
-     * As an example, the following loop will iterate over all the words from
-     * string s, printing one per line:
-     *
-     * ```
-     * s = "hello world from Lua"
-     * for w in string.gmatch(s, "%a+") do
-     *   print(w)
-     * end
-     * ```
-     *
-     * The next example collects all pairs key=value from the given string into a
-     * table:
-     *
-     * ```
-     * t = {}
-     * s = "from=world, to=Lua"
-     * for k, v in string.gmatch(s, "(%w+)=(%w+)") do
-     *   t[k] = v
-     * end
-     * ```
-     *
-     * For this function, a caret '^' at the start of a pattern does not work as
-     * an anchor, as this would prevent the iteration.
-     */
-    function gmatch(s: string, pattern: string): LuaIterable<LuaMultiReturn<string[]>>;
-
-    /**
      * Returns a copy of s in which all (or the first n, if given) occurrences of
      * the pattern (see §6.4.1) have been replaced by a replacement string
      * specified by repl, which can be a string, a table, or a function. gsub also
@@ -171,23 +140,9 @@ declare namespace string {
     function lower(s: string): string;
 
     /**
-     * Looks for the first match of pattern (see §6.4.1) in the string s. If it
-     * finds one, then match returns the captures from the pattern; otherwise it
-     * returns nil. If pattern specifies no captures, then the whole match is
-     * returned. A third, optional numeric argument init specifies where to start
-     * the search; its default value is 1 and can be negative.
-     */
-    function match(s: string, pattern: string, init?: number): LuaMultiReturn<string[]>;
-
-    /**
      * Returns a string that is the concatenation of `n` copies of the string `s`.
      */
     function rep(s: string, n: number): string;
-
-    /**
-     * Returns a string that is the string s reversed.
-     */
-    function reverse(s: string): string;
 
     /**
      * Returns the substring of s that starts at i and continues until j; i and j

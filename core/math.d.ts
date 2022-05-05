@@ -52,17 +52,6 @@ declare namespace math {
     function floor(x: number): number;
 
     /**
-     * Returns the remainder of the division of x by y that rounds the quotient
-     * towards zero. (integer/float)
-     */
-    function fmod(x: number, y: number): number;
-
-    /**
-     * The float value HUGE_VAL, a value larger than any other numeric value.
-     */
-    const huge: number;
-
-    /**
      * Returns the argument with the maximum value, according to the Lua operator
      * <. (integer/float)
      */
@@ -73,12 +62,6 @@ declare namespace math {
      * <. (integer/float)
      */
     function min(x: number, ...numbers: number[]): number;
-
-    /**
-     * Returns the integral part of x and the fractional part of x. Its second
-     * result is always a float.
-     */
-    function modf(x: number): LuaMultiReturn<[number, number]>;
 
     /**
      * The value of π.

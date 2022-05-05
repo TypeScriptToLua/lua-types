@@ -35,11 +35,6 @@ interface LuaMetatable<
     __div?(this: T, operand: any): any;
 
     /**
-     * the modulo (%) operation. Behavior similar to the addition operation.
-     */
-    __mod?(this: T, operand: any): any;
-
-    /**
      * the exponentiation (^) operation. Behavior similar to the addition
      * operation.
      */
@@ -57,16 +52,6 @@ interface LuaMetatable<
      * a string nor a number (which is always coercible to a string).
      */
     __concat?(this: T, operand: any): any;
-
-    /**
-     * the length (#) operation. If the object is not a string, Lua will try its
-     * metamethod. If there is a metamethod, Lua calls it with the object as
-     * argument, and the result of the call (always adjusted to one value) is the
-     * result of the operation. If there is no metamethod but the object is a
-     * table, then Lua uses the table length operation (see §3.4.7). Otherwise,
-     * Lua raises an error.
-     */
-    __len?(this: T): any;
 
     /**
      * the equal (==) operation. Behavior similar to the addition operation,
