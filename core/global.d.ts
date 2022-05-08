@@ -11,7 +11,7 @@ type LuaUserdata = { readonly __internal__: unique symbol };
  * A global variable (not a function) that holds a string containing the running
  * Lua version.
  */
-declare const _VERSION: 'Lua 5.0' | 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
+declare const _VERSION: 'Lua 5.0' | 'Lua 5.0.1' | 'Lua 5.0.2' | 'Lua 5.0.3' | 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
 
 /**
  * A global variable (not a function) that holds the global environment (see
