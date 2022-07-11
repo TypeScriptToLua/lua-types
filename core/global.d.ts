@@ -20,16 +20,21 @@ declare const _VERSION: 'Lua 5.1' | 'Lua 5.2' | 'Lua 5.3' | 'Lua 5.4';
  */
 declare const _G: typeof globalThis;
 
+
 /**
  * Calls error if the value of its argument `v` is false (i.e., nil or false);
  * otherwise, returns all its arguments. In case of error, `message` is the
  * error object; when absent, it defaults to "assertion failed!"
  */
-declare function assert<V>(v: V): Exclude<V, undefined | null | false>;
-declare function assert<V, A extends any[]>(
+declare const assert: AssertFunction;
+
+interface AssertFunction {
+  <V>(v: V): Exclude<V, undefined | null | false>;
+  <V, A extends any[]>(
     v: V,
     ...args: A
-): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
+  ): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
+}
 
 /**
  * This function is a generic interface to the garbage collector. It performs
@@ -125,7 +130,7 @@ declare function getmetatable<T>(object: T): LuaMetatable<T> | undefined;
  * first nil value.
  */
 declare function ipairs<T>(
-    t: Record<number, T>
+  t: Record<number, T>
 ): LuaIterable<LuaMultiReturn<[number, NonNullable<T>]>>;
 
 /**
@@ -145,7 +150,10 @@ declare function ipairs<T>(
  * value to a non-existent field in the table. You may however modify existing
  * fields. In particular, you may clear existing fields.
  */
-declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | []>;
+declare function next(
+  table: object,
+  index?: any
+): LuaMultiReturn<[any, any] | []>;
 
 /**
  * If t has a metamethod __pairs, calls it with t as argument and returns the
@@ -160,7 +168,7 @@ declare function next(table: object, index?: any): LuaMultiReturn<[any, any] | [
  * traversal.
  */
 declare function pairs<TKey, TValue>(
-    t: LuaTable<TKey, TValue>
+  t: LuaTable<TKey, TValue>
 ): LuaIterable<LuaMultiReturn<[TKey, NonNullable<TValue>]>>;
 declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, NonNullable<T[keyof T]>]>>;
 
@@ -173,14 +181,14 @@ declare function pairs<T>(t: T): LuaIterable<LuaMultiReturn<[keyof T, NonNullabl
  * pcall returns false plus the error message.
  */
 declare function pcall<This, Args extends any[], R>(
-    f: (this: This, ...args: Args) => R,
-    context: This,
-    ...args: Args
+  f: (this: This, ...args: Args) => R,
+  context: This,
+  ...args: Args
 ): LuaMultiReturn<[true, R] | [false, string]>;
 
 declare function pcall<A extends any[], R>(
-    f: (this: void, ...args: A) => R,
-    ...args: A
+  f: (this: void, ...args: A) => R,
+  ...args: A
 ): LuaMultiReturn<[true, R] | [false, string]>;
 
 /**
@@ -202,7 +210,10 @@ declare function rawequal<T>(v1: T, v2: T): boolean;
  * Gets the real value of table[index], without invoking the __index metamethod.
  * table must be a table; index may be any value.
  */
-declare function rawget<T extends object, K extends keyof T>(table: T, index: K): T[K];
+declare function rawget<T extends object, K extends keyof T>(
+  table: T,
+  index: K
+): T[K];
 
 /**
  * Returns the length of the object v, which must be a table or a string,
@@ -217,7 +228,11 @@ declare function rawlen(v: object | string): number;
  *
  * This function returns table.
  */
-declare function rawset<T extends object, K extends keyof T>(table: T, index: K, value: T[K]): T;
+declare function rawset<T extends object, K extends keyof T>(
+  table: T,
+  index: K,
+  value: T[K]
+): T;
 
 /**
  * If index is a number, returns all arguments after argument number index; a
@@ -243,17 +258,15 @@ declare function select<T>(index: '#', ...args: T[]): number;
  *
  * This function returns table.
  */
-declare function setmetatable<
-    T extends object,
-    TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
->(
-    table: T,
-    metatable?: LuaMetatable<T, TIndex> | null
+declare function setmetatable<T extends object,
+  TIndex extends object | ((this: T, key: any) => any) | undefined = undefined>(
+  table: T,
+  metatable?: LuaMetatable<T, TIndex> | null
 ): TIndex extends (this: T, key: infer TKey) => infer TValue
-    ? T & { [K in TKey & string]: TValue }
-    : TIndex extends object
-    ? T & TIndex
-    : T;
+   ? T & { [K in TKey & string]: TValue }
+   : TIndex extends object
+     ? T & TIndex
+     : T;
 
 /**
  * When called with no base, tonumber tries to convert its argument to a number.
@@ -288,5 +301,5 @@ declare function tostring(v: any): string;
  * Returns the type of its only argument, coded as a string.
  */
 declare function type(
-    v: any
+  v: any
 ): 'nil' | 'number' | 'string' | 'boolean' | 'table' | 'function' | 'thread' | 'userdata';
