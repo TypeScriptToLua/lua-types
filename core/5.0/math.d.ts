@@ -27,6 +27,18 @@ declare namespace math {
     function asin(x: number): number;
 
     /**
+     * Returns the arc tangent of x (in radians).
+     */
+    function atan(x: number): number;
+
+    /**
+     * Returns the arc tangent of y/x (in radians), but uses the signs of both
+     * parameters to find the quadrant of the result. (It also handles correctly
+     * the case of x being zero.)
+     */
+    function atan2(y: number, x: number): number;
+
+    /**
      * Returns the smallest integral value larger than or equal to x.
      */
     function ceil(x: number): number;
@@ -52,15 +64,24 @@ declare namespace math {
     function floor(x: number): number;
 
     /**
-     * Returns the remainder of the division of x by y that rounds the quotient
-     * towards zero. (integer/float)
+     * Returns m and e such that x = m2e, e is an integer and the absolute value
+     * of m is in the range [0.5, 1) (or zero when x is zero).
      */
-    function fmod(x: number, y: number): number;
+    function frexp(x: number): number;
+    /**
+     * Returns m2e (e should be an integer).
+     */
+    function ldexp(m: number, e: number): number;
 
     /**
-     * The float value HUGE_VAL, a value larger than any other numeric value.
+     * Returns the logarithm of x.
      */
-    const huge: number;
+    function log(x: number): number;
+
+    /**
+     * Returns the base-10 logarithm of x.
+     */
+    function log10(x: number): number;
 
     /**
      * Returns the argument with the maximum value, according to the Lua operator
@@ -75,20 +96,37 @@ declare namespace math {
     function min(x: number, ...numbers: number[]): number;
 
     /**
-     * Returns the integral part of x and the fractional part of x. Its second
-     * result is always a float.
-     */
-    function modf(x: number): LuaMultiReturn<[number, number]>;
-
-    /**
      * The value of π.
      */
     const pi: number;
 
     /**
+     * Returns xy. (You can also use the expression x^y to compute this value.)
+     */
+    function pow(x: number, y: number): number;
+
+    /**
      * Converts the angle x from degrees to radians.
      */
     function rad(x: number): number;
+
+    /**
+     * When called without arguments, returns a pseudo-random float with uniform
+     * distribution in the range [0,1). When called with two integers m and n,
+     * math.random returns a pseudo-random integer with uniform distribution in
+     * the range [m, n]. (The value n-m cannot be negative and must fit in a Lua
+     * integer.) The call math.random(n) is equivalent to math.random(1,n).
+     *
+     * This function is an interface to the underling pseudo-random generator
+     * function provided by C.
+     */
+    function random(m?: number, n?: number): number;
+
+    /**
+     * Sets x as the "seed" for the pseudo-random generator: equal seeds produce
+     * equal sequences of numbers.
+     */
+    function randomseed(x: number): number;
 
     /**
      * Returns the sine of x (assumed to be in radians).

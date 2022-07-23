@@ -19,14 +19,13 @@
  */
 declare namespace string {
     /**
-     * Returns the internal numeric codes of the characters s[i], s[i+1], ...,
-     * s[j]. The default value for i is 1; the default value for j is i. These
-     * indices are corrected following the same rules of function string.sub.
-     *
-     * Numeric codes are not necessarily portable across platforms.
+     * Returns the internal numerical code of the i-th character of s, or nil if
+     * the index is out of range. If i is absent, then it is assumed to be 1. i
+     * may be negative.
+     * 
+     * Note that numerical codes are not necessarily portable across platforms.
      */
     function byte(s: string, i?: number): number;
-    function byte(s: string, i?: number, j?: number): LuaMultiReturn<number[]>;
 
     /**
      * Receives zero or more integers. Returns a string with length equal to the
@@ -93,35 +92,34 @@ declare namespace string {
     function format(formatstring: string, ...args: any[]): string;
 
     /**
-     * Returns an iterator function that, each time it is called, returns the next
-     * captures from pattern (see §6.4.1) over the string s. If pattern specifies
-     * no captures, then the whole match is produced in each call.
-     *
-     * As an example, the following loop will iterate over all the words from
-     * string s, printing one per line:
-     *
+     * Returns an iterator function that, each time it is called, returns the
+     * next captures from pattern pat over string s.
+     * 
+     * If pat specifies no captures, then the whole match is produced in each
+     * call.
+     * 
+     * As an example, the following loop
+     * 
      * ```
      * s = "hello world from Lua"
-     * for w in string.gmatch(s, "%a+") do
+     * for w in string.gfind(s, "%a+") do
      *   print(w)
      * end
      * ```
-     *
-     * The next example collects all pairs key=value from the given string into a
+     * 
+     * will iterate over all the words from string s, printing one per line. The
+     * next example collects all pairs key=value from the given string into a
      * table:
-     *
+     * 
      * ```
      * t = {}
      * s = "from=world, to=Lua"
-     * for k, v in string.gmatch(s, "(%w+)=(%w+)") do
+     * for k, v in string.gfind(s, "(%w+)=(%w+)") do
      *   t[k] = v
      * end
      * ```
-     *
-     * For this function, a caret '^' at the start of a pattern does not work as
-     * an anchor, as this would prevent the iteration.
      */
-    function gmatch(s: string, pattern: string): LuaIterable<LuaMultiReturn<string[]>>;
+    function gfind(s: string, pattern: string): LuaIterable<LuaMultiReturn<string[]>>;
 
     /**
      * Returns a copy of s in which all (or the first n, if given) occurrences of
@@ -171,23 +169,9 @@ declare namespace string {
     function lower(s: string): string;
 
     /**
-     * Looks for the first match of pattern (see §6.4.1) in the string s. If it
-     * finds one, then match returns the captures from the pattern; otherwise it
-     * returns nil. If pattern specifies no captures, then the whole match is
-     * returned. A third, optional numeric argument init specifies where to start
-     * the search; its default value is 1 and can be negative.
-     */
-    function match(s: string, pattern: string, init?: number): LuaMultiReturn<string[]>;
-
-    /**
      * Returns a string that is the concatenation of `n` copies of the string `s`.
      */
     function rep(s: string, n: number): string;
-
-    /**
-     * Returns a string that is the string s reversed.
-     */
-    function reverse(s: string): string;
 
     /**
      * Returns the substring of s that starts at i and continues until j; i and j

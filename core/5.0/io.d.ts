@@ -92,15 +92,6 @@ declare namespace io {
     function output(file?: string | LuaFile): LuaFile;
 
     /**
-     * This function is system dependent and is not available on all platforms.
-     *
-     * Starts program prog in a separated process and returns a file handle that
-     * you can use to read data from this program (if mode is "r", the default) or
-     * to write data to this program (if mode is "w").
-     */
-    function popen(prog: string, mode?: 'r' | 'w'): LuaMultiReturn<[LuaFile] | [undefined, string]>;
-
-    /**
      * Equivalent to io.input():read(···).
      */
     function read(): io.FileReadFormatToType<io.FileReadLineFormat> | undefined;
@@ -239,21 +230,6 @@ interface LuaFile {
         whence?: 'set' | 'cur' | 'end',
         offset?: number
     ): LuaMultiReturn<[number] | [undefined, string]>;
-
-    /**
-     * Sets the buffering mode for an output file. There are three available
-     * modes:
-     *
-     * * "no": no buffering; the result of any output operation appears
-     *   immediately.
-     * * "full": full buffering; output operation is performed only when the
-     *   buffer is full or when you explicitly flush the file (see io.flush).
-     * * "line": line buffering; output is buffered until a newline is output or
-     *   there is any input from some special files (such as a terminal device).
-     *   For the last two cases, size specifies the size of the buffer, in bytes.
-     *   The default is an appropriate size.
-     */
-    setvbuf(mode: 'no' | 'full' | 'line', size?: number): void;
 
     /**
      * Writes the value of each of its arguments to file. The arguments must be

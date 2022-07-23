@@ -28,15 +28,6 @@ declare namespace debug {
      */
     function debug(): void;
 
-    /**
-     * Returns the current hook settings of the thread, as three values: the
-     * current hook function, the current hook mask, and the current hook count
-     * (as set by the debug.sethook function).
-     */
-    function gethook(
-        thread?: LuaThread
-    ): LuaMultiReturn<[undefined, 0] | [Function, number, string?]>;
-
     interface FunctionInfo<T extends Function = Function> {
         /**
          * The function itself.
@@ -75,6 +66,13 @@ declare namespace debug {
     }
 
     /**
+     * Returns the current hook settings of the thread, as three values: the
+     * current hook function, the current hook mask, and the current hook count
+     * (as set by the debug.sethook function).
+     */
+    function gethook(): LuaMultiReturn<[undefined, 0] | [Function, number, string?]>;
+
+    /**
      * Returns a table with information about a function. You can give the
      * function directly or you can give a number as the value of f, which means
      * the function running at level f of the call stack of the given thread:
@@ -97,27 +95,18 @@ declare namespace debug {
      */
     function getinfo<T extends Function>(f: T): FunctionInfo<T>;
     function getinfo<T extends Function>(f: T, what: string): Partial<FunctionInfo<T>>;
-    function getinfo<T extends Function>(thread: LuaThread, f: T): FunctionInfo<T>;
-    function getinfo<T extends Function>(
-        thread: LuaThread,
-        f: T,
-        what: string
-    ): Partial<FunctionInfo<T>>;
     function getinfo(f: number): FunctionInfo | undefined;
     function getinfo(f: number, what: string): Partial<FunctionInfo> | undefined;
-    function getinfo(thread: LuaThread, f: number): FunctionInfo | undefined;
-    function getinfo(thread: LuaThread, f: number, what: string): Partial<FunctionInfo> | undefined;
 
     /**
-     * Returns the metatable of the given value or nil if it does not have a
-     * metatable.
+     * This function returns the name and the value of the local variable with
+     * index local of the function at level level of the stack. (The first
+     * parameter or local variable has index 1, and so on, until the last active
+     * local variable.) The function returns nil if there is no local variable
+     * with the given index, and raises an error when called with a level out of
+     * range. (You can call debug.getinfo to check whether the level is valid.)
      */
-    function getmetatable<T extends any>(value: T): LuaMetatable<T> | undefined;
-
-    /**
-     * Returns the registry table (see §4.5).
-     */
-    function getregistry(): Record<string, any>;
+    function getlocal(level: number, local: number): LuaMultiReturn<[string, any]>;
 
     /**
      * This function returns the name and the value of the upvalue with index up
@@ -129,12 +118,6 @@ declare namespace debug {
      * information).
      */
     function getupvalue(f: Function, up: number): LuaMultiReturn<[string, any] | []>;
-
-    /**
-     * Returns the Lua value associated to u. If u is not a full userdata, returns
-     * nil.
-     */
-    function getuservalue(u: LuaUserdata): any;
 
     /**
      * Sets the given function as a hook. The string mask and the number count
@@ -163,12 +146,6 @@ declare namespace debug {
         mask: string,
         count?: number
     ): void;
-    function sethook(
-        thread: LuaThread,
-        hook: (event: 'call' | 'return' | 'line' | 'count', line?: number) => any,
-        mask: string,
-        count?: number
-    ): void;
 
     /**
      * This function assigns the value value to the local variable with index
@@ -181,28 +158,6 @@ declare namespace debug {
      * See debug.getlocal for more information about variable indices and names.
      */
     function setlocal(level: number, local: number, value: any): string | undefined;
-    function setlocal(
-        thread: LuaThread,
-        level: number,
-        local: number,
-        value: any
-    ): string | undefined;
-
-    /**
-     * Sets the metatable for the given value to the given table (which can be
-     * nil). Returns value.
-     */
-    function setmetatable<
-        T extends object,
-        TIndex extends object | ((this: T, key: any) => any) | undefined = undefined
-    >(
-        value: T,
-        table?: LuaMetatable<T, TIndex> | null
-    ): TIndex extends (this: T, key: infer TKey) => infer TValue
-        ? T & { [K in TKey & string]: TValue }
-        : TIndex extends object
-        ? T & TIndex
-        : T;
 
     /**
      * This function assigns the value value to the upvalue with index up of the
@@ -220,15 +175,9 @@ declare namespace debug {
     function setuservalue(udata: LuaUserdata, value: any): LuaUserdata;
 
     /**
-     * If message is present but is neither a string nor nil, this function
-     * returns message without further processing. Otherwise, it returns a string
-     * with a traceback of the call stack. The optional message string is appended
-     * at the beginning of the traceback. An optional level number tells at which
-     * level to start the traceback (default is 1, the function calling
-     * traceback).
+     * Returns a string with a traceback of the call stack. An optional message
+     * string is appended at the beginning of the traceback. This function is
+     * typically used with xpcall to produce better error messages. 
      */
-    function traceback(message?: string | null, level?: number | null): string;
-    function traceback(thread?: LuaThread, message?: string | null, level?: number | null): string;
     function traceback<T>(message: T): T;
-    function traceback<T>(thread: LuaThread, message: T): T;
 }
