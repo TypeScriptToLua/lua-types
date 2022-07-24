@@ -6,7 +6,7 @@
  * byte counter, then Lua immediately runs the garbage collector (see 2.9). If
  * limit is absent, it defaults to zero (thus forcing a garbage-collection
  * cycle).
- */ 
+ */
 declare function collectgarbage(limit: number): void;
 
 /**
@@ -35,7 +35,7 @@ declare function loadstring(
  * `return list[1], list[2], ..., list[n]`
  *
  * except that the above code can be written only for a fixed n. The number n is
- * the size of the list, as defined for the table.getn function. 
+ * the size of the list, as defined for the table.getn function.
  */
 declare function unpack<T extends any[]>(list: T): LuaMultiReturn<T>;
 

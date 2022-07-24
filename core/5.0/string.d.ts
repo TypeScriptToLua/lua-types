@@ -22,7 +22,7 @@ declare namespace string {
      * Returns the internal numerical code of the i-th character of s, or nil if
      * the index is out of range. If i is absent, then it is assumed to be 1. i
      * may be negative.
-     * 
+     *
      * Note that numerical codes are not necessarily portable across platforms.
      */
     function byte(s: string, i?: number): number;
@@ -94,23 +94,23 @@ declare namespace string {
     /**
      * Returns an iterator function that, each time it is called, returns the
      * next captures from pattern pat over string s.
-     * 
+     *
      * If pat specifies no captures, then the whole match is produced in each
      * call.
-     * 
+     *
      * As an example, the following loop
-     * 
+     *
      * ```
      * s = "hello world from Lua"
      * for w in string.gfind(s, "%a+") do
      *   print(w)
      * end
      * ```
-     * 
+     *
      * will iterate over all the words from string s, printing one per line. The
      * next example collects all pairs key=value from the given string into a
      * table:
-     * 
+     *
      * ```
      * t = {}
      * s = "from=world, to=Lua"

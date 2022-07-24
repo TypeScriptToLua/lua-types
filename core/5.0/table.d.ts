@@ -24,8 +24,8 @@ declare namespace table {
      * called with the index and respective value as arguments. If f returns a
      * non-nil value, then the loop is broken, and this value is returned as the
      * final value of foreach.
-     * 
-     * See the next function for extra information about table traversals. 
+     *
+     * See the next function for extra information about table traversals.
      */
     function foreach(table: object, f: (index: any, value: any) => any): any;
 

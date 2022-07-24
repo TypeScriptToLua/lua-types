@@ -5,10 +5,10 @@
 /**
  * Links the program with the dynamic C library libname. Inside this library,
  * looks for a function funcname and returns this function as a C function.
- * 
+ *
  * libname must be the complete file name of the C library, including any
  * eventual path and extension.
- * 
+ *
  * This function is not supported by ANSI C. As such, it is only available on
  * some platforms (Windows, Linux, Solaris, BSD, plus other Unix systems that
  * support the dlfcn standard).

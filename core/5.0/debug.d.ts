@@ -177,7 +177,7 @@ declare namespace debug {
     /**
      * Returns a string with a traceback of the call stack. An optional message
      * string is appended at the beginning of the traceback. This function is
-     * typically used with xpcall to produce better error messages. 
+     * typically used with xpcall to produce better error messages.
      */
     function traceback<T>(message: T): T;
 }
