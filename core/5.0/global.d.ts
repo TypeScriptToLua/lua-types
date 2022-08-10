@@ -1,6 +1,4 @@
-// Based on https://www.lua.org/manual/5.3/manual.html#6.1
-
-/// <reference lib="es2015.iterable" />
+// Based on https://www.lua.org/manual/5.0/manual.html#5.1
 
 /** @noSelfInFile */
 
@@ -11,12 +9,7 @@ type LuaUserdata = { readonly __internal__: unique symbol };
  * A global variable (not a function) that holds a string containing the running
  * Lua version.
  */
-declare const _VERSION:
-    | ('Lua 5.0' | 'Lua 5.0.1' | 'Lua 5.0.2' | 'Lua 5.0.3')
-    | 'Lua 5.1'
-    | 'Lua 5.2'
-    | 'Lua 5.3'
-    | 'Lua 5.4';
+declare const _VERSION: 'Lua 5.0' | 'Lua 5.0.1' | 'Lua 5.0.2' | 'Lua 5.0.3';
 
 /**
  * A global variable (not a function) that holds the global environment (see
@@ -35,61 +28,6 @@ declare function assert<V, A extends any[]>(
     v: V,
     ...args: A
 ): LuaMultiReturn<[Exclude<V, undefined | null | false>, ...A]>;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Performs a full garbage-collection cycle. This is the default option.
- */
-declare function collectgarbage(opt?: 'collect'): void;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Stops automatic execution of the garbage collector. The collector will run
- * only when explicitly invoked, until a call to restart it.
- */
-declare function collectgarbage(opt: 'stop'): void;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Restarts automatic execution of the garbage collector.
- */
-declare function collectgarbage(opt: 'restart'): void;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Sets arg as the new value for the pause of the collector (see §2.5). Returns
- * the previous value for pause.
- */
-declare function collectgarbage(opt: 'setpause', arg: number): number;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Sets arg as the new value for the step multiplier of the collector (see
- * §2.5). Returns the previous value for step.
- */
-declare function collectgarbage(opt: 'setstepmul', arg: number): number;
-
-/**
- * This function is a generic interface to the garbage collector. It performs
- * different functions according to its first argument, opt.
- *
- * Performs a garbage-collection step. The step "size" is controlled by arg.
- * With a zero value, the collector will perform one basic (indivisible) step.
- * For non-zero values, the collector will perform as if that amount of memory
- * (in KBytes) had been allocated by Lua. Returns true if the step finished a
- * collection cycle.
- */
-declare function collectgarbage(opt: 'step', arg: number): boolean;
 
 /**
  * Opens the named file and executes its contents as a Lua chunk. When called
@@ -210,12 +148,6 @@ declare function rawequal<T>(v1: T, v2: T): boolean;
 declare function rawget<T extends object, K extends keyof T>(table: T, index: K): T[K];
 
 /**
- * Returns the length of the object v, which must be a table or a string,
- * without invoking the __len metamethod. Returns an integer.
- */
-declare function rawlen(v: object | string): number;
-
-/**
  * Sets the real value of table[index] to value, without invoking the __newindex
  * metamethod. table must be a table, index any value different from nil and
  * NaN, and value any Lua value.
@@ -223,22 +155,6 @@ declare function rawlen(v: object | string): number;
  * This function returns table.
  */
 declare function rawset<T extends object, K extends keyof T>(table: T, index: K, value: T[K]): T;
-
-/**
- * If index is a number, returns all arguments after argument number index; a
- * negative number indexes from the end (-1 is the last argument). Otherwise,
- * index must be the string "#", and select returns the total number of extra
- * arguments it received.
- */
-declare function select<T>(index: number, ...args: T[]): LuaMultiReturn<T[]>;
-
-/**
- * If index is a number, returns all arguments after argument number index; a
- * negative number indexes from the end (-1 is the last argument). Otherwise,
- * index must be the string "#", and select returns the total number of extra
- * arguments it received.
- */
-declare function select<T>(index: '#', ...args: T[]): number;
 
 /**
  * Sets the metatable for the given table. (To change the metatable of other
