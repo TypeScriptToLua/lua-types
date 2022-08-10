@@ -1,4 +1,4 @@
-// Based on https://www.lua.org/manual/5.3/manual.html#6.8
+// Based on https://www.lua.org/manual/5.0/manual.html#5.6
 
 /** @noSelfInFile */
 
