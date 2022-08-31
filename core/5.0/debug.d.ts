@@ -179,5 +179,5 @@ declare namespace debug {
      * string is appended at the beginning of the traceback. This function is
      * typically used with xpcall to produce better error messages.
      */
-    function traceback<T>(message: T): T;
+    function traceback(message?: string | null): string;
 }
