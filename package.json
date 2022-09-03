@@ -14,7 +14,7 @@
         "**/*.d.ts"
     ],
     "scripts": {
-        "test": "jest && test:project",
+        "test": "jest && npm run test:project",
         "test:project": "npm --prefix test/testproject ci && npm --prefix test/testproject run build",
         "lint": "prettier --check ."
     },
