@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as ts from 'typescript';
 
-import { LuaTarget, Transpiler } from 'typescript-to-lua';
+import { LuaTarget, Transpiler, CompilerOptions } from 'typescript-to-lua';
 
 const targets = [
     LuaTarget.Lua51,
@@ -25,7 +25,7 @@ export function tstl(luaTarget: LuaTarget, input: string): string {
 
     // Create a TS program containing input.ts and the declarations file to test
     const rootNames = ['input.ts', typesPath];
-    const options = {
+    const options: CompilerOptions = {
         luaTarget,
         lib: ['lib.esnext.d.ts'],
         noHeader: true,
@@ -83,21 +83,28 @@ function getCompilerHostWithInput(input: string) {
 
             let filePath = fileName;
 
-            if (fileName.startsWith('lib.')) {
+            if (fileName.includes('/@typescript/')) {
                 const typeScriptDir = path.dirname(require.resolve('typescript'));
-                filePath = path.join(typeScriptDir, fileName);
+                const pathParts = fileName.split('@typescript/')[1].split('/');
+                let libFileName = pathParts.join('.').replace(/-/g, '.');
+                if (libFileName.endsWith('.ts') && !libFileName.endsWith('.d.ts')) {
+                    libFileName = libFileName.substring(0, libFileName.length - 3) + '.d.ts';
+                }
+                filePath = path.join(typeScriptDir, libFileName);
             }
 
-            if (fileName.endsWith('typescript-to-lua/language-extensions/index.d.ts')) {
+            if (fileName.endsWith('@typescript-to-lua/language-extensions/index.d.ts')) {
                 filePath = path.resolve(
                     __dirname,
-                    `../node_modules/typescript-to-lua/language-extensions/index.d.ts`
+                    `../node_modules/@typescript-to-lua/language-extensions/index.d.ts`
                 );
             }
 
-            const fileContent = fs.readFileSync(filePath).toString();
-            fileCache[fileName] = fileContent;
-            return ts.createSourceFile(fileName, fileContent, languageVersion);
+            if (fs.existsSync(filePath)) {
+                const fileContent = fs.readFileSync(filePath).toString();
+                fileCache[fileName] = fileContent;
+                return ts.createSourceFile(fileName, fileContent, languageVersion);
+            }
         },
     };
 }

@@ -6,17 +6,9 @@ exports[`Lua version 5.1 / string string.byte multiple 1`] = `"a, b, c, d = stri
 
 exports[`Lua version 5.1 / string string.char 1`] = `"str = string.char(64, 65, 66)"`;
 
-exports[`Lua version 5.1 / string string.dump 1`] = `
-"str = string.dump(
-    function() return 5 end
-)"
-`;
+exports[`Lua version 5.1 / string string.dump 1`] = `"str = string.dump(function() return 5 end)"`;
 
-exports[`Lua version 5.1 / string string.find 1`] = `
-"result = {
-    string.find(\\"abc\\", \\"b\\")
-}"
-`;
+exports[`Lua version 5.1 / string string.find 1`] = `"result = {string.find(\\"abc\\", \\"b\\")}"`;
 
 exports[`Lua version 5.1 / string string.find destructure 1`] = `"start, ____end, matchString = string.find(\\"abc\\", \\"b\\")"`;
 
@@ -39,34 +31,20 @@ end"
 `;
 
 exports[`Lua version 5.1 / string string.gsub function 1`] = `
-"result = {
-    string.gsub(
-        \\"hello world\\",
-        \\"l\\",
-        function(match) return \\"R\\" end
-    )
-}"
+"result = {string.gsub(
+    \\"hello world\\",
+    \\"l\\",
+    function(match) return \\"R\\" end
+)}"
 `;
 
-exports[`Lua version 5.1 / string string.gsub string 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", \\"R\\")
-}"
-`;
+exports[`Lua version 5.1 / string string.gsub string 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", \\"R\\")}"`;
 
 exports[`Lua version 5.1 / string string.gsub string destructured 1`] = `"result, numOccurrences = string.gsub(\\"hello world\\", \\"l\\", \\"R\\")"`;
 
-exports[`Lua version 5.1 / string string.gsub table 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})
-}"
-`;
+exports[`Lua version 5.1 / string string.gsub table 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})}"`;
 
-exports[`Lua version 5.1 / string string.match 1`] = `
-"result = {
-    string.match(\\"hello world\\", \\"l\\")
-}"
-`;
+exports[`Lua version 5.1 / string string.match 1`] = `"result = {string.match(\\"hello world\\", \\"l\\")}"`;
 
 exports[`Lua version 5.1 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
@@ -78,17 +56,9 @@ exports[`Lua version 5.2 / string string.byte multiple 1`] = `"a, b, c, d = stri
 
 exports[`Lua version 5.2 / string string.char 1`] = `"str = string.char(64, 65, 66)"`;
 
-exports[`Lua version 5.2 / string string.dump 1`] = `
-"str = string.dump(
-    function() return 5 end
-)"
-`;
+exports[`Lua version 5.2 / string string.dump 1`] = `"str = string.dump(function() return 5 end)"`;
 
-exports[`Lua version 5.2 / string string.find 1`] = `
-"result = {
-    string.find(\\"abc\\", \\"b\\")
-}"
-`;
+exports[`Lua version 5.2 / string string.find 1`] = `"result = {string.find(\\"abc\\", \\"b\\")}"`;
 
 exports[`Lua version 5.2 / string string.find destructure 1`] = `"start, ____end, matchString = string.find(\\"abc\\", \\"b\\")"`;
 
@@ -111,34 +81,20 @@ end"
 `;
 
 exports[`Lua version 5.2 / string string.gsub function 1`] = `
-"result = {
-    string.gsub(
-        \\"hello world\\",
-        \\"l\\",
-        function(match) return \\"R\\" end
-    )
-}"
+"result = {string.gsub(
+    \\"hello world\\",
+    \\"l\\",
+    function(match) return \\"R\\" end
+)}"
 `;
 
-exports[`Lua version 5.2 / string string.gsub string 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", \\"R\\")
-}"
-`;
+exports[`Lua version 5.2 / string string.gsub string 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", \\"R\\")}"`;
 
 exports[`Lua version 5.2 / string string.gsub string destructured 1`] = `"result, numOccurrences = string.gsub(\\"hello world\\", \\"l\\", \\"R\\")"`;
 
-exports[`Lua version 5.2 / string string.gsub table 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})
-}"
-`;
+exports[`Lua version 5.2 / string string.gsub table 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})}"`;
 
-exports[`Lua version 5.2 / string string.match 1`] = `
-"result = {
-    string.match(\\"hello world\\", \\"l\\")
-}"
-`;
+exports[`Lua version 5.2 / string string.match 1`] = `"result = {string.match(\\"hello world\\", \\"l\\")}"`;
 
 exports[`Lua version 5.2 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
@@ -150,17 +106,9 @@ exports[`Lua version 5.3 / string string.byte multiple 1`] = `"a, b, c, d = stri
 
 exports[`Lua version 5.3 / string string.char 1`] = `"str = string.char(64, 65, 66)"`;
 
-exports[`Lua version 5.3 / string string.dump 1`] = `
-"str = string.dump(
-    function() return 5 end
-)"
-`;
+exports[`Lua version 5.3 / string string.dump 1`] = `"str = string.dump(function() return 5 end)"`;
 
-exports[`Lua version 5.3 / string string.find 1`] = `
-"result = {
-    string.find(\\"abc\\", \\"b\\")
-}"
-`;
+exports[`Lua version 5.3 / string string.find 1`] = `"result = {string.find(\\"abc\\", \\"b\\")}"`;
 
 exports[`Lua version 5.3 / string string.find destructure 1`] = `"start, ____end, matchString = string.find(\\"abc\\", \\"b\\")"`;
 
@@ -183,34 +131,20 @@ end"
 `;
 
 exports[`Lua version 5.3 / string string.gsub function 1`] = `
-"result = {
-    string.gsub(
-        \\"hello world\\",
-        \\"l\\",
-        function(match) return \\"R\\" end
-    )
-}"
+"result = {string.gsub(
+    \\"hello world\\",
+    \\"l\\",
+    function(match) return \\"R\\" end
+)}"
 `;
 
-exports[`Lua version 5.3 / string string.gsub string 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", \\"R\\")
-}"
-`;
+exports[`Lua version 5.3 / string string.gsub string 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", \\"R\\")}"`;
 
 exports[`Lua version 5.3 / string string.gsub string destructured 1`] = `"result, numOccurrences = string.gsub(\\"hello world\\", \\"l\\", \\"R\\")"`;
 
-exports[`Lua version 5.3 / string string.gsub table 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})
-}"
-`;
+exports[`Lua version 5.3 / string string.gsub table 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})}"`;
 
-exports[`Lua version 5.3 / string string.match 1`] = `
-"result = {
-    string.match(\\"hello world\\", \\"l\\")
-}"
-`;
+exports[`Lua version 5.3 / string string.match 1`] = `"result = {string.match(\\"hello world\\", \\"l\\")}"`;
 
 exports[`Lua version 5.3 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
@@ -222,17 +156,9 @@ exports[`Lua version 5.4 / string string.byte multiple 1`] = `"a, b, c, d = stri
 
 exports[`Lua version 5.4 / string string.char 1`] = `"str = string.char(64, 65, 66)"`;
 
-exports[`Lua version 5.4 / string string.dump 1`] = `
-"str = string.dump(
-    function() return 5 end
-)"
-`;
+exports[`Lua version 5.4 / string string.dump 1`] = `"str = string.dump(function() return 5 end)"`;
 
-exports[`Lua version 5.4 / string string.find 1`] = `
-"result = {
-    string.find(\\"abc\\", \\"b\\")
-}"
-`;
+exports[`Lua version 5.4 / string string.find 1`] = `"result = {string.find(\\"abc\\", \\"b\\")}"`;
 
 exports[`Lua version 5.4 / string string.find destructure 1`] = `"start, ____end, matchString = string.find(\\"abc\\", \\"b\\")"`;
 
@@ -255,34 +181,20 @@ end"
 `;
 
 exports[`Lua version 5.4 / string string.gsub function 1`] = `
-"result = {
-    string.gsub(
-        \\"hello world\\",
-        \\"l\\",
-        function(match) return \\"R\\" end
-    )
-}"
+"result = {string.gsub(
+    \\"hello world\\",
+    \\"l\\",
+    function(match) return \\"R\\" end
+)}"
 `;
 
-exports[`Lua version 5.4 / string string.gsub string 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", \\"R\\")
-}"
-`;
+exports[`Lua version 5.4 / string string.gsub string 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", \\"R\\")}"`;
 
 exports[`Lua version 5.4 / string string.gsub string destructured 1`] = `"result, numOccurrences = string.gsub(\\"hello world\\", \\"l\\", \\"R\\")"`;
 
-exports[`Lua version 5.4 / string string.gsub table 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})
-}"
-`;
+exports[`Lua version 5.4 / string string.gsub table 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})}"`;
 
-exports[`Lua version 5.4 / string string.match 1`] = `
-"result = {
-    string.match(\\"hello world\\", \\"l\\")
-}"
-`;
+exports[`Lua version 5.4 / string string.match 1`] = `"result = {string.match(\\"hello world\\", \\"l\\")}"`;
 
 exports[`Lua version 5.4 / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 
@@ -294,17 +206,9 @@ exports[`Lua version JIT / string string.byte multiple 1`] = `"a, b, c, d = stri
 
 exports[`Lua version JIT / string string.char 1`] = `"str = string.char(64, 65, 66)"`;
 
-exports[`Lua version JIT / string string.dump 1`] = `
-"str = string.dump(
-    function() return 5 end
-)"
-`;
+exports[`Lua version JIT / string string.dump 1`] = `"str = string.dump(function() return 5 end)"`;
 
-exports[`Lua version JIT / string string.find 1`] = `
-"result = {
-    string.find(\\"abc\\", \\"b\\")
-}"
-`;
+exports[`Lua version JIT / string string.find 1`] = `"result = {string.find(\\"abc\\", \\"b\\")}"`;
 
 exports[`Lua version JIT / string string.find destructure 1`] = `"start, ____end, matchString = string.find(\\"abc\\", \\"b\\")"`;
 
@@ -327,34 +231,20 @@ end"
 `;
 
 exports[`Lua version JIT / string string.gsub function 1`] = `
-"result = {
-    string.gsub(
-        \\"hello world\\",
-        \\"l\\",
-        function(match) return \\"R\\" end
-    )
-}"
+"result = {string.gsub(
+    \\"hello world\\",
+    \\"l\\",
+    function(match) return \\"R\\" end
+)}"
 `;
 
-exports[`Lua version JIT / string string.gsub string 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", \\"R\\")
-}"
-`;
+exports[`Lua version JIT / string string.gsub string 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", \\"R\\")}"`;
 
 exports[`Lua version JIT / string string.gsub string destructured 1`] = `"result, numOccurrences = string.gsub(\\"hello world\\", \\"l\\", \\"R\\")"`;
 
-exports[`Lua version JIT / string string.gsub table 1`] = `
-"result = {
-    string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})
-}"
-`;
+exports[`Lua version JIT / string string.gsub table 1`] = `"result = {string.gsub(\\"hello world\\", \\"l\\", {l = \\"R\\"})}"`;
 
-exports[`Lua version JIT / string string.match 1`] = `
-"result = {
-    string.match(\\"hello world\\", \\"l\\")
-}"
-`;
+exports[`Lua version JIT / string string.match 1`] = `"result = {string.match(\\"hello world\\", \\"l\\")}"`;
 
 exports[`Lua version JIT / string string.match destructured 1`] = `"match1, match2 = string.match(\\"hello world\\", \\"l\\")"`;
 

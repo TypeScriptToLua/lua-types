@@ -98,11 +98,7 @@ exports[`Lua version 5.1 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version 5.1 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
-exports[`Lua version 5.1 / io type 1`] = `
-"print(
-    io.type(file)
-)"
-`;
+exports[`Lua version 5.1 / io type 1`] = `"print(io.type(file))"`;
 
 exports[`Lua version 5.1 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
 
@@ -204,11 +200,7 @@ exports[`Lua version 5.2 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version 5.2 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
-exports[`Lua version 5.2 / io type 1`] = `
-"print(
-    io.type(file)
-)"
-`;
+exports[`Lua version 5.2 / io type 1`] = `"print(io.type(file))"`;
 
 exports[`Lua version 5.2 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
 
@@ -310,11 +302,7 @@ exports[`Lua version 5.3 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version 5.3 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
-exports[`Lua version 5.3 / io type 1`] = `
-"print(
-    io.type(file)
-)"
-`;
+exports[`Lua version 5.3 / io type 1`] = `"print(io.type(file))"`;
 
 exports[`Lua version 5.3 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
 
@@ -416,11 +404,7 @@ exports[`Lua version 5.4 / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version 5.4 / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
-exports[`Lua version 5.4 / io type 1`] = `
-"print(
-    io.type(file)
-)"
-`;
+exports[`Lua version 5.4 / io type 1`] = `"print(io.type(file))"`;
 
 exports[`Lua version 5.4 / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
 
@@ -522,10 +506,6 @@ exports[`Lua version JIT / io stdout 1`] = `"io.stdout:write(\\"foobar\\")"`;
 
 exports[`Lua version JIT / io tmpfile 1`] = `"file = io.tmpfile()"`;
 
-exports[`Lua version JIT / io type 1`] = `
-"print(
-    io.type(file)
-)"
-`;
+exports[`Lua version JIT / io type 1`] = `"print(io.type(file))"`;
 
 exports[`Lua version JIT / io write 1`] = `"f, err = io.write(\\"foobar\\")"`;
