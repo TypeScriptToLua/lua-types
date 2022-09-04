@@ -1,4 +1,4 @@
-/// <reference types="typescript-to-lua/language-extensions" />
+/// <reference types="@typescript-to-lua/language-extensions" />
 
 /// <reference path="./coroutine.d.ts" />
 /// <reference path="./debug.d.ts" />

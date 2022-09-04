@@ -71,11 +71,7 @@ exports[`Lua version 5.1 / global pcall with context 1`] = `
 
 exports[`Lua version 5.1 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version 5.1 / global select 1`] = `
-"values = {
-    select(2, \\"a\\", \\"b\\", \\"c\\")
-}"
-`;
+exports[`Lua version 5.1 / global select 1`] = `"values = {select(2, \\"a\\", \\"b\\", \\"c\\")}"`;
 
 exports[`Lua version 5.1 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
@@ -84,9 +80,7 @@ exports[`Lua version 5.1 / global select with # 1`] = `"count = select(\\"#\\", 
 exports[`Lua version 5.1 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
-    {
-        __index = function(____, key) return key .. \\"bar\\" end
-    }
+    {__index = function(____, key) return key .. \\"bar\\" end}
 )
 takesStr = function(____, s)
 end
@@ -181,11 +175,7 @@ exports[`Lua version 5.2 / global pcall with context 1`] = `
 
 exports[`Lua version 5.2 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version 5.2 / global select 1`] = `
-"values = {
-    select(2, \\"a\\", \\"b\\", \\"c\\")
-}"
-`;
+exports[`Lua version 5.2 / global select 1`] = `"values = {select(2, \\"a\\", \\"b\\", \\"c\\")}"`;
 
 exports[`Lua version 5.2 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
@@ -194,9 +184,7 @@ exports[`Lua version 5.2 / global select with # 1`] = `"count = select(\\"#\\", 
 exports[`Lua version 5.2 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
-    {
-        __index = function(____, key) return key .. \\"bar\\" end
-    }
+    {__index = function(____, key) return key .. \\"bar\\" end}
 )
 takesStr = function(____, s)
 end
@@ -291,11 +279,7 @@ exports[`Lua version 5.3 / global pcall with context 1`] = `
 
 exports[`Lua version 5.3 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version 5.3 / global select 1`] = `
-"values = {
-    select(2, \\"a\\", \\"b\\", \\"c\\")
-}"
-`;
+exports[`Lua version 5.3 / global select 1`] = `"values = {select(2, \\"a\\", \\"b\\", \\"c\\")}"`;
 
 exports[`Lua version 5.3 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
@@ -304,9 +288,7 @@ exports[`Lua version 5.3 / global select with # 1`] = `"count = select(\\"#\\", 
 exports[`Lua version 5.3 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
-    {
-        __index = function(____, key) return key .. \\"bar\\" end
-    }
+    {__index = function(____, key) return key .. \\"bar\\" end}
 )
 takesStr = function(____, s)
 end
@@ -401,11 +383,7 @@ exports[`Lua version 5.4 / global pcall with context 1`] = `
 
 exports[`Lua version 5.4 / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version 5.4 / global select 1`] = `
-"values = {
-    select(2, \\"a\\", \\"b\\", \\"c\\")
-}"
-`;
+exports[`Lua version 5.4 / global select 1`] = `"values = {select(2, \\"a\\", \\"b\\", \\"c\\")}"`;
 
 exports[`Lua version 5.4 / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
@@ -414,9 +392,7 @@ exports[`Lua version 5.4 / global select with # 1`] = `"count = select(\\"#\\", 
 exports[`Lua version 5.4 / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
-    {
-        __index = function(____, key) return key .. \\"bar\\" end
-    }
+    {__index = function(____, key) return key .. \\"bar\\" end}
 )
 takesStr = function(____, s)
 end
@@ -511,11 +487,7 @@ exports[`Lua version JIT / global pcall with context 1`] = `
 
 exports[`Lua version JIT / global rawget 1`] = `"value = rawget({foo = \\"bar\\"}, \\"foo\\")"`;
 
-exports[`Lua version JIT / global select 1`] = `
-"values = {
-    select(2, \\"a\\", \\"b\\", \\"c\\")
-}"
-`;
+exports[`Lua version JIT / global select 1`] = `"values = {select(2, \\"a\\", \\"b\\", \\"c\\")}"`;
 
 exports[`Lua version JIT / global select destructured 1`] = `"b, c = select(2, \\"a\\", \\"b\\", \\"c\\")"`;
 
@@ -524,9 +496,7 @@ exports[`Lua version JIT / global select with # 1`] = `"count = select(\\"#\\", 
 exports[`Lua version JIT / global setmetatable with function index 1`] = `
 "tbl = setmetatable(
     {},
-    {
-        __index = function(____, key) return key .. \\"bar\\" end
-    }
+    {__index = function(____, key) return key .. \\"bar\\" end}
 )
 takesStr = function(____, s)
 end

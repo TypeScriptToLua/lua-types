@@ -14,7 +14,8 @@
         "**/*.d.ts"
     ],
     "scripts": {
-        "test": "jest",
+        "test": "jest && npm run test:test-project",
+        "test:test-project": "npm --prefix test/testproject ci && npm --prefix test/testproject run build",
         "lint": "prettier --check ."
     },
     "prettier": {
@@ -23,9 +24,6 @@
         "proseWrap": "never",
         "singleQuote": true
     },
-    "peerDependencies": {
-        "typescript-to-lua": "^1.0.0"
-    },
     "devDependencies": {
         "@types/jest": "^26.0.20",
         "@types/node": "^14.14.34",
@@ -33,6 +31,11 @@
         "jest-circus": "^26.6.3",
         "prettier": "^2.0.5",
         "ts-jest": "^26.5.3",
-        "typescript-to-lua": "^1.0.1"
+        "typescript": "4.7.3",
+        "typescript-to-lua": "^1.9.0",
+        "@typescript-to-lua/language-extensions": "^1.0.0"
+    },
+    "peer-dependencies": {
+        "@typescript-to-lua/language-extensions": "^1.0.0"
     }
 }
