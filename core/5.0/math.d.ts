@@ -96,6 +96,12 @@ declare namespace math {
     function min(x: number, ...numbers: number[]): number;
 
     /**
+     * Returns the remainder of the division of x by y that rounds the quotient
+     * towards zero. (integer/float)
+     */
+    function mod(x: number, y: number): number;
+
+    /**
      * The value of π.
      */
     const pi: number;
