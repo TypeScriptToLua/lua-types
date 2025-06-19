@@ -61,7 +61,7 @@ declare namespace string {
         pattern: string,
         init?: number,
         plain?: boolean
-    ): LuaMultiReturn<[number, number, ...string[]] | []>;
+    ): LuaMultiReturn<[number?, number?, ...string[]] | []>;
 
     /**
      * Returns a formatted version of its variable number of arguments following
