@@ -177,7 +177,7 @@ declare namespace string {
      * returned. A third, optional numeric argument init specifies where to start
      * the search; its default value is 1 and can be negative.
      */
-    function match(s: string, pattern: string, init?: number): LuaMultiReturn<string[]>;
+    function match(s: string, pattern: string, init?: number): LuaMultiReturn<[string[] | null]>;
 
     /**
      * Returns a string that is the concatenation of `n` copies of the string `s`.
