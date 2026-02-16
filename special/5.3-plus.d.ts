@@ -165,21 +165,6 @@ declare namespace utf8 {
      * position of the first invalid byte.
      */
     function len(s: string, i?: number, j?: number): number;
-
-    /**
-     * Returns the position (in bytes) where the encoding of the n-th character of
-     * s (counting from position i) starts. A negative n gets characters before
-     * position i. The default for i is 1 when n is non-negative and #s + 1
-     * otherwise, so that utf8.offset(s, -n) gets the offset of the n-th character
-     * from the end of the string. If the specified character is neither in the
-     * subject nor right after its end, the function returns nil.
-     *
-     * As a special case, when n is 0 the function returns the start of the
-     * encoding of the character that contains the i-th byte of s.
-     *
-     * This function assumes that s is a valid UTF-8 string.
-     */
-    function offset(s: string, n?: number, i?: number): number;
 }
 
 interface LuaMetatable<T> {
