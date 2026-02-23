@@ -3,7 +3,7 @@
 declare namespace table {
     /**
      * Creates a new empty table, preallocating memory. This preallocation may help
-     *  performance and save memory when you know in advance how many elements the 
+     *  performance and save memory when you know in advance how many elements the
      * table will have.
      *
      * @param nseq hint for how many elements the table will have as a sequence
