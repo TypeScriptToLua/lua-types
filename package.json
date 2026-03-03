@@ -7,9 +7,9 @@
         "typescript",
         "tstl"
     ],
-    "repository": "https://github.com/ark120202/lua-types",
+    "repository": "https://github.com/TypeScriptToLua/lua-types",
     "license": "MIT",
-    "author": "ark120202",
+    "author": "TypeScriptToLua",
     "files": [
         "**/*.d.ts"
     ],
