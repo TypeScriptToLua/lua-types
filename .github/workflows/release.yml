@@ -4,20 +4,21 @@ on:
     push:
         tags: '*'
 
+permissions:
+  id-token: write  # Required for trusted publishing
+  contents: read
+
 jobs:
     release:
         name: Release
         runs-on: ubuntu-latest
 
         steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js 16
-              uses: actions/setup-node@v1
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
               with:
-                  node-version: 16
+                  node-version: 24
                   registry-url: 'https://registry.npmjs.org'
             - run: npm ci
             - run: npm test
             - run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
