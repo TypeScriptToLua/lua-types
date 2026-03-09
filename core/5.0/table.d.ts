@@ -18,6 +18,7 @@ declare namespace table {
      * is greater than j, returns the empty string.
      */
     function concat(list: (string | number)[], sep?: string, i?: number, j?: number): string;
+    function concat<TKey>(list: LuaTable<TKey, string | number>, sep?: string, i?: number, j?: number): string;
 
     /**
      * Executes the given f over all elements of table. For each element, f is
@@ -54,6 +55,8 @@ declare namespace table {
      */
     function insert<T>(list: T[], value: T): void;
     function insert<T>(list: T[], pos: number, value: T): void;
+    function insert<TKey, TValue>(list: LuaTable<TKey, TValue>, value: TValue): void;
+    function insert<TKey, TValue>(list: LuaTable<TKey, TValue>, pos: number, value: TValue): void;
 
     /**
      * Removes from list the element at position pos, returning the value of the
@@ -66,6 +69,7 @@ declare namespace table {
      * the last element of list l.
      */
     function remove<T>(list: T[], pos?: number): T | undefined;
+    function remove<TKey, TValue>(list: LuaTable<TKey, TValue>, pos?: number): TValue | undefined;
 
     /**
      * Updates the size of a table. If the table has a field "n" with a
@@ -91,4 +95,5 @@ declare namespace table {
      * order may have their relative positions changed by the sort.
      */
     function sort<T>(list: T[], comp?: (a: T, b: T) => boolean): void;
+    function sort<TKey, TValue>(list: LuaTable<TKey, TValue>, comp?: (a: TValue, b: TValue) => boolean): void
 }
