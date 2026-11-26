@@ -1,5 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Lua version 5.1 / global LuaThread and LuaUserdata can be extended 1`] = `
+"thread = coroutine.create(function()
+end)
+threadTag = thread.tag
+userdataTag = userdata.tag"
+`;
+
 exports[`Lua version 5.1 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
 exports[`Lua version 5.1 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
@@ -103,6 +110,13 @@ exports[`Lua version 5.1 / global tonumber with base 1`] = `"number = tonumber(\
 exports[`Lua version 5.1 / global tostring 1`] = `"str = tostring(213.4)"`;
 
 exports[`Lua version 5.1 / global type 1`] = `"t = type(213.4)"`;
+
+exports[`Lua version 5.2 / global LuaThread and LuaUserdata can be extended 1`] = `
+"thread = coroutine.create(function()
+end)
+threadTag = thread.tag
+userdataTag = userdata.tag"
+`;
 
 exports[`Lua version 5.2 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
@@ -208,6 +222,13 @@ exports[`Lua version 5.2 / global tostring 1`] = `"str = tostring(213.4)"`;
 
 exports[`Lua version 5.2 / global type 1`] = `"t = type(213.4)"`;
 
+exports[`Lua version 5.3 / global LuaThread and LuaUserdata can be extended 1`] = `
+"thread = coroutine.create(function()
+end)
+threadTag = thread.tag
+userdataTag = userdata.tag"
+`;
+
 exports[`Lua version 5.3 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
 exports[`Lua version 5.3 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
@@ -312,6 +333,13 @@ exports[`Lua version 5.3 / global tostring 1`] = `"str = tostring(213.4)"`;
 
 exports[`Lua version 5.3 / global type 1`] = `"t = type(213.4)"`;
 
+exports[`Lua version 5.4 / global LuaThread and LuaUserdata can be extended 1`] = `
+"thread = coroutine.create(function()
+end)
+threadTag = thread.tag
+userdataTag = userdata.tag"
+`;
+
 exports[`Lua version 5.4 / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
 exports[`Lua version 5.4 / global assert 2`] = `"assert(false, \\"assert message\\")"`;
@@ -415,6 +443,13 @@ exports[`Lua version 5.4 / global tonumber with base 1`] = `"number = tonumber(\
 exports[`Lua version 5.4 / global tostring 1`] = `"str = tostring(213.4)"`;
 
 exports[`Lua version 5.4 / global type 1`] = `"t = type(213.4)"`;
+
+exports[`Lua version JIT / global LuaThread and LuaUserdata can be extended 1`] = `
+"thread = coroutine.create(function()
+end)
+threadTag = thread.tag
+userdataTag = userdata.tag"
+`;
 
 exports[`Lua version JIT / global assert 1`] = `"assert({bla = \\"not false\\"})"`;
 
