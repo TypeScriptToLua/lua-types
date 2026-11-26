@@ -285,4 +285,20 @@ describeForEachLuaTarget('global', (target) => {
 
         expect(lua).toMatchSnapshot();
     });
+
+    test('LuaThread and LuaUserdata can be extended', () => {
+        const lua = tstl(
+            target,
+            `
+            interface LuaThread { readonly tag?: 'thread' }
+            interface LuaUserdata { readonly tag?: 'userdata' }
+            declare const userdata: LuaUserdata;
+            const thread = coroutine.create(() => {});
+            const threadTag: 'thread' | undefined = thread.tag;
+            const userdataTag: 'userdata' | undefined = userdata.tag;
+        `
+        );
+
+        expect(lua).toMatchSnapshot();
+    });
 });

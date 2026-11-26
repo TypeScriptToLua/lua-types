@@ -2,8 +2,12 @@
 
 /** @noSelfInFile */
 
-type LuaThread = { readonly __internal__: unique symbol };
-type LuaUserdata = { readonly __internal__: unique symbol };
+interface LuaThread {
+    readonly __internal__: unique symbol;
+}
+interface LuaUserdata {
+    readonly __internal__: unique symbol;
+}
 
 /**
  * A global variable (not a function) that holds a string containing the running
